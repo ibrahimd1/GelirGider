@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3A0A99827A7145F00625BB6 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0A99727A7145F00625BB6 /* AppContainer.swift */; };
+		D3A0A99A27A7146700625BB6 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0A99927A7146700625BB6 /* AppRouter.swift */; };
+		D3A0A99E27A71F8300625BB6 /* MainScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0A99D27A71F8300625BB6 /* MainScreenBuilder.swift */; };
 		D3F04D99272C2AC10047E9F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F04D98272C2AC10047E9F4 /* AppDelegate.swift */; };
-		D3F04D9B272C2AC10047E9F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F04D9A272C2AC10047E9F4 /* SceneDelegate.swift */; };
-		D3F04D9D272C2AC10047E9F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F04D9C272C2AC10047E9F4 /* ViewController.swift */; };
-		D3F04DA0272C2AC10047E9F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3F04D9E272C2AC10047E9F4 /* Main.storyboard */; };
+		D3F04D9D272C2AC10047E9F4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F04D9C272C2AC10047E9F4 /* MainViewController.swift */; };
 		D3F04DA2272C2AC20047E9F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3F04DA1272C2AC20047E9F4 /* Assets.xcassets */; };
 		D3F04DA5272C2AC20047E9F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3F04DA3272C2AC20047E9F4 /* LaunchScreen.storyboard */; };
 		D3F04DB0272C2AC20047E9F4 /* GelirGiderAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F04DAF272C2AC20047E9F4 /* GelirGiderAppTests.swift */; };
@@ -36,11 +37,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D3A0A99727A7145F00625BB6 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		D3A0A99927A7146700625BB6 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		D3A0A99D27A71F8300625BB6 /* MainScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenBuilder.swift; sourceTree = "<group>"; };
 		D3F04D95272C2AC10047E9F4 /* GelirGiderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GelirGiderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F04D98272C2AC10047E9F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D3F04D9A272C2AC10047E9F4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D3F04D9C272C2AC10047E9F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D3F04D9F272C2AC10047E9F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D3F04D9C272C2AC10047E9F4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D3F04DA1272C2AC20047E9F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3F04DA4272C2AC20047E9F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3F04DA6272C2AC20047E9F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +78,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D3A0A99627A7144600625BB6 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D3A0A99727A7145F00625BB6 /* AppContainer.swift */,
+				D3F04D98272C2AC10047E9F4 /* AppDelegate.swift */,
+				D3A0A99927A7146700625BB6 /* AppRouter.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D3A0A99B27A71EA600625BB6 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D3A0A99C27A71EB800625BB6 /* Main */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		D3A0A99C27A71EB800625BB6 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D3A0A99D27A71F8300625BB6 /* MainScreenBuilder.swift */,
+				D3F04D9C272C2AC10047E9F4 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		D3F04D8C272C2AC10047E9F4 = {
 			isa = PBXGroup;
 			children = (
@@ -99,10 +128,8 @@
 		D3F04D97272C2AC10047E9F4 /* GelirGiderApp */ = {
 			isa = PBXGroup;
 			children = (
-				D3F04D98272C2AC10047E9F4 /* AppDelegate.swift */,
-				D3F04D9A272C2AC10047E9F4 /* SceneDelegate.swift */,
-				D3F04D9C272C2AC10047E9F4 /* ViewController.swift */,
-				D3F04D9E272C2AC10047E9F4 /* Main.storyboard */,
+				D3A0A99627A7144600625BB6 /* App */,
+				D3A0A99B27A71EA600625BB6 /* Scenes */,
 				D3F04DA1272C2AC20047E9F4 /* Assets.xcassets */,
 				D3F04DA3272C2AC20047E9F4 /* LaunchScreen.storyboard */,
 				D3F04DA6272C2AC20047E9F4 /* Info.plist */,
@@ -233,7 +260,6 @@
 			files = (
 				D3F04DA5272C2AC20047E9F4 /* LaunchScreen.storyboard in Resources */,
 				D3F04DA2272C2AC20047E9F4 /* Assets.xcassets in Resources */,
-				D3F04DA0272C2AC10047E9F4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +284,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3F04D9D272C2AC10047E9F4 /* ViewController.swift in Sources */,
+				D3F04D9D272C2AC10047E9F4 /* MainViewController.swift in Sources */,
+				D3A0A99827A7145F00625BB6 /* AppContainer.swift in Sources */,
 				D3F04D99272C2AC10047E9F4 /* AppDelegate.swift in Sources */,
-				D3F04D9B272C2AC10047E9F4 /* SceneDelegate.swift in Sources */,
+				D3A0A99E27A71F8300625BB6 /* MainScreenBuilder.swift in Sources */,
+				D3A0A99A27A7146700625BB6 /* AppRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +325,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D3F04D9E272C2AC10047E9F4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D3F04D9F272C2AC10047E9F4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D3F04DA3272C2AC20047E9F4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -444,7 +464,6 @@
 				INFOPLIST_FILE = GelirGiderApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -472,7 +491,6 @@
 				INFOPLIST_FILE = GelirGiderApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
