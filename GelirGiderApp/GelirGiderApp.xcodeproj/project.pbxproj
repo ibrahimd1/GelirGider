@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		D3A0A99827A7145F00625BB6 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0A99727A7145F00625BB6 /* AppContainer.swift */; };
 		D3A0A99A27A7146700625BB6 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0A99927A7146700625BB6 /* AppRouter.swift */; };
-		D3A0A99E27A71F8300625BB6 /* MainScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0A99D27A71F8300625BB6 /* MainScreenBuilder.swift */; };
+		D3A0A99E27A71F8300625BB6 /* IncomeExpenseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0A99D27A71F8300625BB6 /* IncomeExpenseBuilder.swift */; };
 		D3F04D99272C2AC10047E9F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F04D98272C2AC10047E9F4 /* AppDelegate.swift */; };
-		D3F04D9D272C2AC10047E9F4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F04D9C272C2AC10047E9F4 /* MainViewController.swift */; };
+		D3F04D9D272C2AC10047E9F4 /* IncomeExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F04D9C272C2AC10047E9F4 /* IncomeExpenseViewController.swift */; };
 		D3F04DA2272C2AC20047E9F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3F04DA1272C2AC20047E9F4 /* Assets.xcassets */; };
 		D3F04DA5272C2AC20047E9F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3F04DA3272C2AC20047E9F4 /* LaunchScreen.storyboard */; };
 		D3F04DB0272C2AC20047E9F4 /* GelirGiderAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F04DAF272C2AC20047E9F4 /* GelirGiderAppTests.swift */; };
@@ -39,10 +39,10 @@
 /* Begin PBXFileReference section */
 		D3A0A99727A7145F00625BB6 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		D3A0A99927A7146700625BB6 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
-		D3A0A99D27A71F8300625BB6 /* MainScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenBuilder.swift; sourceTree = "<group>"; };
+		D3A0A99D27A71F8300625BB6 /* IncomeExpenseBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseBuilder.swift; sourceTree = "<group>"; };
 		D3F04D95272C2AC10047E9F4 /* GelirGiderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GelirGiderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F04D98272C2AC10047E9F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D3F04D9C272C2AC10047E9F4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D3F04D9C272C2AC10047E9F4 /* IncomeExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseViewController.swift; sourceTree = "<group>"; };
 		D3F04DA1272C2AC20047E9F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3F04DA4272C2AC20047E9F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3F04DA6272C2AC20047E9F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,6 +78,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D30C198B27AAFDE00002C07D /* IncomeExpense */ = {
+			isa = PBXGroup;
+			children = (
+				D3A0A99D27A71F8300625BB6 /* IncomeExpenseBuilder.swift */,
+				D3F04D9C272C2AC10047E9F4 /* IncomeExpenseViewController.swift */,
+			);
+			path = IncomeExpense;
+			sourceTree = "<group>";
+		};
 		D3A0A99627A7144600625BB6 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,18 +100,9 @@
 		D3A0A99B27A71EA600625BB6 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				D3A0A99C27A71EB800625BB6 /* Main */,
+				D30C198B27AAFDE00002C07D /* IncomeExpense */,
 			);
 			path = Scenes;
-			sourceTree = "<group>";
-		};
-		D3A0A99C27A71EB800625BB6 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				D3A0A99D27A71F8300625BB6 /* MainScreenBuilder.swift */,
-				D3F04D9C272C2AC10047E9F4 /* MainViewController.swift */,
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 		D3F04D8C272C2AC10047E9F4 = {
@@ -284,10 +284,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3F04D9D272C2AC10047E9F4 /* MainViewController.swift in Sources */,
+				D3F04D9D272C2AC10047E9F4 /* IncomeExpenseViewController.swift in Sources */,
 				D3A0A99827A7145F00625BB6 /* AppContainer.swift in Sources */,
 				D3F04D99272C2AC10047E9F4 /* AppDelegate.swift in Sources */,
-				D3A0A99E27A71F8300625BB6 /* MainScreenBuilder.swift in Sources */,
+				D3A0A99E27A71F8300625BB6 /* IncomeExpenseBuilder.swift in Sources */,
 				D3A0A99A27A7146700625BB6 /* AppRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

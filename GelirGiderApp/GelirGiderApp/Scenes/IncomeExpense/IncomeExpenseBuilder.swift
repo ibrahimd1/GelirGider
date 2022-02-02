@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class MainScreenBuilder {
+final class IncomeExpenseBuilder {
     
-    static func make() -> MainViewController {
-        let viewController = MainViewController()
+    static func make() -> IncomeExpenseViewController {
+        let viewController = IncomeExpenseViewController()
         return viewController
     }
 }

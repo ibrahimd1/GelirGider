@@ -7,14 +7,12 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class IncomeExpenseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.orange
         self.title = "Main"
     }
-
-
 }
 

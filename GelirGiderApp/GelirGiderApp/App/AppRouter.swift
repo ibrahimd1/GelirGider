@@ -15,7 +15,7 @@ final class AppRouter {
     }
     
     func start() {
-        let viewController = MainScreenBuilder.make()
+        let viewController = IncomeExpenseBuilder.make()
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
