@@ -8,6 +8,7 @@
 import UIKit
 
 struct IncomeExpenseModel {
+    let type: IncomeExpenseType
     let descriptionOfIncomeExpense: String
     let timeOfIncomeExpense: Date
     let amountOfIncomeExpense: Double

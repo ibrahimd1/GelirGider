@@ -14,21 +14,15 @@ final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {
         
     }
     
-    func addIncome() {
+    func addIncomeExpense(type: IncomeExpenseType, description: String, amount: Double, index: Int) {
         
     }
     
-    func addExpense() {
+    func updateIncomeExpense(with id: String, description: String?, amount: Double?, index: Int) {
         
     }
     
-    func viewSummary(of year: Int) {
+    func deleteIncomeExpense(with id: String, index: Int) {
         
-    }
-    
-    func viewAboutTheApp() {
-        
-    }
-    
-    
+    }    
 }
