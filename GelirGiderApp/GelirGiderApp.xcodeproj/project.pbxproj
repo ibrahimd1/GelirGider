@@ -15,6 +15,7 @@
 		D30C199B27AB10C20002C07D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30C199A27AB10C20002C07D /* Date+Extension.swift */; };
 		D380699827DCBFB1001EA6E2 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D380699627DCBFB0001EA6E2 /* Realm.framework */; };
 		D380699927DCBFB1001EA6E2 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D380699727DCBFB0001EA6E2 /* RealmSwift.framework */; };
+		D380699E27DE1C91001EA6E2 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D380699D27DE1C91001EA6E2 /* StoreManager.swift */; };
 		D3A0A99827A7145F00625BB6 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0A99727A7145F00625BB6 /* AppContainer.swift */; };
 		D3A0A99A27A7146700625BB6 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0A99927A7146700625BB6 /* AppRouter.swift */; };
 		D3A0A99E27A71F8300625BB6 /* IncomeExpenseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0A99D27A71F8300625BB6 /* IncomeExpenseBuilder.swift */; };
@@ -47,12 +48,13 @@
 /* Begin PBXFileReference section */
 		D30C198C27AAFF870002C07D /* IncomeExpenseContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseContracts.swift; sourceTree = "<group>"; };
 		D30C199027AB027E0002C07D /* IncomeExpensePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpensePresentation.swift; sourceTree = "<group>"; };
-		D30C199227AB03A40002C07D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D30C199227AB03A40002C07D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		D30C199527AB06C50002C07D /* IncomeExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseModel.swift; sourceTree = "<group>"; };
 		D30C199727AB09DB0002C07D /* IncomeExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseViewModel.swift; sourceTree = "<group>"; };
 		D30C199A27AB10C20002C07D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		D380699627DCBFB0001EA6E2 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = ../../Vendor/Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D380699727DCBFB0001EA6E2 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = ../../Vendor/Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		D380699D27DE1C91001EA6E2 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		D3A0A99727A7145F00625BB6 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		D3A0A99927A7146700625BB6 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		D3A0A99D27A71F8300625BB6 /* IncomeExpenseBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseBuilder.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 		D30C198E27AB02490002C07D /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				D380699C27DE1C6E001EA6E2 /* StoreManager */,
 				D30C199927AB10770002C07D /* Extensions */,
 				D30C199427AB06A90002C07D /* Model */,
 				D30C198F27AB02650002C07D /* Presentations */,
@@ -149,6 +152,14 @@
 				D380699727DCBFB0001EA6E2 /* RealmSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D380699C27DE1C6E001EA6E2 /* StoreManager */ = {
+			isa = PBXGroup;
+			children = (
+				D380699D27DE1C91001EA6E2 /* StoreManager.swift */,
+			);
+			path = StoreManager;
 			sourceTree = "<group>";
 		};
 		D3A0A99627A7144600625BB6 /* App */ = {
@@ -382,6 +393,7 @@
 				D30C198D27AAFF870002C07D /* IncomeExpenseContracts.swift in Sources */,
 				D30C199127AB027E0002C07D /* IncomeExpensePresentation.swift in Sources */,
 				D3A0A99E27A71F8300625BB6 /* IncomeExpenseBuilder.swift in Sources */,
+				D380699E27DE1C91001EA6E2 /* StoreManager.swift in Sources */,
 				D3A0A99A27A7146700625BB6 /* AppRouter.swift in Sources */,
 				D30C199327AB03A40002C07D /* Constants.swift in Sources */,
 			);

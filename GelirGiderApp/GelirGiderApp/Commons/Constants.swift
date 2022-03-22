@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import RealmSwift
 
-enum IncomeExpenseType {
+enum IncomeExpenseType: String,PersistableEnum {
     case Income
     case Expense
 }

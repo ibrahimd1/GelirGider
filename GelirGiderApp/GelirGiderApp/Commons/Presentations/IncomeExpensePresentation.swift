@@ -7,12 +7,30 @@
 
 import UIKit
 
-struct IncomeExpensePresentation {
+internal struct IncomeExpensePresentation {
+    let id: String
+    let year: Int
+    let month: Int
+    let itemList: [IncomeExpenseItemPresentation]
+    
+    init(model: IncomeExpenseModel) {
+        self.id = model.id
+        self.year = model.year
+        self.month = model.month
+        self.itemList = model.incomeExpenseList.map(IncomeExpenseItemPresentation.init)
+    }
+}
+
+struct IncomeExpenseItemPresentation {
+    let itemId: String
+    let type: IncomeExpenseType
     let description: String
     let dateTime: Date
     let amount: Double
     
-    init(description: String, dateTime: Date, amount: Double) {
+    init(id: String, type: IncomeExpenseType, description: String, dateTime: Date, amount: Double) {
+        self.itemId = id
+        self.type = type
         self.description = description
         self.dateTime = dateTime
         self.amount = amount
@@ -20,10 +38,12 @@ struct IncomeExpensePresentation {
 }
 
 
-extension IncomeExpensePresentation {
-    init(obj: IncomeExpenseModel) {
-        self.description = obj.descriptionOfIncomeExpense
-        self.dateTime = obj.timeOfIncomeExpense
-        self.amount = obj.amountOfIncomeExpense
+extension IncomeExpenseItemPresentation {
+    init(model: IncomeExpenseItemModel) {
+        self.itemId = model.itemId
+        self.type = model.type
+        self.description = model.descriptionOfIncomeExpense
+        self.dateTime = model.timeOfIncomeExpense
+        self.amount = model.amountOfIncomeExpense
     }
 }
