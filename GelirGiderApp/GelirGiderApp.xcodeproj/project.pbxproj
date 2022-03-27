@@ -19,6 +19,7 @@
 		D3A0A99827A7145F00625BB6 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0A99727A7145F00625BB6 /* AppContainer.swift */; };
 		D3A0A99A27A7146700625BB6 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0A99927A7146700625BB6 /* AppRouter.swift */; };
 		D3A0A99E27A71F8300625BB6 /* IncomeExpenseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0A99D27A71F8300625BB6 /* IncomeExpenseBuilder.swift */; };
+		D3DBEFB527F0ABBB004A02CD /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DBEFB427F0ABBB004A02CD /* UIView+Extension.swift */; };
 		D3F04D99272C2AC10047E9F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F04D98272C2AC10047E9F4 /* AppDelegate.swift */; };
 		D3F04D9D272C2AC10047E9F4 /* IncomeExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F04D9C272C2AC10047E9F4 /* IncomeExpenseViewController.swift */; };
 		D3F04DA2272C2AC20047E9F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3F04DA1272C2AC20047E9F4 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		D3A0A99727A7145F00625BB6 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		D3A0A99927A7146700625BB6 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		D3A0A99D27A71F8300625BB6 /* IncomeExpenseBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseBuilder.swift; sourceTree = "<group>"; };
+		D3DBEFB427F0ABBB004A02CD /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		D3F04D95272C2AC10047E9F4 /* GelirGiderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GelirGiderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F04D98272C2AC10047E9F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3F04D9C272C2AC10047E9F4 /* IncomeExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				D30C199A27AB10C20002C07D /* Date+Extension.swift */,
+				D3DBEFB427F0ABBB004A02CD /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D30C199827AB09DB0002C07D /* IncomeExpenseViewModel.swift in Sources */,
+				D3DBEFB527F0ABBB004A02CD /* UIView+Extension.swift in Sources */,
 				D30C199B27AB10C20002C07D /* Date+Extension.swift in Sources */,
 				D3F04D9D272C2AC10047E9F4 /* IncomeExpenseViewController.swift in Sources */,
 				D3A0A99827A7145F00625BB6 /* AppContainer.swift in Sources */,

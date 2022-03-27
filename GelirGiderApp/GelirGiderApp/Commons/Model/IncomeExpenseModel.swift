@@ -22,7 +22,7 @@ internal final class IncomeExpenseModel: Object {
         self.id = getPrimaryKey()
     }
     
-    func getPrimaryKey() -> String {
+    fileprivate func getPrimaryKey() -> String {
         return "\(self.year)\(self.month)"
     }
 }
