@@ -13,6 +13,13 @@
 		D30C199627AB06C50002C07D /* IncomeExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30C199527AB06C50002C07D /* IncomeExpenseModel.swift */; };
 		D30C199827AB09DB0002C07D /* IncomeExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30C199727AB09DB0002C07D /* IncomeExpenseViewModel.swift */; };
 		D30C199B27AB10C20002C07D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30C199A27AB10C20002C07D /* Date+Extension.swift */; };
+		D31A4A932806136500070A25 /* IncomeExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31A4A922806136500070A25 /* IncomeExpenseCell.swift */; };
+		D31A4A9528061B4100070A25 /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31A4A9428061B4100070A25 /* CustomHeader.swift */; };
+		D3271F8B28A8142F0010B75C /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3271F8A28A8142F0010B75C /* Double+Extension.swift */; };
+		D3271F8D28A84A0A0010B75C /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3271F8C28A84A0A0010B75C /* UITextField+Extension.swift */; };
+		D3729B14280B096E00B8B73C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3729B13280B096E00B8B73C /* String+Extension.swift */; };
+		D37838FE283AD80A004307D1 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37838FD283AD80A004307D1 /* CustomTextField.swift */; };
+		D37C6AC627F8A395009A37DF /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37C6AC527F8A395009A37DF /* RoundedButton.swift */; };
 		D380699827DCBFB1001EA6E2 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D380699627DCBFB0001EA6E2 /* Realm.framework */; };
 		D380699927DCBFB1001EA6E2 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D380699727DCBFB0001EA6E2 /* RealmSwift.framework */; };
 		D380699E27DE1C91001EA6E2 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D380699D27DE1C91001EA6E2 /* StoreManager.swift */; };
@@ -53,6 +60,13 @@
 		D30C199527AB06C50002C07D /* IncomeExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseModel.swift; sourceTree = "<group>"; };
 		D30C199727AB09DB0002C07D /* IncomeExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseViewModel.swift; sourceTree = "<group>"; };
 		D30C199A27AB10C20002C07D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		D31A4A922806136500070A25 /* IncomeExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseCell.swift; sourceTree = "<group>"; };
+		D31A4A9428061B4100070A25 /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
+		D3271F8A28A8142F0010B75C /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		D3271F8C28A84A0A0010B75C /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		D3729B13280B096E00B8B73C /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		D37838FD283AD80A004307D1 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		D37C6AC527F8A395009A37DF /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		D380699627DCBFB0001EA6E2 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = ../../Vendor/Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D380699727DCBFB0001EA6E2 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = ../../Vendor/Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		D380699D27DE1C91001EA6E2 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
@@ -103,6 +117,7 @@
 		D30C198B27AAFDE00002C07D /* IncomeExpense */ = {
 			isa = PBXGroup;
 			children = (
+				D37C6AC427F8A383009A37DF /* View */,
 				D3A0A99D27A71F8300625BB6 /* IncomeExpenseBuilder.swift */,
 				D3F04D9C272C2AC10047E9F4 /* IncomeExpenseViewController.swift */,
 				D30C198C27AAFF870002C07D /* IncomeExpenseContracts.swift */,
@@ -144,8 +159,22 @@
 			children = (
 				D30C199A27AB10C20002C07D /* Date+Extension.swift */,
 				D3DBEFB427F0ABBB004A02CD /* UIView+Extension.swift */,
+				D3729B13280B096E00B8B73C /* String+Extension.swift */,
+				D3271F8A28A8142F0010B75C /* Double+Extension.swift */,
+				D3271F8C28A84A0A0010B75C /* UITextField+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D37C6AC427F8A383009A37DF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D37C6AC527F8A395009A37DF /* RoundedButton.swift */,
+				D31A4A922806136500070A25 /* IncomeExpenseCell.swift */,
+				D31A4A9428061B4100070A25 /* CustomHeader.swift */,
+				D37838FD283AD80A004307D1 /* CustomTextField.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D380699527DCBF7C001EA6E2 /* Frameworks */ = {
@@ -390,14 +419,21 @@
 				D30C199827AB09DB0002C07D /* IncomeExpenseViewModel.swift in Sources */,
 				D3DBEFB527F0ABBB004A02CD /* UIView+Extension.swift in Sources */,
 				D30C199B27AB10C20002C07D /* Date+Extension.swift in Sources */,
+				D31A4A9528061B4100070A25 /* CustomHeader.swift in Sources */,
 				D3F04D9D272C2AC10047E9F4 /* IncomeExpenseViewController.swift in Sources */,
+				D3271F8D28A84A0A0010B75C /* UITextField+Extension.swift in Sources */,
+				D37838FE283AD80A004307D1 /* CustomTextField.swift in Sources */,
 				D3A0A99827A7145F00625BB6 /* AppContainer.swift in Sources */,
+				D31A4A932806136500070A25 /* IncomeExpenseCell.swift in Sources */,
 				D30C199627AB06C50002C07D /* IncomeExpenseModel.swift in Sources */,
 				D3F04D99272C2AC10047E9F4 /* AppDelegate.swift in Sources */,
+				D3729B14280B096E00B8B73C /* String+Extension.swift in Sources */,
+				D3271F8B28A8142F0010B75C /* Double+Extension.swift in Sources */,
 				D30C198D27AAFF870002C07D /* IncomeExpenseContracts.swift in Sources */,
 				D30C199127AB027E0002C07D /* IncomeExpensePresentation.swift in Sources */,
 				D3A0A99E27A71F8300625BB6 /* IncomeExpenseBuilder.swift in Sources */,
 				D380699E27DE1C91001EA6E2 /* StoreManager.swift in Sources */,
+				D37C6AC627F8A395009A37DF /* RoundedButton.swift in Sources */,
 				D3A0A99A27A7146700625BB6 /* AppRouter.swift in Sources */,
 				D30C199327AB03A40002C07D /* Constants.swift in Sources */,
 			);
@@ -568,9 +604,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 89LXB7L7KB;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Vendor/Carthage/Build/iOS/";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GelirGiderApp/Info.plist;
@@ -585,6 +622,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibrahim.GelirGiderApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -596,9 +634,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 89LXB7L7KB;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Vendor/Carthage/Build/iOS/";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GelirGiderApp/Info.plist;
@@ -613,6 +652,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibrahim.GelirGiderApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -624,9 +664,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 89LXB7L7KB;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -637,6 +678,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibrahim.GelirGiderAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -649,9 +692,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 89LXB7L7KB;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -662,6 +706,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibrahim.GelirGiderAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -673,9 +719,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 89LXB7L7KB;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -685,6 +731,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibrahim.GelirGiderAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -696,9 +744,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 89LXB7L7KB;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -708,6 +756,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibrahim.GelirGiderAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

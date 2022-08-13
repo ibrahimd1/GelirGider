@@ -15,5 +15,11 @@ extension Date {
     var currentMonth: Int {
         Calendar.current.component(.month, from: self)
     }
+    
+    var formattedDateDMY: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy' 'HH:mm:ss"
+        return formatter.string(from: self)
+    }
 }
 

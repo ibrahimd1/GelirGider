@@ -26,4 +26,8 @@ enum CustomColor {
     static let secondaryGreen = UIColor(named: "SecondaryGreen")
     static let secondaryRed = UIColor(named: "SecondaryRed")
     static let textColor = UIColor(named: "TextColor")
+    static let textBoxBorderColor = UIColor(named: "TextBoxBorderColor")
+    static let buttonBorderColor = UIColor(named: "ButtonBorderColor")
+    static let lineColor = UIColor(named: "LineColor")
+    static let footerBackgroundColor = UIColor(named: "FooterBackgroundColor")
 }
