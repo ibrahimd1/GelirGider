@@ -26,6 +26,7 @@
 		D3A0A99827A7145F00625BB6 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0A99727A7145F00625BB6 /* AppContainer.swift */; };
 		D3A0A99A27A7146700625BB6 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0A99927A7146700625BB6 /* AppRouter.swift */; };
 		D3A0A99E27A71F8300625BB6 /* IncomeExpenseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0A99D27A71F8300625BB6 /* IncomeExpenseBuilder.swift */; };
+		D3A8117028AAE07E00004866 /* UIViewContoller+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8116F28AAE07E00004866 /* UIViewContoller+Extension.swift */; };
 		D3DBEFB527F0ABBB004A02CD /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DBEFB427F0ABBB004A02CD /* UIView+Extension.swift */; };
 		D3F04D99272C2AC10047E9F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F04D98272C2AC10047E9F4 /* AppDelegate.swift */; };
 		D3F04D9D272C2AC10047E9F4 /* IncomeExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F04D9C272C2AC10047E9F4 /* IncomeExpenseViewController.swift */; };
@@ -73,6 +74,7 @@
 		D3A0A99727A7145F00625BB6 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		D3A0A99927A7146700625BB6 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		D3A0A99D27A71F8300625BB6 /* IncomeExpenseBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseBuilder.swift; sourceTree = "<group>"; };
+		D3A8116F28AAE07E00004866 /* UIViewContoller+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewContoller+Extension.swift"; sourceTree = "<group>"; };
 		D3DBEFB427F0ABBB004A02CD /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		D3F04D95272C2AC10047E9F4 /* GelirGiderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GelirGiderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F04D98272C2AC10047E9F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				D3729B13280B096E00B8B73C /* String+Extension.swift */,
 				D3271F8A28A8142F0010B75C /* Double+Extension.swift */,
 				D3271F8C28A84A0A0010B75C /* UITextField+Extension.swift */,
+				D3A8116F28AAE07E00004866 /* UIViewContoller+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				D30C199827AB09DB0002C07D /* IncomeExpenseViewModel.swift in Sources */,
 				D3DBEFB527F0ABBB004A02CD /* UIView+Extension.swift in Sources */,
 				D30C199B27AB10C20002C07D /* Date+Extension.swift in Sources */,
+				D3A8117028AAE07E00004866 /* UIViewContoller+Extension.swift in Sources */,
 				D31A4A9528061B4100070A25 /* CustomHeader.swift in Sources */,
 				D3F04D9D272C2AC10047E9F4 /* IncomeExpenseViewController.swift in Sources */,
 				D3271F8D28A84A0A0010B75C /* UITextField+Extension.swift in Sources */,
@@ -605,9 +609,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 89LXB7L7KB;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Vendor/Carthage/Build/iOS/";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GelirGiderApp/Info.plist;
@@ -635,9 +639,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 89LXB7L7KB;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Vendor/Carthage/Build/iOS/";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GelirGiderApp/Info.plist;

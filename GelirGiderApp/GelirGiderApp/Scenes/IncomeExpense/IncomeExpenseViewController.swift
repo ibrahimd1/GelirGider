@@ -134,6 +134,7 @@ class IncomeExpenseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupHideKeyboardOnTap()
         
         view.backgroundColor = CustomColor.backgroundColor
         navigationItem.titleView = UIImageView(image: UIImage(named: "GelirGiderIcon"))
