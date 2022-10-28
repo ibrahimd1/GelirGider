@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import RealmSwift
 
 class IncomeExpenseViewController: UIViewController {
     
     private lazy var txtYearMont: UITextView = {
+        let date = Date()
         let txt = UITextView()
         txt.isEditable = false
         txt.isScrollEnabled = false
         txt.textAlignment = .center
-        txt.attributedText = getAttrText("2022", "Ekim")
+        txt.attributedText = getAttrText(String(date.currentYear), date.currentMonthName)
         txt.textColor = CustomColor.textColor
         txt.backgroundColor = CustomColor.backgroundColor
         return txt
@@ -36,8 +38,8 @@ class IncomeExpenseViewController: UIViewController {
         let btn = RoundedButton()
         btn.configure(with: RoundedButtonViewModel(text: "Gelir Ekle",
                                                    icon: UIImage(named: "IncomeButtonIcon")!,
-                                                   titleColor: CustomColor.primaryGreen!,
-                                                   backgroundColor: CustomColor.backgroundColorGreen!))
+                                                   titleColor: CustomColor.textColor!,
+                                                   backgroundColor: CustomColor.backgroundColorComponent!))
         return btn
     }()
     
@@ -45,8 +47,8 @@ class IncomeExpenseViewController: UIViewController {
         let btn = RoundedButton()
         btn.configure(with: RoundedButtonViewModel(text: "Gider Ekle",
                                                    icon: UIImage(named: "ExpenseButtonIcon")!,
-                                                   titleColor: CustomColor.primaryRed!,
-                                                   backgroundColor: CustomColor.backgroundColorRed!))
+                                                   titleColor: CustomColor.textColor!,
+                                                   backgroundColor: CustomColor.backgroundColorComponent!))
         return btn
     }()
     
@@ -62,9 +64,9 @@ class IncomeExpenseViewController: UIViewController {
         return tableView
     }()
     
-    private lazy var seperator: UIView = {
+    private lazy var seperatorFooter: UIView = {
         let view = UIView()
-        view.backgroundColor = CustomColor.lineColor
+        view.backgroundColor = CustomColor.seperatorColor
         return view
     }()
     
@@ -78,55 +80,69 @@ class IncomeExpenseViewController: UIViewController {
     private lazy var lblIncome: UILabel = {
         let lbl = UILabel()
         lbl.text = "Gelir"
-        lbl.font = .boldSystemFont(ofSize: 12)
+        lbl.font = .Poppins.semiBold(size: 12).font
         lbl.textAlignment = .center
-        lbl.textColor = CustomColor.textColor
+        lbl.textColor = CustomColor.textColorSecondary
         return lbl
     }()
     
     private lazy var lblIncomeSum: UILabel = {
         let lbl = UILabel()
         lbl.text = "0"
-        lbl.font = .systemFont(ofSize: 11)
+        lbl.font = .Poppins.bold(size: 13).font
         lbl.textAlignment = .center
-        lbl.textColor = CustomColor.textColor
+        lbl.textColor = CustomColor.textColorGreen
         return lbl
     }()
     
     private lazy var lblExpense: UILabel = {
         let lbl = UILabel()
         lbl.text = "Gider"
-        lbl.font = .boldSystemFont(ofSize: 12)
+        lbl.font = .Poppins.semiBold(size: 12).font
         lbl.textAlignment = .center
-        lbl.textColor = CustomColor.textColor
+        lbl.textColor = CustomColor.textColorSecondary
         return lbl
     }()
     
     private lazy var lblExpenseSum: UILabel = {
         let lbl = UILabel()
         lbl.text = "0"
-        lbl.font = .systemFont(ofSize: 11)
+        lbl.font = .Poppins.bold(size: 13).font
         lbl.textAlignment = .center
-        lbl.textColor = CustomColor.textColor
+        lbl.textColor = CustomColor.textColorRed
         return lbl
     }()
     
     private lazy var lblSubstract: UILabel = {
         let lbl = UILabel()
         lbl.text = "Fark"
-        lbl.font = .boldSystemFont(ofSize: 12)
+        lbl.font = .Poppins.semiBold(size: 12).font
         lbl.textAlignment = .center
-        lbl.textColor = CustomColor.textColor
+        lbl.textColor = CustomColor.textColorSecondary
         return lbl
     }()
     
     private lazy var lblSubstractSum: UILabel = {
         let lbl = UILabel()
         lbl.text = "0"
-        lbl.font = .systemFont(ofSize: 11)
+        lbl.font = .Poppins.bold(size: 13).font
         lbl.textAlignment = .center
-        lbl.textColor = CustomColor.textColor
+        lbl.textColor = CustomColor.textColorGreen
         return lbl
+    }()
+    
+    private lazy var segmentedControl: CustomSegmentedControl = {
+        let items = ["Gelir","Gider"]
+        let sgm = CustomSegmentedControl(items: items)
+        sgm.selectedSegmentIndex = 0
+        sgm.addTarget(self, action: #selector(segmentedControlIndexChanged), for: .valueChanged)
+        return sgm
+    }()
+    
+    private lazy var scView: UIView = {
+        let tempView = UIView()
+        tempView.backgroundColor = CustomColor.backgroundColorComponent
+        return tempView
     }()
     
     private var itemListIncome: IncomeExpensePresentation?
@@ -136,25 +152,33 @@ class IncomeExpenseViewController: UIViewController {
         super.viewDidLoad()
         self.setupHideKeyboardOnTap()
         
+        locateMainComponents()
+        locateTextComponents()
+        locateButtons()
+        locateTable()
+        locateFooer()
+        
+        tableTest()
+    }
+    
+    fileprivate func locateMainComponents() {
         view.backgroundColor = CustomColor.backgroundColor
-        navigationItem.titleView = UIImageView(image: UIImage(named: "GelirGiderIcon"))
+        navigationItem.titleView = txtYearMont
         
         let menuImage = UIImage(named: "Menu")?.withRenderingMode(.alwaysOriginal)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: menuImage, style: .plain, target: self, action: #selector(menuClick))
-        
-        //Year + Month
-        view.addSubview(txtYearMont)
-        txtYearMont.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: nil, trailing: nil, paddingTop: 0, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
-        txtYearMont.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-        //Description + Amount TextField
+    }
+    
+    fileprivate func locateTextComponents() {
         let oranUzunluk = (view.bounds.width - 48) / 3
-        
         view.addSubview(txtDescription)
-        txtDescription.anchor(top: txtYearMont.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: nil, paddingTop: 15, paddingBottom: 0, paddingTrailing: -5, paddingLeading: 16, width: oranUzunluk * 2, height: 38)
+        txtDescription.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: nil, paddingTop: 15, paddingBottom: 0, paddingTrailing: -5, paddingLeading: 16, width: oranUzunluk * 2, height: 38)
         
         view.addSubview(txtAmount)
-        txtAmount.anchor(top: txtYearMont.bottomAnchor, bottom: nil, leading: txtDescription.trailingAnchor, trailing: view.trailingAnchor, paddingTop: 15, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 38)
+        txtAmount.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: txtDescription.trailingAnchor, trailing: view.trailingAnchor, paddingTop: 15, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 38)
+    }
+    
+    fileprivate func locateButtons() {
         
         // Income + Expense Buttons
         let stackViewButton = UIStackView(arrangedSubviews: [btnIncome,btnExpense])
@@ -165,84 +189,125 @@ class IncomeExpenseViewController: UIViewController {
         view.addSubview(stackViewButton)
         stackViewButton.anchor(top: txtDescription.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 38)
         
-        // Income + Expense Tables
+        scView.addSubview(segmentedControl)
+        segmentedControl.anchor(top: scView.topAnchor, bottom: scView.bottomAnchor, leading: scView.leadingAnchor, trailing: scView.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
+        
+        scView.layer.cornerRadius = 20
+        
+        view.addSubview(scView)
+        scView.anchor(top: stackViewButton.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -30, paddingLeading: 30, width: 0, height: 38)
+    }
+    
+    fileprivate func locateTable() {
         tableIncome.delegate = self
         tableIncome.dataSource = self
-        tableExpense.delegate = self
-        tableExpense.dataSource = self
-        tableIncome.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: "customHeader")
-        tableExpense.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: "customHeader")
-        tableIncome.register(IncomeExpenseCell.self, forCellReuseIdentifier: "incomeCell")
-        tableExpense.register(IncomeExpenseCell.self, forCellReuseIdentifier: "incomeCell")
+        tableIncome.register(IncomeExpenseCell.self, forCellReuseIdentifier: "incomeExpenseCell")
         
-        let stackViewTable = UIStackView(arrangedSubviews: [tableIncome,seperator,tableExpense])
-        stackViewTable.distribution = .fillEqually
-        stackViewTable.axis = .horizontal
-        stackViewTable.spacing = 10
-        
-        let tableWidth = (view.bounds.width - 63) / 2
-        let table = UIView()
-        
-        table.addSubview(tableIncome)
-        tableIncome.anchor(top: table.topAnchor, bottom: table.bottomAnchor, leading: table.leadingAnchor, trailing: nil, paddingTop: 0, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: tableWidth, height: 0)
-        table.addSubview(seperator)
-        seperator.anchor(top: table.topAnchor, bottom: table.bottomAnchor, leading: tableIncome.trailingAnchor, trailing: nil, paddingTop: 0, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 15, width: 1, height: 0)
-        table.addSubview(tableExpense)
-        tableExpense.anchor(top: table.topAnchor, bottom: table.bottomAnchor, leading: seperator.trailingAnchor, trailing: table.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 15, width: tableWidth, height: 0)
-        
-        view.addSubview(table)
-        table.anchor(top: stackViewButton.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 0)
+        view.addSubview(tableIncome)
+        tableIncome.anchor(top: scView.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 0)
         
         tableIncome.separatorColor = .clear
-        tableExpense.separatorColor = .clear
+    }
+    
+    fileprivate func locateFooer() {
+        let incomeSumView = getSummaryView(.income)
+        let expenseSumView = getSummaryView(.expense)
+        let subtractSumView = getSummaryView(.substract)
         
-        //Footer
-        
-        //Income
-        let incomeSumView = UIView()
-        incomeSumView.addSubview(lblIncome)
-        lblIncome.anchor(top: incomeSumView.topAnchor, bottom: nil, leading: incomeSumView.leadingAnchor, trailing: incomeSumView.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
-        incomeSumView.addSubview(lblIncomeSum)
-        lblIncomeSum.anchor(top: lblIncome.bottomAnchor, bottom: incomeSumView.bottomAnchor, leading: incomeSumView.leadingAnchor, trailing: incomeSumView.trailingAnchor, paddingTop: 5, paddingBottom: -10, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
-        
-        //Expense
-        let expenseSumView = UIView()
-        expenseSumView.addSubview(lblExpense)
-        lblExpense.anchor(top: expenseSumView.topAnchor, bottom: nil, leading: expenseSumView.leadingAnchor, trailing: expenseSumView.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
-        expenseSumView.addSubview(lblExpenseSum)
-        lblExpenseSum.anchor(top: lblExpense.bottomAnchor, bottom: expenseSumView.bottomAnchor, leading: expenseSumView.leadingAnchor, trailing: expenseSumView.trailingAnchor, paddingTop: 5, paddingBottom: -10, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
-        
-        //Substract
-        let substractSumView = UIView()
-        substractSumView.addSubview(lblSubstract)
-        lblSubstract.anchor(top: substractSumView.topAnchor, bottom: nil, leading: substractSumView.leadingAnchor, trailing: substractSumView.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
-        substractSumView.addSubview(lblSubstractSum)
-        lblSubstractSum.anchor(top: lblSubstract.bottomAnchor, bottom: substractSumView.bottomAnchor, leading: substractSumView.leadingAnchor, trailing: substractSumView.trailingAnchor, paddingTop: 5, paddingBottom: -10, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
-        
-        let footerStackView = UIStackView(arrangedSubviews: [incomeSumView,expenseSumView,substractSumView])
+        let footerStackView = UIStackView(arrangedSubviews: [incomeSumView,expenseSumView,subtractSumView])
         footerStackView.distribution = .fillEqually
         footerStackView.axis = .horizontal
         footerStackView.spacing = 10
         footerStackView.alignment = .center
         
-        footerView.addSubview(footerStackView)
-        footerStackView.anchor(top: footerView.topAnchor, bottom: footerView.bottomAnchor, leading: footerView.leadingAnchor, trailing: footerView.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
+        view.addSubview(seperatorFooter)
+        seperatorFooter.anchor(top: tableIncome.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 0, paddingBottom: -5, paddingTrailing: -32, paddingLeading: 32, width: 0, height: 1)
         
-        view.addSubview(footerView)
-        footerView.anchor(top: table.bottomAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: view.bounds.width - 32, height: 50)
+        view.addSubview(footerStackView)
+        footerStackView.anchor(top: seperatorFooter.bottomAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 50)
     }
     
     @objc func menuClick() {}
     
     func getAttrText(_ year: String, _ month: String) -> NSMutableAttributedString {
-        let attrText = NSMutableAttributedString(string: year, attributes: [.font : UIFont.boldSystemFont(ofSize: 18)])
-        attrText.append(NSAttributedString(string: " \(month)", attributes: [.font : UIFont.boldSystemFont(ofSize: 12) ]))
+        let attrText = NSMutableAttributedString(string: year, attributes: [.font : UIFont.Poppins.semiBold(size: 18).font!])
+        attrText.append(NSAttributedString(string: " \(month)", attributes: [.font : UIFont.Poppins.semiBold(size: 12).font! ]))
         return attrText
+    }
+    
+    @objc func segmentedControlIndexChanged(_ segmentedControl: UISegmentedControl) {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            break
+        case 1:
+            break
+        default:
+            break
+        }
+    }
+    
+    fileprivate func getSummaryView(_ summaryType: SummaryViewType) -> UIView {
+        var tempView: UIView
+        var tempViewSum: UIView
+        if(summaryType == .income) {
+            tempView = lblIncome
+            tempViewSum = lblIncomeSum
+        } else if (summaryType == .expense) {
+            tempView = lblExpense
+            tempViewSum = lblExpenseSum
+        } else {
+            tempView = lblSubstract
+            tempViewSum = lblSubstractSum
+        }
+        
+        let sumView = UIView()
+        sumView.addSubview(tempView)
+        tempView.anchor(top: sumView.topAnchor, bottom: nil, leading: sumView.leadingAnchor, trailing: sumView.trailingAnchor, paddingTop: 5, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
+        sumView.addSubview(tempViewSum)
+        tempViewSum.anchor(top: tempView.bottomAnchor, bottom: sumView.bottomAnchor, leading: sumView.leadingAnchor, trailing: sumView.trailingAnchor, paddingTop: 7, paddingBottom: -7, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
+        return sumView
+    }
+    
+    func tableTest() {
+        let i1 = IncomeExpenseItemModel(type: .income, desc: "Market", dateTime: Date(), amount: 32.45)
+        let i2 = IncomeExpenseItemModel(type: .income, desc: "Araba Kasko", dateTime: Date(), amount: 1532.45)
+        let i3 = IncomeExpenseItemModel(type: .income, desc: "Dışarıda Yemek", dateTime: Date(), amount: 25165)
+        let i4 = IncomeExpenseItemModel(type: .income, desc: "Kafe", dateTime: Date(), amount: 5332.77)
+        let i5 = IncomeExpenseItemModel(type: .income, desc: "Ev Kirası", dateTime: Date(), amount: 2.5)
+        let i6 = IncomeExpenseItemModel(type: .income, desc: "Ev Harcama Test", dateTime: Date(), amount: 158.12)
+        let i7 = IncomeExpenseItemModel(type: .income, desc: "Araba Kasko", dateTime: Date(), amount: 1532.45)
+        let i8 = IncomeExpenseItemModel(type: .income, desc: "Dışarıda Yemek", dateTime: Date(), amount: 25165)
+        let i9 = IncomeExpenseItemModel(type: .income, desc: "Kafe", dateTime: Date(), amount: 5332.77)
+        let i10 = IncomeExpenseItemModel(type: .income, desc: "Ev Kirası", dateTime: Date(), amount: 2.5)
+        let i11 = IncomeExpenseItemModel(type: .income, desc: "Ev Harcama Test", dateTime: Date(), amount: 158.12)
+        let list = List<IncomeExpenseItemModel>()
+        list.append(i1)
+        list.append(i2)
+        list.append(i3)
+        list.append(i4)
+        list.append(i5)
+        list.append(i6)
+        list.append(i7)
+        list.append(i8)
+        list.append(i9)
+        list.append(i10)
+        list.append(i11)
+        
+        self.itemListIncome = IncomeExpensePresentation(model: IncomeExpenseModel(year: 2022, month: 10, incomeExpenseList: list))
+        
+        let incomeSum = list.filter({ $0.type == .income }).map({$0.amountOfIncomeExpense}).reduce(0, +)
+        let expenseSum = list.filter({ $0.type == .expense }).map({$0.amountOfIncomeExpense}).reduce(0, +)
+        let substractSum = incomeSum - expenseSum
+        
+        lblIncomeSum.text = incomeSum.stringValue
+        lblExpenseSum.text = expenseSum.stringValue
+        lblSubstractSum.text = substractSum.stringValue
+        
+        tableIncome.reloadData()
     }
 }
 
 extension IncomeExpenseViewController: UITableViewDelegate {
-    
 }
 
 extension IncomeExpenseViewController: UITableViewDataSource {
@@ -260,52 +325,33 @@ extension IncomeExpenseViewController: UITableViewDataSource {
         if tableView == tableIncome {
             guard let incomeList = itemListIncome else { return UITableViewCell() }
             
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "incomeCell", for: indexPath) as? IncomeExpenseCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "incomeExpenseCell", for: indexPath) as? IncomeExpenseCell {
                 cell.lblTitle.text = incomeList.itemList[indexPath.row].description
                 cell.lblSubTitle.text = incomeList.itemList[indexPath.row].dateTime.formattedDateDMY
                 cell.lblCurrency.text = incomeList.itemList[indexPath.row].amount.stringValue
                 cell.imgIcon.image = UIImage(named: "IncomeIcon")
+                cell.itemIndex = indexPath.row
+                cell.title = incomeList.itemList[indexPath.row].description
+                cell.selectionStyle = .none
                 return cell
             }
         } else {
             guard let expenseList = itemListExpense else { return UITableViewCell() }
             
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "incomeCell", for: indexPath) as? IncomeExpenseCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "incomeExpenseCell", for: indexPath) as? IncomeExpenseCell {
                 cell.lblTitle.text = expenseList.itemList[indexPath.row].description
                 cell.lblSubTitle.text = expenseList.itemList[indexPath.row].dateTime.formattedDateDMY
                 cell.lblCurrency.text = expenseList.itemList[indexPath.row].amount.stringValue
                 cell.imgIcon.image = UIImage(named: "ExpenseIcon")
+                cell.itemIndex = indexPath.row
+                cell.title = expenseList.itemList[indexPath.row].description
                 return cell
             }
         }
         return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if tableView == tableIncome {
-            var incomeListCount = 0
-            if let incomeList = itemListIncome {
-                incomeListCount = incomeList.itemList.count
-            }
-            
-            let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
-                                                                    "customHeader") as! CustomHeader
-            view.configure(with: CustomHeaderViewModel(count: incomeListCount, roundedViewTextColor: CustomColor.primaryGreen!, roundedViewBackgroundColor: CustomColor.backgroundColorGreen!, incomeExpenseText: "Gelir"))
-            return view
-        } else {
-            var expenseListCount = 0
-            if let expenseList = itemListExpense {
-                expenseListCount = expenseList.itemList.count
-            }
-            
-            let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
-                                                                    "customHeader") as! CustomHeader
-            view.configure(with: CustomHeaderViewModel(count: expenseListCount, roundedViewTextColor: CustomColor.primaryRed!, roundedViewBackgroundColor: CustomColor.backgroundColorRed!, incomeExpenseText: "Gider"))
-            return view
-        }
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 60
     }
 }

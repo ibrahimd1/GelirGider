@@ -1,50 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "CardPayment.png",
+      "filename" : "ExpenseIcon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "filename" : "ExpenseButtonIconDark.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "CardPayment@2x.png",
+      "filename" : "ExpenseIcon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "filename" : "ExpenseButtonIconDark@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "CardPayment@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "filename" : "ExpenseButtonIconDark@3x.png",
+      "filename" : "ExpenseIcon@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

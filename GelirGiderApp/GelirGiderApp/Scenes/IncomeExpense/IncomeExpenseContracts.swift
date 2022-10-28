@@ -25,3 +25,9 @@ enum IncomeExpenseViewModelOutput {
 protocol IncomeExpenseViewModelDelegate {
     func handleViewModelOutput(_ output: IncomeExpenseViewModelOutput)
 }
+
+enum SummaryViewType {
+    case income
+    case expense
+    case substract
+}

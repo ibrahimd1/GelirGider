@@ -14,7 +14,7 @@ internal final class RoundedButton: UIButton {
         let lbl = UILabel()
         lbl.numberOfLines = 1
         lbl.textAlignment = .center
-        lbl.font = .boldSystemFont(ofSize: 12)
+        lbl.font = .Poppins.medium(size: 12).font
         return lbl
     }()
     
@@ -33,7 +33,7 @@ internal final class RoundedButton: UIButton {
         
         self.layer.cornerRadius = 15
         self.layer.borderWidth = 1
-        self.layer.borderColor = CustomColor.buttonBorderColor?.cgColor
+        self.layer.borderColor = CustomColor.borderColor?.cgColor
     }
     
     func configure (with viewmodel: RoundedButtonViewModel) {
@@ -55,11 +55,11 @@ internal final class RoundedButton: UIButton {
     
     private func setupViews() {
         let iconSize: CGFloat = 18
-        let iconX = (self.frame.size.width - title.frame.size.width - iconSize - 5) / 2
+        let iconX = (self.frame.size.width - title.frame.size.width - iconSize - 25) / 2
         let iconY = (self.frame.size.height - iconSize) / 2
         
         icon.frame = CGRect(x: iconX, y: iconY, width: iconSize, height: iconSize)
-        title.frame = CGRect(x: iconX + iconSize + 5, y: 0, width: title.frame.size.width, height: self.frame.size.height)
+        title.frame = CGRect(x: iconX + iconSize + 15, y: 0, width: title.frame.size.width, height: self.frame.size.height)
     }
 }
 

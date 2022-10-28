@@ -16,9 +16,19 @@ extension Date {
         Calendar.current.component(.month, from: self)
     }
     
+    var currentMonthName: String {
+        get {
+            let now = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "tr")
+            dateFormatter.dateFormat = "LLLL"
+            return dateFormatter.string(from: now)
+        }
+    }
+    
     var formattedDateDMY: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy' 'HH:mm:ss"
+        formatter.dateFormat = "dd.MM.yyyy' 'HH:mm"
         return formatter.string(from: self)
     }
 }

@@ -9,6 +9,12 @@ import Foundation
 
 extension Double {
     internal var stringValue: String {
-        return String(format: "%f", self)
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        formatter.groupingSeparator = "."
+        formatter.decimalSeparator = ","
+        return formatter.string(from: self as NSNumber)!
     }
 }

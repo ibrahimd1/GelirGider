@@ -11,6 +11,7 @@ import UIKit
 internal final class CustomTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -20,12 +21,13 @@ internal final class CustomTextField: UITextField {
     internal func configure(with viewModel: CustomTextFieldViewModel) {
         self.attributedPlaceholder = NSAttributedString(
             string: viewModel.placeHolderText,
-            attributes: [.foregroundColor: CustomColor.textColor!, .font: UIFont.boldSystemFont(ofSize:12)]
+            attributes: [.foregroundColor: CustomColor.textColorSecondary!, .font: UIFont.Poppins.bold(size: 12).font!]
         )
-        self.layer.borderColor = CustomColor.textBoxBorderColor?.cgColor
+        self.layer.borderColor =  CustomColor.borderColor?.cgColor
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 15
-        self.font = UIFont.systemFont(ofSize: 12)
+        self.backgroundColor = CustomColor.backgroundColorComponent
+        self.font = .Poppins.regular(size: 12).font
         self.setLeftPaddingPoints(15)
         
         let frame = CGRect(x: 0, y: 0, width: 18 + 15, height: 18)
@@ -44,4 +46,28 @@ internal struct CustomTextFieldViewModel {
     let placeHolderText: String
     let icon: String
     let keyboardType: UIKeyboardType
+}
+
+extension CustomTextField: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if(self.keyboardType != .decimalPad){
+            return true
+        }
+        
+        guard let oldText = textField.text, let r = Range(range, in: oldText) else {
+            return true
+        }
+        
+        let newText = oldText.replacingCharacters(in: r, with: string)
+        let isNumeric = newText.isEmpty || (Double(newText) != nil)
+        let numberOfDots = newText.components(separatedBy: ".").count - 1
+        
+        let numberOfDecimalDigits: Int
+        if let dotIndex = newText.firstIndex(of: ".") {
+            numberOfDecimalDigits = newText.distance(from: dotIndex, to: newText.endIndex) - 1
+        } else {
+            numberOfDecimalDigits = 0
+        }
+        return isNumeric && numberOfDots <= 1 && numberOfDecimalDigits <= 2
+    }
 }
