@@ -15,7 +15,7 @@ enum IncomeExpenseType: String,PersistableEnum {
 }
 
 
-enum CustomColor {
+struct CustomColor {
     static let backgroundColor = UIColor(named: "BackgroundColor")
     static let backgroundColorBlue = UIColor(named: "BackgroundColorBlue")
     static let backgroundColorComponent = UIColor(named: "BackgroundColorComponent")
@@ -30,4 +30,13 @@ enum CustomColor {
     static let textColorGreen = UIColor(named: "TextColorGreen")
     static let textColorRed = UIColor(named: "TextColorRed")
     static let seperatorColor = UIColor(named: "SeperatorColor")
+    static let btnCancelColor = UIColor(named: "BtnCancelColor")
+    static let customModalBgColor = UIColor(named: "CustomModalBgColor")
+    static let customModalBorderColor = UIColor(named: "CustomModalBorderColor")
 }
+
+let menuList: [MenuType] = [
+    MenuType(image: UIImage(named: "SummaryIcon")!, title: "Aylık Özeti Görüntüle"),
+    MenuType(image: UIImage(named: "InfoIcon")!, title: "Hakkında"),
+    MenuType(image: UIImage(named: "StarIcon")!, title: "Bizi AppStore'da Puanla")
+]

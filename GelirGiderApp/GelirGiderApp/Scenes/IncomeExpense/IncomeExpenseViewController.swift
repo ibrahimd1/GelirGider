@@ -227,7 +227,12 @@ class IncomeExpenseViewController: UIViewController {
         footerStackView.anchor(top: seperatorFooter.bottomAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 50)
     }
     
-    @objc func menuClick() {}
+    @objc func menuClick() {
+        let menuVC = CustomModalVC()
+        menuVC.delegate = self
+        menuVC.modalPresentationStyle = .overCurrentContext
+        self.present(menuVC, animated: false)
+    }
     
     func getAttrText(_ year: String, _ month: String) -> NSMutableAttributedString {
         let attrText = NSMutableAttributedString(string: year, attributes: [.font : UIFont.Poppins.semiBold(size: 18).font!])
@@ -353,5 +358,11 @@ extension IncomeExpenseViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+}
+
+extension IncomeExpenseViewController: CustomModalVCDelegate {
+    func didSelect(at item: MenuType) {
+        print("Seçilen Item: ",item.title)
     }
 }
