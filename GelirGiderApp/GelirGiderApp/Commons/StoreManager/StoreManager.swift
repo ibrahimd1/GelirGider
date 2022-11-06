@@ -62,20 +62,16 @@ internal final class StoreManager {
         return true
     }
     
-    internal func deleteItem(with id: String) -> Bool {
+    internal func deleteItem(with id: String) -> IncomeExpenseModel {
         let list = realm.object(ofType: IncomeExpenseModel.self, forPrimaryKey: getPrimaryKey(self.currentYear, self.currentMonth))
-        guard let list = list else { return false }
-        
-        let item = list.incomeExpenseList.where {
+        let item = list!.incomeExpenseList.where {
             $0.itemId == id
         }
-        
-        guard let indexOfItem = item.index(of: item[0]) else { return false }
-        
+        let indexOfItem = list!.incomeExpenseList.index(of: item[0])
         try! realm.write {
-            list.incomeExpenseList.remove(at: indexOfItem)
+            list!.incomeExpenseList.remove(at: indexOfItem!)
         }
-        return true
+        return list!
     }
     
     fileprivate func getPrimaryKey(_ year: Int, _ month: Int) -> String {

@@ -20,6 +20,7 @@ enum IncomeExpenseViewModelOutput {
     case showData(IncomeExpensePresentation)
     case showNewItem(type: IncomeExpenseType,IncomeExpensePresentation)
     case setSummary(incomeSum: Double, expenseSum: Double, substractSum: Double)
+    case deleteItem(type: IncomeExpenseType,index: Int,IncomeExpensePresentation)
 }
 
 protocol IncomeExpenseViewModelDelegate: AnyObject {

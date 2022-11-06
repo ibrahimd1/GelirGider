@@ -361,9 +361,50 @@ final class IncomeExpenseViewController: UIViewController {
         
         tableIncome.reloadData()
     }
+    
+    private func handleMoveToDelete(with id: String, at index: IndexPath) {
+        viewModel.deleteIncomeExpense(with: id, index: index.row)
+    }
 }
 
 extension IncomeExpenseViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(
+            style: .normal,
+            title:  nil,
+            handler: { [weak self] (action, view, completionHandler) in
+                guard let id = self?.itemListIncome?.itemList[indexPath.row].itemId else { return }
+                self?.handleMoveToDelete(with: id, at: indexPath)
+                completionHandler(true)
+            }
+        )
+
+        deleteAction.image = UISwipeActionsConfiguration.makeTitledImage(
+            image: UIImage(systemName: "trash")?.withTintColor(.white, renderingMode: .alwaysOriginal),
+            title: "Sil"
+        )
+        deleteAction.backgroundColor = .systemRed
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(
+            style: .normal,
+            title:  nil,
+            handler: { [weak self] (action, view, completionHandler) in
+                guard let id = self?.itemListIncome?.itemList[indexPath.row].itemId else { return }
+                self?.handleMoveToDelete(with: id, at: indexPath)
+                completionHandler(true)
+            }
+        )
+
+        deleteAction.image = UISwipeActionsConfiguration.makeTitledImage(
+            image: UIImage(systemName: "trash")?.withTintColor(.white, renderingMode: .alwaysOriginal),
+            title: "Sil"
+        )
+        deleteAction.backgroundColor = .systemRed
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
 }
 
 extension IncomeExpenseViewController: UITableViewDataSource {
@@ -444,6 +485,15 @@ extension IncomeExpenseViewController: IncomeExpenseViewModelDelegate{
                 tableIncome.endUpdates()
                 view.endEditing(true)
                 tableIncome.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            }
+        case .deleteItem(let type, let index, let incomeExpensePresentation):
+            if(type == .income){
+                self.itemListIncome = incomeExpensePresentation
+                let indexPath = IndexPath(row: index, section: 0)
+                tableIncome.beginUpdates()
+                tableIncome.deleteRows(at: [indexPath], with: .automatic)
+                tableIncome.endUpdates()
+                view.endEditing(true)
             }
         }
     }

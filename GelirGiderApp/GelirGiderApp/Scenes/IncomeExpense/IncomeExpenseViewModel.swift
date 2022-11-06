@@ -27,7 +27,6 @@ final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {
         guard let data = data else { return }
         incomeExpenseData = data
         delegate?.handleViewModelOutput(.showData(IncomeExpensePresentation.init(model: incomeExpenseData)))
-        
         setSummary()
     }
     
@@ -43,7 +42,10 @@ final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {
     }
     
     func deleteIncomeExpense(with id: String, index: Int) {
-        
+        let data = storeManager.deleteItem(with: id)
+        incomeExpenseData = data
+        delegate?.handleViewModelOutput(.deleteItem(type: .income, index: index, IncomeExpensePresentation.init(model: incomeExpenseData)))
+        setSummary()
     }
     
     fileprivate func setSummary(){

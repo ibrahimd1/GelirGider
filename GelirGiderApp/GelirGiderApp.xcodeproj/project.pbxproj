@@ -16,6 +16,7 @@
 		D31A4A932806136500070A25 /* IncomeExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31A4A922806136500070A25 /* IncomeExpenseCell.swift */; };
 		D3271F8B28A8142F0010B75C /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3271F8A28A8142F0010B75C /* Double+Extension.swift */; };
 		D3271F8D28A84A0A0010B75C /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3271F8C28A84A0A0010B75C /* UITextField+Extension.swift */; };
+		D3292F522917FDF800FFA99C /* UISwipeActionsConfiguration+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3292F512917FDF800FFA99C /* UISwipeActionsConfiguration+Extension.swift */; };
 		D341932029086BD300B69B1E /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D341931F29086BD300B69B1E /* Poppins-Bold.ttf */; };
 		D341932229086BDB00B69B1E /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D341932129086BDB00B69B1E /* Poppins-SemiBold.ttf */; };
 		D341932429086BE500B69B1E /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D341932329086BE500B69B1E /* Poppins-Light.ttf */; };
@@ -75,6 +76,7 @@
 		D31A4A922806136500070A25 /* IncomeExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseCell.swift; sourceTree = "<group>"; };
 		D3271F8A28A8142F0010B75C /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		D3271F8C28A84A0A0010B75C /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		D3292F512917FDF800FFA99C /* UISwipeActionsConfiguration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISwipeActionsConfiguration+Extension.swift"; sourceTree = "<group>"; };
 		D341931F29086BD300B69B1E /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		D341932129086BDB00B69B1E /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		D341932329086BE500B69B1E /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				D3A8116F28AAE07E00004866 /* UIViewContoller+Extension.swift */,
 				D341932B2908775300B69B1E /* UIFont+Extension.swift */,
 				D35A1967290C548E00BA7F90 /* UIColor+Extension.swift */,
+				D3292F512917FDF800FFA99C /* UISwipeActionsConfiguration+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				D30C199127AB027E0002C07D /* IncomeExpensePresentation.swift in Sources */,
 				D3A0A99E27A71F8300625BB6 /* IncomeExpenseBuilder.swift in Sources */,
 				D380699E27DE1C91001EA6E2 /* StoreManager.swift in Sources */,
+				D3292F522917FDF800FFA99C /* UISwipeActionsConfiguration+Extension.swift in Sources */,
 				D37C6AC627F8A395009A37DF /* RoundedButton.swift in Sources */,
 				D35A1968290C548E00BA7F90 /* UIColor+Extension.swift in Sources */,
 				D3A0A99A27A7146700625BB6 /* AppRouter.swift in Sources */,
