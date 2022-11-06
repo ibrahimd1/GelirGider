@@ -10,9 +10,9 @@ import Foundation
 protocol IncomeExpenseViewModelProtocol {
     var delegate: IncomeExpenseViewModelDelegate? {get set}
     func load()
-    func addIncomeExpense(type: IncomeExpenseType, description: String, amount: Double, index: Int)
+    func addIncomeExpense(type: IncomeExpenseType, description: String, amount: Double)
     func updateIncomeExpense(with id: String, description: String?, amount: Double?, index: Int)
-    func deleteIncomeExpense(with id: String, index: Int)
+    func deleteIncomeExpense(with id: String, type: IncomeExpenseType, index: Int)
 }
 
 enum IncomeExpenseViewModelOutput {

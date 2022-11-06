@@ -61,13 +61,7 @@ final class IncomeExpenseViewController: UIViewController {
         return btn
     }()
     
-    private lazy var tableIncome: UITableView = {
-        let tableView = UITableView()
-        tableView.backgroundColor = CustomColor.backgroundColor
-        return tableView
-    }()
-    
-    private lazy var tableExpense: UITableView = {
+    private lazy var tableIncomeExpense: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = CustomColor.backgroundColor
         return tableView
@@ -160,8 +154,9 @@ final class IncomeExpenseViewController: UIViewController {
         return tempView
     }()
     
-    private var itemListIncome: IncomeExpensePresentation?
-    private var itemListExpense: IncomeExpensePresentation?
+    private var itemListIncome: [IncomeExpenseItemPresentation]?
+    private var itemListExpense: [IncomeExpenseItemPresentation]?
+    private var selectedSegmentedControl: IncomeExpenseType = .income
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -215,14 +210,14 @@ final class IncomeExpenseViewController: UIViewController {
     }
     
     fileprivate func locateTable() {
-        tableIncome.delegate = self
-        tableIncome.dataSource = self
-        tableIncome.register(IncomeExpenseCell.self, forCellReuseIdentifier: "incomeExpenseCell")
+        tableIncomeExpense.delegate = self
+        tableIncomeExpense.dataSource = self
+        tableIncomeExpense.register(IncomeExpenseCell.self, forCellReuseIdentifier: "incomeExpenseCell")
         
-        view.addSubview(tableIncome)
-        tableIncome.anchor(top: scView.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 0)
+        view.addSubview(tableIncomeExpense)
+        tableIncomeExpense.anchor(top: scView.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 0)
         
-        tableIncome.separatorColor = .clear
+        tableIncomeExpense.separatorColor = .clear
     }
     
     fileprivate func locateFooer() {
@@ -237,7 +232,7 @@ final class IncomeExpenseViewController: UIViewController {
         footerStackView.alignment = .center
         
         view.addSubview(seperatorFooter)
-        seperatorFooter.anchor(top: tableIncome.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 0, paddingBottom: -5, paddingTrailing: -32, paddingLeading: 32, width: 0, height: 1)
+        seperatorFooter.anchor(top: tableIncomeExpense.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 0, paddingBottom: -5, paddingTrailing: -32, paddingLeading: 32, width: 0, height: 1)
         
         view.addSubview(footerStackView)
         footerStackView.anchor(top: seperatorFooter.bottomAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 5, paddingBottom: -10, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 50)
@@ -251,31 +246,41 @@ final class IncomeExpenseViewController: UIViewController {
     }
     
     @objc func btnIncomeClicked() {
-        if(segmentedControl.selectedSegmentIndex == 0){
-            //income
-            if (txtDescription.text == "") {
-                addAlert(title: "Uyarı", message: "Açıklama alanı boş geçilemez!")
-                return
-            }
-            
-            if(txtAmount.text == ""){
-                addAlert(title: "Uyarı", message: "Tutar alanı boş geçilemez!")
-                return
-            } else if(Double(txtAmount.text!.replacingOccurrences(of: ",", with: ".")) == nil) {
-                addAlert(title: "Uyarı", message: "Tutar formatı yanlış, kontrol ediniz!")
-                return
-            }
-            
-            let amount = (txtAmount.text ?? "0").replacingOccurrences(of: ",", with: ".")
-            viewModel.addIncomeExpense(type: .income, description: txtDescription.text!, amount: Double(amount)!, index: 0)
-            
-            txtDescription.text = ""
-            txtAmount.text = ""
+        if(segmentedControl.selectedSegmentIndex == 1){
+            segmentedControl.selectedSegmentIndex = 0
+            selectedSegmentedControl = .income
+            tableIncomeExpense.reloadData()
         }
+        let amount = (txtAmount.text ?? "0").replacingOccurrences(of: ",", with: ".")
+        addIncomeExpenseItem(type: .income, description: txtDescription.text!, amount: Double(amount)!)
     }
     
     @objc func btnExpenseClicked() {
-        
+        if(segmentedControl.selectedSegmentIndex == 0){
+            segmentedControl.selectedSegmentIndex = 1
+            selectedSegmentedControl = .expense
+            tableIncomeExpense.reloadData()
+        }
+        let amount = (txtAmount.text ?? "0").replacingOccurrences(of: ",", with: ".")
+        addIncomeExpenseItem(type: .expense, description: txtDescription.text!, amount: Double(amount)!)
+    }
+    
+    fileprivate func addIncomeExpenseItem(type: IncomeExpenseType, description: String, amount: Double){
+        if (txtDescription.text == "") {
+            addAlert(title: "Uyarı", message: "Açıklama alanı boş geçilemez!")
+            return
+        }
+        if(txtAmount.text == ""){
+            addAlert(title: "Uyarı", message: "Tutar alanı boş geçilemez!")
+            return
+        } else if(Double(txtAmount.text!.replacingOccurrences(of: ",", with: ".")) == nil) {
+            addAlert(title: "Uyarı", message: "Tutar formatı yanlış, kontrol ediniz!")
+            return
+        }
+        let amount = (txtAmount.text ?? "0").replacingOccurrences(of: ",", with: ".")
+        viewModel.addIncomeExpense(type: type, description: txtDescription.text!, amount: Double(amount)!)
+        txtDescription.text = ""
+        txtAmount.text = ""
     }
     
     fileprivate func addAlert(title: String, message: String) {
@@ -294,12 +299,15 @@ final class IncomeExpenseViewController: UIViewController {
     @objc func segmentedControlIndexChanged(_ segmentedControl: UISegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
+            self.selectedSegmentedControl = .income
             break
         case 1:
+            self.selectedSegmentedControl = .expense
             break
         default:
             break
         }
+        tableIncomeExpense.reloadData()
     }
     
     fileprivate func getSummaryView(_ summaryType: SummaryViewType) -> UIView {
@@ -349,7 +357,7 @@ final class IncomeExpenseViewController: UIViewController {
         list.append(i10)
         list.append(i11)
         
-        self.itemListIncome = IncomeExpensePresentation(model: IncomeExpenseModel(year: 2022, month: 10, incomeExpenseList: list))
+        //self.itemListIncome = IncomeExpensePresentation(model: IncomeExpenseModel(year: 2022, month: 10, incomeExpenseList: list))
         
         let incomeSum = list.filter({ $0.type == .income }).map({$0.amountOfIncomeExpense}).reduce(0, +)
         let expenseSum = list.filter({ $0.type == .expense }).map({$0.amountOfIncomeExpense}).reduce(0, +)
@@ -359,11 +367,11 @@ final class IncomeExpenseViewController: UIViewController {
         lblExpenseSum.text = expenseSum.stringValue
         lblSubstractSum.text = substractSum.stringValue
         
-        tableIncome.reloadData()
+        tableIncomeExpense.reloadData()
     }
     
     private func handleMoveToDelete(with id: String, at index: IndexPath) {
-        viewModel.deleteIncomeExpense(with: id, index: index.row)
+        viewModel.deleteIncomeExpense(with: id, type: selectedSegmentedControl, index: index.row)
     }
 }
 
@@ -371,64 +379,65 @@ extension IncomeExpenseViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(
             style: .normal,
-            title:  nil,
-            handler: { [weak self] (action, view, completionHandler) in
-                guard let id = self?.itemListIncome?.itemList[indexPath.row].itemId else { return }
-                self?.handleMoveToDelete(with: id, at: indexPath)
-                completionHandler(true)
-            }
-        )
-
+            title:  nil)
+        { [weak self] (action, view, completionHandler) in
+            guard let self = self else { return }
+            let table = self.selectedSegmentedControl == .income ? self.itemListIncome : self.itemListExpense
+            let id = table?[indexPath.row].itemId
+            self.handleMoveToDelete(with: id!, at: indexPath)
+            completionHandler(true)
+        }
+        
         deleteAction.image = UISwipeActionsConfiguration.makeTitledImage(
             image: UIImage(systemName: "trash")?.withTintColor(.white, renderingMode: .alwaysOriginal),
             title: "Sil"
         )
-        deleteAction.backgroundColor = .systemRed
+        deleteAction.backgroundColor = UIColor.systemRed
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(
             style: .normal,
-            title:  nil,
-            handler: { [weak self] (action, view, completionHandler) in
-                guard let id = self?.itemListIncome?.itemList[indexPath.row].itemId else { return }
-                self?.handleMoveToDelete(with: id, at: indexPath)
-                completionHandler(true)
-            }
-        )
-
+            title:  nil)
+        { [weak self] (action, view, completionHandler) in
+            guard let self = self else { return }
+            let table = self.selectedSegmentedControl == .income ? self.itemListIncome : self.itemListExpense
+            let id = table?[indexPath.row].itemId
+            self.handleMoveToDelete(with: id!, at: indexPath)
+            completionHandler(true)
+        }
+        
         deleteAction.image = UISwipeActionsConfiguration.makeTitledImage(
             image: UIImage(systemName: "trash")?.withTintColor(.white, renderingMode: .alwaysOriginal),
             title: "Sil"
         )
-        deleteAction.backgroundColor = .systemRed
+        deleteAction.backgroundColor = UIColor.systemRed
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
 
 extension IncomeExpenseViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == tableIncome {
+        if selectedSegmentedControl == .income {
             guard let incomeList = itemListIncome else { return 0 }
-            return incomeList.itemList.count
+            return incomeList.count
         } else {
             guard let expenseList = itemListExpense else { return 0 }
-            return expenseList.itemList.count
+            return expenseList.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == tableIncome {
+        if selectedSegmentedControl == .income {
             guard let incomeList = itemListIncome else { return UITableViewCell() }
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: "incomeExpenseCell", for: indexPath) as? IncomeExpenseCell {
-                cell.lblTitle.text = incomeList.itemList[indexPath.row].description
-                cell.lblSubTitle.text = incomeList.itemList[indexPath.row].dateTime.formattedDateDMY
-                cell.lblCurrency.text = incomeList.itemList[indexPath.row].amount.stringValue
-                cell.imgIcon.image = UIImage(named: "IncomeIcon")
+                cell.lblTitle.text = incomeList[indexPath.row].description
+                cell.lblSubTitle.text = incomeList[indexPath.row].dateTime.formattedDateDMY
+                cell.lblCurrency.text = incomeList[indexPath.row].amount.stringValue
                 cell.itemIndex = indexPath.row
-                cell.title = incomeList.itemList[indexPath.row].description
+                cell.title = incomeList[indexPath.row].description
                 cell.selectionStyle = .none
                 return cell
             }
@@ -436,12 +445,11 @@ extension IncomeExpenseViewController: UITableViewDataSource {
             guard let expenseList = itemListExpense else { return UITableViewCell() }
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: "incomeExpenseCell", for: indexPath) as? IncomeExpenseCell {
-                cell.lblTitle.text = expenseList.itemList[indexPath.row].description
-                cell.lblSubTitle.text = expenseList.itemList[indexPath.row].dateTime.formattedDateDMY
-                cell.lblCurrency.text = expenseList.itemList[indexPath.row].amount.stringValue
-                cell.imgIcon.image = UIImage(named: "ExpenseIcon")
+                cell.lblTitle.text = expenseList[indexPath.row].description
+                cell.lblSubTitle.text = expenseList[indexPath.row].dateTime.formattedDateDMY
+                cell.lblCurrency.text = expenseList[indexPath.row].amount.stringValue
                 cell.itemIndex = indexPath.row
-                cell.title = expenseList.itemList[indexPath.row].description
+                cell.title = expenseList[indexPath.row].description
                 return cell
             }
         }
@@ -469,32 +477,48 @@ extension IncomeExpenseViewController: IncomeExpenseViewModelDelegate{
             navigationItem.titleView = txtYearMont
             txtYearMont.textColor = CustomColor.textColor
         case .showData(let data):
-            self.itemListIncome = data
-            self.tableIncome.reloadData()
+            let incomeList = data.itemList.filter {$0.type == .income}
+            let expenseList = data.itemList.filter {$0.type == .expense}
+            
+            self.itemListIncome = incomeList
+            self.itemListExpense = expenseList
+            self.tableIncomeExpense.reloadData()
         case .setSummary(let incomeSum, let expenseSum, let substractSum):
             lblIncomeSum.text = incomeSum.stringValue
             lblExpenseSum.text = expenseSum.stringValue
             lblSubstractSum.text = substractSum.stringValue
+            if(substractSum < 0){
+                lblSubstractSum.textColor = CustomColor.textColorRed
+            } else {
+                lblSubstractSum.textColor = CustomColor.textColorGreen
+            }
         case .showNewItem(let type, let incomeExpensePresentation):
+            let indexPath: IndexPath
             if(type == .income) {
-                self.itemListIncome = incomeExpensePresentation
-                let numberOfCell = self.itemListIncome?.itemList.count ?? 1
-                let indexPath = IndexPath(row: numberOfCell - 1, section: 0)
-                tableIncome.beginUpdates()
-                tableIncome.insertRows(at: [indexPath], with: .automatic)
-                tableIncome.endUpdates()
-                view.endEditing(true)
-                tableIncome.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                self.itemListIncome = incomeExpensePresentation.itemList.filter({$0.type == .income})
+                let numberOfCell = self.itemListIncome?.count ?? 1
+                indexPath = IndexPath(row: numberOfCell - 1, section: 0)
+            } else {
+                self.itemListExpense = incomeExpensePresentation.itemList.filter({$0.type == .expense})
+                let numberOfCell = self.itemListExpense?.count ?? 1
+                indexPath = IndexPath(row: numberOfCell - 1, section: 0)
             }
+            tableIncomeExpense.beginUpdates()
+            tableIncomeExpense.insertRows(at: [indexPath], with: .automatic)
+            tableIncomeExpense.endUpdates()
+            view.endEditing(true)
+            tableIncomeExpense.scrollToRow(at: indexPath, at: .bottom, animated: true)
         case .deleteItem(let type, let index, let incomeExpensePresentation):
+            let indexPath: IndexPath = IndexPath(row: index, section: 0)
             if(type == .income){
-                self.itemListIncome = incomeExpensePresentation
-                let indexPath = IndexPath(row: index, section: 0)
-                tableIncome.beginUpdates()
-                tableIncome.deleteRows(at: [indexPath], with: .automatic)
-                tableIncome.endUpdates()
-                view.endEditing(true)
+                self.itemListIncome = incomeExpensePresentation.itemList.filter({$0.type == .income})
+            } else {
+                self.itemListExpense = incomeExpensePresentation.itemList.filter({$0.type == .expense})
             }
+            tableIncomeExpense.beginUpdates()
+            tableIncomeExpense.deleteRows(at: [indexPath], with: .automatic)
+            tableIncomeExpense.endUpdates()
+            view.endEditing(true)
         }
     }
 }

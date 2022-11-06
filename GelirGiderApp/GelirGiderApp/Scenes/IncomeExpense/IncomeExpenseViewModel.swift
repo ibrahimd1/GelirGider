@@ -30,10 +30,10 @@ final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {
         setSummary()
     }
     
-    func addIncomeExpense(type: IncomeExpenseType, description: String, amount: Double, index: Int) {
-        let result: IncomeExpenseModel = storeManager.addItem(type: .income, description: description, amount: amount, date: Date())
+    func addIncomeExpense(type: IncomeExpenseType, description: String, amount: Double) {
+        let result: IncomeExpenseModel = storeManager.addItem(type: type, description: description, amount: amount, date: Date())
         incomeExpenseData = result
-        delegate?.handleViewModelOutput(.showNewItem(type: .income, IncomeExpensePresentation.init(model: incomeExpenseData)))
+        delegate?.handleViewModelOutput(.showNewItem(type: type, IncomeExpensePresentation.init(model: incomeExpenseData)))
         setSummary()
     }
     
@@ -41,10 +41,10 @@ final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {
         
     }
     
-    func deleteIncomeExpense(with id: String, index: Int) {
+    func deleteIncomeExpense(with id: String, type: IncomeExpenseType, index: Int) {
         let data = storeManager.deleteItem(with: id)
         incomeExpenseData = data
-        delegate?.handleViewModelOutput(.deleteItem(type: .income, index: index, IncomeExpensePresentation.init(model: incomeExpenseData)))
+        delegate?.handleViewModelOutput(.deleteItem(type: type, index: index, IncomeExpensePresentation.init(model: incomeExpenseData)))
         setSummary()
     }
     

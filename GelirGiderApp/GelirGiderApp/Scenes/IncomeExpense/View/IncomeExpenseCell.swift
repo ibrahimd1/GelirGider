@@ -8,16 +8,7 @@
 import Foundation
 import UIKit
 
-internal class IncomeExpenseCell: UITableViewCell {
-    
-    internal lazy var imgIcon: UIImageView = {
-        let img = UIImageView()
-        img.clipsToBounds = true
-        img.contentMode = .scaleAspectFill
-        img.layer.cornerRadius = 10
-        return img
-    }()
-    
+internal class IncomeExpenseCell: UITableViewCell {    
     internal lazy var lblTitle: UILabel = {
         let lbl = UILabel()
         lbl.font = .Poppins.semiBold(size: 14).font
