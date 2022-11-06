@@ -251,7 +251,6 @@ final class IncomeExpenseViewController: UIViewController {
             selectedSegmentedControl = .income
             tableIncomeExpense.reloadData()
         }
-        let amount = (txtAmount.text ?? "0").replacingOccurrences(of: ",", with: ".")
         addIncomeExpenseItem(type: .income)
     }
     
@@ -261,7 +260,6 @@ final class IncomeExpenseViewController: UIViewController {
             selectedSegmentedControl = .expense
             tableIncomeExpense.reloadData()
         }
-        let amount = (txtAmount.text ?? "0").replacingOccurrences(of: ",", with: ".")
         addIncomeExpenseItem(type: .expense)
     }
     
