@@ -17,7 +17,7 @@ internal final class CustomModalTableViewCell: UITableViewCell {
     
     internal lazy var lblTitle: UILabel = {
         let lbl = UILabel()
-        lbl.font = .Poppins.medium(size: 14).font
+        lbl.font = .Poppins.medium(size: 15).font
         lbl.textColor = CustomColor.textColor
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl

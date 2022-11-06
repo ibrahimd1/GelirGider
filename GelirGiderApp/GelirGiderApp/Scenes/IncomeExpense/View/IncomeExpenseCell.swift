@@ -20,25 +20,30 @@ internal class IncomeExpenseCell: UITableViewCell {
     
     internal lazy var lblTitle: UILabel = {
         let lbl = UILabel()
-        lbl.font = .Poppins.medium(size: 12).font
+        lbl.font = .Poppins.semiBold(size: 14).font
         lbl.textColor = CustomColor.textColor
-        lbl.textAlignment = .center
+        lbl.textAlignment = .left
+        lbl.minimumScaleFactor = 0.6
+        lbl.adjustsFontSizeToFitWidth = true
         return lbl
     }()
     
     internal lazy var lblSubTitle: UILabel = {
         let lbl = UILabel()
-        lbl.font = .Poppins.light(size: 9).font
-        lbl.textColor = CustomColor.textColor
-        lbl.textAlignment = .center
+        lbl.font = .Poppins.medium(size: 11).font
+        lbl.textColor = CustomColor.textColorSecondary
+        lbl.textAlignment = .left
+        lbl.adjustsFontSizeToFitWidth = true
         return lbl
     }()
     
     internal lazy var lblCurrency: UILabel = {
         let lbl = UILabel()
-        lbl.font = .Poppins.bold(size: 15).font
+        lbl.font = .Poppins.bold(size: 16).font
         lbl.textColor = CustomColor.textColor
-        lbl.text = "30.25₺"
+        lbl.minimumScaleFactor = 0.8
+        lbl.adjustsFontSizeToFitWidth = true
+        lbl.textAlignment = .right
         return lbl
     }()
     
@@ -76,19 +81,21 @@ internal class IncomeExpenseCell: UITableViewCell {
         viewCircle.layer.cornerRadius = 35 / 2
         viewCircle.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
-        addSubview(lblCurrency)
-        lblCurrency.anchor(top: nil, bottom: nil, leading: nil, trailing: trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
-        lblCurrency.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        let width = (layer.bounds.width - 35 - 10)
         
         let viewTitle = UIView()
         addSubview(viewTitle)
-        viewTitle.anchor(top: topAnchor, bottom: bottomAnchor, leading: viewCircle.trailingAnchor, trailing: nil, paddingTop: 15, paddingBottom: -15, paddingTrailing: 0, paddingLeading: 10, width: 0, height: 0)
+        viewTitle.anchor(top: viewCircle.topAnchor, bottom: viewCircle.bottomAnchor, leading: viewCircle.trailingAnchor, trailing: nil, paddingTop: 0, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 10, width: width * 0.5, height: 0)
         
         viewTitle.addSubview(lblTitle)
         lblTitle.anchor(top: viewTitle.topAnchor, bottom: nil, leading: viewTitle.leadingAnchor, trailing: nil, paddingTop: 0, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
         
         viewTitle.addSubview(lblSubTitle)
         lblSubTitle.anchor(top: lblTitle.bottomAnchor, bottom: viewTitle.bottomAnchor, leading: viewTitle.leadingAnchor, trailing: viewTitle.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
+        
+        addSubview(lblCurrency)
+        lblCurrency.anchor(top: nil, bottom: nil, leading: nil, trailing: trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: width * 0.5, height: 0)
+        lblCurrency.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
     }
     
     required init?(coder: NSCoder) {
@@ -97,7 +104,9 @@ internal class IncomeExpenseCell: UITableViewCell {
     
     fileprivate func getMainLetters(_ str: String) -> String {
         if str.count > 0 {
-            return str.components(separatedBy: " ").prefix(2).map({ String($0.first!) }).joined(separator: "");
+            return str.components(separatedBy: " ").filter({ str in
+                !str.isEmpty
+            }).prefix(2).map({ String($0.first!.uppercased()) }).joined(separator: "");
         }
         return ""
     }

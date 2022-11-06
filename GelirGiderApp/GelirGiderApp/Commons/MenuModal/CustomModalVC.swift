@@ -38,13 +38,14 @@ internal final class CustomModalVC: UIViewController {
         table.layer.borderWidth = 1
         table.layer.borderColor = CustomColor.customModalBorderColor?.cgColor
         table.layer.cornerRadius = 16
+        table.isScrollEnabled = false
         return table
     }()
     
     lazy var btnCancel: UIButton = {
         let btn = UIButton()
         btn.setTitle("Vazgeç", for: .normal)
-        btn.titleLabel?.font = .Poppins.semiBold(size: 14).font
+        btn.titleLabel?.font = .Poppins.semiBold(size: 15).font
         btn.titleLabel?.textAlignment = .center
         btn.setTitleColor(.white, for: .normal)
         btn.backgroundColor = CustomColor.btnCancelColor
@@ -65,7 +66,7 @@ internal final class CustomModalVC: UIViewController {
         tableMenu.delegate = self
         tableMenu.dataSource = self
         
-        defaultHeight = menuList.count == 0 ? 250 : (CGFloat(menuList.count) * 50.0) + 65
+        defaultHeight = menuList.count == 0 ? 250 : (CGFloat(menuList.count) * 50.0) + 75
         setupView()
         setupConstraint()
         
@@ -100,13 +101,13 @@ internal final class CustomModalVC: UIViewController {
         
         containerView.anchor(top: nil, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingTrailing: -15, paddingLeading: 15, width: 0, height: 0)
         
-        contentStackView.anchor(top: containerView.topAnchor, bottom: containerView.bottomAnchor, leading: containerView.leadingAnchor, trailing: containerView.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
+        contentStackView.anchor(top: containerView.topAnchor, bottom: containerView.bottomAnchor, leading: containerView.leadingAnchor, trailing: containerView.trailingAnchor, paddingTop: 0, paddingBottom: -10, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
         
         btnCancel.translatesAutoresizingMaskIntoConstraints = false
         btnCancel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         containerViewHeightConstraint = containerView.heightAnchor.constraint(equalToConstant: defaultHeight)
-        containerViewBottomConstraint = containerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: defaultHeight)
+        containerViewBottomConstraint = containerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: defaultHeight + 20)
         containerViewHeightConstraint?.isActive = true
         containerViewBottomConstraint?.isActive = true
     }

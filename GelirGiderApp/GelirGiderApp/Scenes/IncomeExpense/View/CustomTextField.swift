@@ -18,16 +18,18 @@ internal final class CustomTextField: UITextField {
         super.init(coder: coder)
     }
     
+    internal var maxLength: Int = -1
+    
     internal func configure(with viewModel: CustomTextFieldViewModel) {
         self.attributedPlaceholder = NSAttributedString(
             string: viewModel.placeHolderText,
-            attributes: [.foregroundColor: CustomColor.textColorSecondary!, .font: UIFont.Poppins.bold(size: 12).font!]
+            attributes: [.foregroundColor: CustomColor.textColorSecondary!, .font: UIFont.Poppins.bold(size: 13).font!]
         )
         self.layer.borderColor =  CustomColor.borderColor?.cgColor
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 15
         self.backgroundColor = CustomColor.backgroundColorComponent
-        self.font = .Poppins.regular(size: 12).font
+        self.font = .Poppins.regular(size: 13).font
         self.setLeftPaddingPoints(15)
         
         let frame = CGRect(x: 0, y: 0, width: 18 + 15, height: 18)
@@ -50,24 +52,25 @@ internal struct CustomTextFieldViewModel {
 
 extension CustomTextField: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if(self.keyboardType != .decimalPad){
-            return true
-        }
         
+        let currentString = (textField.text ?? "") as NSString
+        let newString = currentString.replacingCharacters(in: range, with: string)
+        let isOk = maxLength == -1 || newString.count <= maxLength
+        
+        if(self.keyboardType != .decimalPad){
+            return isOk
+        }
         guard let oldText = textField.text, let r = Range(range, in: oldText) else {
             return true
         }
-        
-        let newText = oldText.replacingCharacters(in: r, with: string)
-        let isNumeric = newText.isEmpty || (Double(newText) != nil)
-        let numberOfDots = newText.components(separatedBy: ".").count - 1
-        
+        let newText = oldText.replacingCharacters(in: r, with: string).replacingOccurrences(of: ".", with: ",")
+        let numberOfDots = newText.components(separatedBy: ",").count - 1
         let numberOfDecimalDigits: Int
-        if let dotIndex = newText.firstIndex(of: ".") {
+        if let dotIndex = newText.firstIndex(of: ",") {
             numberOfDecimalDigits = newText.distance(from: dotIndex, to: newText.endIndex) - 1
         } else {
             numberOfDecimalDigits = 0
         }
-        return isNumeric && numberOfDots <= 1 && numberOfDecimalDigits <= 2
+        return numberOfDots <= 1 && numberOfDecimalDigits <= 2 && isOk
     }
 }

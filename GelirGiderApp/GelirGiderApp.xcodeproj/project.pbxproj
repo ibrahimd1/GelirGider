@@ -143,7 +143,6 @@
 			children = (
 				D37C6AC427F8A383009A37DF /* View */,
 				D3A0A99D27A71F8300625BB6 /* IncomeExpenseBuilder.swift */,
-				D3F04D9C272C2AC10047E9F4 /* IncomeExpenseViewController.swift */,
 				D30C198C27AAFF870002C07D /* IncomeExpenseContracts.swift */,
 				D30C199727AB09DB0002C07D /* IncomeExpenseViewModel.swift */,
 			);
@@ -228,6 +227,7 @@
 		D37C6AC427F8A383009A37DF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D3F04D9C272C2AC10047E9F4 /* IncomeExpenseViewController.swift */,
 				D37C6AC527F8A395009A37DF /* RoundedButton.swift */,
 				D31A4A922806136500070A25 /* IncomeExpenseCell.swift */,
 				D37838FD283AD80A004307D1 /* CustomTextField.swift */,
@@ -458,6 +458,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		D380699A27DCC136001EA6E2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 12;
 			files = (
 			);

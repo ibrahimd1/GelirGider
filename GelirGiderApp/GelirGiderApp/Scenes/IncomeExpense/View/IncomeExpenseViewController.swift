@@ -8,7 +8,13 @@
 import UIKit
 import RealmSwift
 
-class IncomeExpenseViewController: UIViewController {
+final class IncomeExpenseViewController: UIViewController {
+    
+    var viewModel: IncomeExpenseViewModelProtocol! {
+        didSet {
+            viewModel.delegate = self
+        }
+    }
     
     private lazy var txtYearMont: UITextView = {
         let date = Date()
@@ -16,7 +22,6 @@ class IncomeExpenseViewController: UIViewController {
         txt.isEditable = false
         txt.isScrollEnabled = false
         txt.textAlignment = .center
-        txt.attributedText = getAttrText(String(date.currentYear), date.currentMonthName)
         txt.textColor = CustomColor.textColor
         txt.backgroundColor = CustomColor.backgroundColor
         return txt
@@ -24,12 +29,14 @@ class IncomeExpenseViewController: UIViewController {
     
     private lazy var txtDescription: UITextField = {
         let txt = CustomTextField()
+        txt.maxLength = 20
         txt.configure(with: CustomTextFieldViewModel(placeHolderText: "Gelir/Gider Adı", icon: "DescriptionIcon", keyboardType: .default))
         return txt
     }()
     
     private lazy var txtAmount: UITextField = {
         let txt = CustomTextField()
+        txt.maxLength = 10
         txt.configure(with: CustomTextFieldViewModel(placeHolderText: "Tutar", icon: "CurrencyIcon", keyboardType: .decimalPad))
         return txt
     }()
@@ -40,6 +47,7 @@ class IncomeExpenseViewController: UIViewController {
                                                    icon: UIImage(named: "IncomeButtonIcon")!,
                                                    titleColor: CustomColor.textColor!,
                                                    backgroundColor: CustomColor.backgroundColorComponent!))
+        btn.addTarget(self, action: #selector(btnIncomeClicked), for: .touchUpInside)
         return btn
     }()
     
@@ -49,6 +57,7 @@ class IncomeExpenseViewController: UIViewController {
                                                    icon: UIImage(named: "ExpenseButtonIcon")!,
                                                    titleColor: CustomColor.textColor!,
                                                    backgroundColor: CustomColor.backgroundColorComponent!))
+        btn.addTarget(self, action: #selector(btnExpenseClicked), for: .touchUpInside)
         return btn
     }()
     
@@ -80,7 +89,7 @@ class IncomeExpenseViewController: UIViewController {
     private lazy var lblIncome: UILabel = {
         let lbl = UILabel()
         lbl.text = "Gelir"
-        lbl.font = .Poppins.semiBold(size: 12).font
+        lbl.font = .Poppins.semiBold(size: 13).font
         lbl.textAlignment = .center
         lbl.textColor = CustomColor.textColorSecondary
         return lbl
@@ -88,17 +97,19 @@ class IncomeExpenseViewController: UIViewController {
     
     private lazy var lblIncomeSum: UILabel = {
         let lbl = UILabel()
-        lbl.text = "0"
-        lbl.font = .Poppins.bold(size: 13).font
+        lbl.text = Double.zero.stringValue
+        lbl.font = .Poppins.bold(size: 14).font
         lbl.textAlignment = .center
         lbl.textColor = CustomColor.textColorGreen
+        lbl.minimumScaleFactor = 0.8
+        lbl.adjustsFontSizeToFitWidth = true
         return lbl
     }()
     
     private lazy var lblExpense: UILabel = {
         let lbl = UILabel()
         lbl.text = "Gider"
-        lbl.font = .Poppins.semiBold(size: 12).font
+        lbl.font = .Poppins.semiBold(size: 13).font
         lbl.textAlignment = .center
         lbl.textColor = CustomColor.textColorSecondary
         return lbl
@@ -106,17 +117,19 @@ class IncomeExpenseViewController: UIViewController {
     
     private lazy var lblExpenseSum: UILabel = {
         let lbl = UILabel()
-        lbl.text = "0"
-        lbl.font = .Poppins.bold(size: 13).font
+        lbl.text = Double.zero.stringValue
+        lbl.font = .Poppins.bold(size: 14).font
         lbl.textAlignment = .center
         lbl.textColor = CustomColor.textColorRed
+        lbl.minimumScaleFactor = 0.8
+        lbl.adjustsFontSizeToFitWidth = true
         return lbl
     }()
     
     private lazy var lblSubstract: UILabel = {
         let lbl = UILabel()
         lbl.text = "Fark"
-        lbl.font = .Poppins.semiBold(size: 12).font
+        lbl.font = .Poppins.semiBold(size: 13).font
         lbl.textAlignment = .center
         lbl.textColor = CustomColor.textColorSecondary
         return lbl
@@ -124,10 +137,12 @@ class IncomeExpenseViewController: UIViewController {
     
     private lazy var lblSubstractSum: UILabel = {
         let lbl = UILabel()
-        lbl.text = "0"
-        lbl.font = .Poppins.bold(size: 13).font
+        lbl.text = Double.zero.stringValue
+        lbl.font = .Poppins.bold(size: 14).font
         lbl.textAlignment = .center
         lbl.textColor = CustomColor.textColorGreen
+        lbl.minimumScaleFactor = 0.8
+        lbl.adjustsFontSizeToFitWidth = true
         return lbl
     }()
     
@@ -158,12 +173,13 @@ class IncomeExpenseViewController: UIViewController {
         locateTable()
         locateFooer()
         
-        tableTest()
+        //tableTest()
+        
+        viewModel.load()
     }
     
     fileprivate func locateMainComponents() {
         view.backgroundColor = CustomColor.backgroundColor
-        navigationItem.titleView = txtYearMont
         
         let menuImage = UIImage(named: "Menu")?.withRenderingMode(.alwaysOriginal)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: menuImage, style: .plain, target: self, action: #selector(menuClick))
@@ -172,10 +188,10 @@ class IncomeExpenseViewController: UIViewController {
     fileprivate func locateTextComponents() {
         let oranUzunluk = (view.bounds.width - 48) / 3
         view.addSubview(txtDescription)
-        txtDescription.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: nil, paddingTop: 15, paddingBottom: 0, paddingTrailing: -5, paddingLeading: 16, width: oranUzunluk * 2, height: 38)
+        txtDescription.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: nil, paddingTop: 3, paddingBottom: 0, paddingTrailing: -5, paddingLeading: 16, width: oranUzunluk * 2, height: 38)
         
         view.addSubview(txtAmount)
-        txtAmount.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: txtDescription.trailingAnchor, trailing: view.trailingAnchor, paddingTop: 15, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 38)
+        txtAmount.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: txtDescription.trailingAnchor, trailing: view.trailingAnchor, paddingTop: 3, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 38)
     }
     
     fileprivate func locateButtons() {
@@ -224,7 +240,7 @@ class IncomeExpenseViewController: UIViewController {
         seperatorFooter.anchor(top: tableIncome.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 0, paddingBottom: -5, paddingTrailing: -32, paddingLeading: 32, width: 0, height: 1)
         
         view.addSubview(footerStackView)
-        footerStackView.anchor(top: seperatorFooter.bottomAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 50)
+        footerStackView.anchor(top: seperatorFooter.bottomAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 5, paddingBottom: -10, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 50)
     }
     
     @objc func menuClick() {
@@ -234,9 +250,44 @@ class IncomeExpenseViewController: UIViewController {
         self.present(menuVC, animated: false)
     }
     
+    @objc func btnIncomeClicked() {
+        if(segmentedControl.selectedSegmentIndex == 0){
+            //income
+            if (txtDescription.text == "") {
+                addAlert(title: "Uyarı", message: "Açıklama alanı boş geçilemez!")
+                return
+            }
+            
+            if(txtAmount.text == ""){
+                addAlert(title: "Uyarı", message: "Tutar alanı boş geçilemez!")
+                return
+            } else if(Double(txtAmount.text!.replacingOccurrences(of: ",", with: ".")) == nil) {
+                addAlert(title: "Uyarı", message: "Tutar formatı yanlış, kontrol ediniz!")
+                return
+            }
+            
+            let amount = (txtAmount.text ?? "0").replacingOccurrences(of: ",", with: ".")
+            viewModel.addIncomeExpense(type: .income, description: txtDescription.text!, amount: Double(amount)!, index: 0)
+            
+            txtDescription.text = ""
+            txtAmount.text = ""
+        }
+    }
+    
+    @objc func btnExpenseClicked() {
+        
+    }
+    
+    fileprivate func addAlert(title: String, message: String) {
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Tamam", style: .default)
+        ac.addAction(alertAction)
+        self.present(ac, animated: true)
+    }
+    
     func getAttrText(_ year: String, _ month: String) -> NSMutableAttributedString {
-        let attrText = NSMutableAttributedString(string: year, attributes: [.font : UIFont.Poppins.semiBold(size: 18).font!])
-        attrText.append(NSAttributedString(string: " \(month)", attributes: [.font : UIFont.Poppins.semiBold(size: 12).font! ]))
+        let attrText = NSMutableAttributedString(string: year, attributes: [.font : UIFont.Poppins.semiBold(size: 20).font!])
+        attrText.append(NSAttributedString(string: " \(month)", attributes: [.font : UIFont.Poppins.semiBold(size: 15).font! ]))
         return attrText
     }
     
@@ -269,7 +320,7 @@ class IncomeExpenseViewController: UIViewController {
         sumView.addSubview(tempView)
         tempView.anchor(top: sumView.topAnchor, bottom: nil, leading: sumView.leadingAnchor, trailing: sumView.trailingAnchor, paddingTop: 5, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
         sumView.addSubview(tempViewSum)
-        tempViewSum.anchor(top: tempView.bottomAnchor, bottom: sumView.bottomAnchor, leading: sumView.leadingAnchor, trailing: sumView.trailingAnchor, paddingTop: 7, paddingBottom: -7, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
+        tempViewSum.anchor(top: tempView.bottomAnchor, bottom: sumView.bottomAnchor, leading: sumView.leadingAnchor, trailing: sumView.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
         return sumView
     }
     
@@ -363,6 +414,38 @@ extension IncomeExpenseViewController: UITableViewDataSource {
 
 extension IncomeExpenseViewController: CustomModalVCDelegate {
     func didSelect(at item: MenuType) {
-        print("Seçilen Item: ",item.title)
+        //self.dismiss(animated: false)
+        //viewModel.selectItem()
     }
 }
+
+extension IncomeExpenseViewController: IncomeExpenseViewModelDelegate{
+    func handleViewModelOutput(_ output: IncomeExpenseViewModelOutput) {
+        switch output {
+        case .updateHeader(let year, let month):
+            let attrText = getAttrText(String(year), month)
+            txtYearMont.attributedText = attrText
+            navigationItem.titleView = txtYearMont
+            txtYearMont.textColor = CustomColor.textColor
+        case .showData(let data):
+            self.itemListIncome = data
+            self.tableIncome.reloadData()
+        case .setSummary(let incomeSum, let expenseSum, let substractSum):
+            lblIncomeSum.text = incomeSum.stringValue
+            lblExpenseSum.text = expenseSum.stringValue
+            lblSubstractSum.text = substractSum.stringValue
+        case .showNewItem(let type, let incomeExpensePresentation):
+            if(type == .income) {
+                self.itemListIncome = incomeExpensePresentation
+                let numberOfCell = self.itemListIncome?.itemList.count ?? 1
+                let indexPath = IndexPath(row: numberOfCell - 1, section: 0)
+                tableIncome.beginUpdates()
+                tableIncome.insertRows(at: [indexPath], with: .automatic)
+                tableIncome.endUpdates()
+                view.endEditing(true)
+                tableIncome.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            }
+        }
+    }
+}
+

@@ -6,16 +6,36 @@
 //
 
 import Foundation
+import RealmSwift
 
 final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {
-    var delegate: IncomeExpenseViewModelDelegate?
+    weak var delegate: IncomeExpenseViewModelDelegate?
+    private var incomeExpenseData: IncomeExpenseModel = IncomeExpenseModel()
+    private var storeManager: StoreManager
+    private var realm: Realm!
     
-    func load(year: Int, month: Int) {
+    init(){
+        self.realm = try! Realm()
+        storeManager = StoreManager(realm: self.realm)
+    }
+    
+    func load() {
+        let today = Date()
+        delegate?.handleViewModelOutput(.updateHeader(year: today.currentYear, month: today.currentMonthName))
         
+        let data: IncomeExpenseModel? = storeManager.getData(of: today.currentMonth, in: today.currentYear)
+        guard let data = data else { return }
+        incomeExpenseData = data
+        delegate?.handleViewModelOutput(.showData(IncomeExpensePresentation.init(model: incomeExpenseData)))
+        
+        setSummary()
     }
     
     func addIncomeExpense(type: IncomeExpenseType, description: String, amount: Double, index: Int) {
-        
+        let result: IncomeExpenseModel = storeManager.addItem(type: .income, description: description, amount: amount, date: Date())
+        incomeExpenseData = result
+        delegate?.handleViewModelOutput(.showNewItem(type: .income, IncomeExpensePresentation.init(model: incomeExpenseData)))
+        setSummary()
     }
     
     func updateIncomeExpense(with id: String, description: String?, amount: Double?, index: Int) {
@@ -24,5 +44,13 @@ final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {
     
     func deleteIncomeExpense(with id: String, index: Int) {
         
-    }    
+    }
+    
+    fileprivate func setSummary(){
+        let incomeSum = incomeExpenseData.incomeExpenseList.filter({ $0.type == .income }).map({$0.amountOfIncomeExpense}).reduce(0, +)
+        let expenseSum = incomeExpenseData.incomeExpenseList.filter({ $0.type == .expense }).map({$0.amountOfIncomeExpense}).reduce(0, +)
+        let substractSum = incomeSum - expenseSum
+        
+        delegate?.handleViewModelOutput(.setSummary(incomeSum: incomeSum, expenseSum: expenseSum, substractSum: substractSum))
+    }
 }

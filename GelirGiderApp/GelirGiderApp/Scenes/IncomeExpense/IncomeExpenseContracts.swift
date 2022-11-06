@@ -9,20 +9,20 @@ import Foundation
 
 protocol IncomeExpenseViewModelProtocol {
     var delegate: IncomeExpenseViewModelDelegate? {get set}
-    func load(year: Int, month: Int)
+    func load()
     func addIncomeExpense(type: IncomeExpenseType, description: String, amount: Double, index: Int)
     func updateIncomeExpense(with id: String, description: String?, amount: Double?, index: Int)
     func deleteIncomeExpense(with id: String, index: Int)
 }
 
 enum IncomeExpenseViewModelOutput {
-    case updateTitle(String)
-    case showData([IncomeExpensePresentation],[IncomeExpensePresentation])
+    case updateHeader(year: Int, month: String)
+    case showData(IncomeExpensePresentation)
     case showNewItem(type: IncomeExpenseType,IncomeExpensePresentation)
-    case reloadItem(Int)
+    case setSummary(incomeSum: Double, expenseSum: Double, substractSum: Double)
 }
 
-protocol IncomeExpenseViewModelDelegate {
+protocol IncomeExpenseViewModelDelegate: AnyObject {
     func handleViewModelOutput(_ output: IncomeExpenseViewModelOutput)
 }
 

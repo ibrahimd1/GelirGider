@@ -11,7 +11,7 @@ internal struct IncomeExpensePresentation {
     let id: String
     let year: Int
     let month: Int
-    let itemList: [IncomeExpenseItemPresentation]
+    var itemList: [IncomeExpenseItemPresentation]
     
     init(model: IncomeExpenseModel) {
         self.id = model.id
@@ -21,7 +21,7 @@ internal struct IncomeExpensePresentation {
     }
 }
 
-struct IncomeExpenseItemPresentation {
+internal struct IncomeExpenseItemPresentation {
     let itemId: String
     let type: IncomeExpenseType
     let description: String

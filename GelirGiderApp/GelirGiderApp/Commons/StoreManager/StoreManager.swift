@@ -22,19 +22,30 @@ internal final class StoreManager {
     }
     
     internal func getData(of month: Int, in year: Int) -> IncomeExpenseModel? {
+        //print("Path:",Realm.Configuration.defaultConfiguration.fileURL)
         let list = realm.object(ofType: IncomeExpenseModel.self, forPrimaryKey: getPrimaryKey(year, month))
         return list
     }
     
-    internal func addItem(type: IncomeExpenseType, description: String, amount: Double, date: Date) -> Bool {
+    internal func addItem(type: IncomeExpenseType, description: String, amount: Double, date: Date) -> IncomeExpenseModel {
         let list = realm.object(ofType: IncomeExpenseModel.self, forPrimaryKey: getPrimaryKey(self.currentYear, self.currentMonth))
-        guard let list = list else { return false }
+        let listItem = IncomeExpenseItemModel(type: type, desc: description, dateTime: date, amount: amount)
         
-        let item = IncomeExpenseItemModel(type: type, desc: description, dateTime: date, amount: amount)
-        try! realm.write {
-            list.incomeExpenseList.append(item)
+        if let tempList = list {
+            try! realm.write {
+                tempList.incomeExpenseList.append(listItem)
+            }
+        } else {
+            let tempList = List<IncomeExpenseItemModel>()
+            tempList.append(listItem)
+            try! realm.write {
+                let value: IncomeExpenseModel = IncomeExpenseModel(year: self.currentYear, month: self.currentMonth, incomeExpenseList: tempList)
+                realm.create(IncomeExpenseModel.self, value: value)
+            }
         }
-        return true
+        
+        let object = realm.object(ofType: IncomeExpenseModel.self, forPrimaryKey: getPrimaryKey(self.currentYear, self.currentMonth))!
+        return object
     }
     
     internal func updateItem(with id: String, description: String, amount: Double) -> Bool {

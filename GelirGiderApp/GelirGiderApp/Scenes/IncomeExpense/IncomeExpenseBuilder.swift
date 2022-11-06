@@ -11,6 +11,7 @@ final class IncomeExpenseBuilder {
     
     static func make() -> IncomeExpenseViewController {
         let viewController = IncomeExpenseViewController()
+        viewController.viewModel = IncomeExpenseViewModel()
         return viewController
     }
 }
