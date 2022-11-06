@@ -252,7 +252,7 @@ final class IncomeExpenseViewController: UIViewController {
             tableIncomeExpense.reloadData()
         }
         let amount = (txtAmount.text ?? "0").replacingOccurrences(of: ",", with: ".")
-        addIncomeExpenseItem(type: .income, description: txtDescription.text!, amount: Double(amount)!)
+        addIncomeExpenseItem(type: .income)
     }
     
     @objc func btnExpenseClicked() {
@@ -262,10 +262,10 @@ final class IncomeExpenseViewController: UIViewController {
             tableIncomeExpense.reloadData()
         }
         let amount = (txtAmount.text ?? "0").replacingOccurrences(of: ",", with: ".")
-        addIncomeExpenseItem(type: .expense, description: txtDescription.text!, amount: Double(amount)!)
+        addIncomeExpenseItem(type: .expense)
     }
     
-    fileprivate func addIncomeExpenseItem(type: IncomeExpenseType, description: String, amount: Double){
+    fileprivate func addIncomeExpenseItem(type: IncomeExpenseType){
         if (txtDescription.text == "") {
             addAlert(title: "Uyarı", message: "Açıklama alanı boş geçilemez!")
             return
