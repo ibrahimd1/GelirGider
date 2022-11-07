@@ -17,6 +17,11 @@
 		D3271F8B28A8142F0010B75C /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3271F8A28A8142F0010B75C /* Double+Extension.swift */; };
 		D3271F8D28A84A0A0010B75C /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3271F8C28A84A0A0010B75C /* UITextField+Extension.swift */; };
 		D3292F522917FDF800FFA99C /* UISwipeActionsConfiguration+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3292F512917FDF800FFA99C /* UISwipeActionsConfiguration+Extension.swift */; };
+		D3292F5529183A0900FFA99C /* MontlySummaryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3292F5429183A0900FFA99C /* MontlySummaryBuilder.swift */; };
+		D3292F5729183A1D00FFA99C /* MontlySummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3292F5629183A1D00FFA99C /* MontlySummaryVC.swift */; };
+		D3292F5929183A2B00FFA99C /* MontlySummaryContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3292F5829183A2B00FFA99C /* MontlySummaryContracts.swift */; };
+		D3292F5B29183A3E00FFA99C /* MontlySummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3292F5A29183A3E00FFA99C /* MontlySummaryViewModel.swift */; };
+		D3292F5E2918439600FFA99C /* MontlySummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3292F5D2918439600FFA99C /* MontlySummaryCell.swift */; };
 		D341932029086BD300B69B1E /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D341931F29086BD300B69B1E /* Poppins-Bold.ttf */; };
 		D341932229086BDB00B69B1E /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D341932129086BDB00B69B1E /* Poppins-SemiBold.ttf */; };
 		D341932429086BE500B69B1E /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D341932329086BE500B69B1E /* Poppins-Light.ttf */; };
@@ -77,6 +82,11 @@
 		D3271F8A28A8142F0010B75C /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		D3271F8C28A84A0A0010B75C /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		D3292F512917FDF800FFA99C /* UISwipeActionsConfiguration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISwipeActionsConfiguration+Extension.swift"; sourceTree = "<group>"; };
+		D3292F5429183A0900FFA99C /* MontlySummaryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MontlySummaryBuilder.swift; sourceTree = "<group>"; };
+		D3292F5629183A1D00FFA99C /* MontlySummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MontlySummaryVC.swift; sourceTree = "<group>"; };
+		D3292F5829183A2B00FFA99C /* MontlySummaryContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MontlySummaryContracts.swift; sourceTree = "<group>"; };
+		D3292F5A29183A3E00FFA99C /* MontlySummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MontlySummaryViewModel.swift; sourceTree = "<group>"; };
+		D3292F5D2918439600FFA99C /* MontlySummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MontlySummaryCell.swift; sourceTree = "<group>"; };
 		D341931F29086BD300B69B1E /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		D341932129086BDB00B69B1E /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		D341932329086BE500B69B1E /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
@@ -196,6 +206,26 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		D3292F532918395F00FFA99C /* MontlySummary */ = {
+			isa = PBXGroup;
+			children = (
+				D3292F5C29183A4D00FFA99C /* View */,
+				D3292F5429183A0900FFA99C /* MontlySummaryBuilder.swift */,
+				D3292F5829183A2B00FFA99C /* MontlySummaryContracts.swift */,
+				D3292F5A29183A3E00FFA99C /* MontlySummaryViewModel.swift */,
+			);
+			path = MontlySummary;
+			sourceTree = "<group>";
+		};
+		D3292F5C29183A4D00FFA99C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D3292F5629183A1D00FFA99C /* MontlySummaryVC.swift */,
+				D3292F5D2918439600FFA99C /* MontlySummaryCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D341931D29086BB600B69B1E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				D30C198B27AAFDE00002C07D /* IncomeExpense */,
+				D3292F532918395F00FFA99C /* MontlySummary */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -487,10 +518,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D30C199827AB09DB0002C07D /* IncomeExpenseViewModel.swift in Sources */,
+				D3292F5B29183A3E00FFA99C /* MontlySummaryViewModel.swift in Sources */,
 				D3DBEFB527F0ABBB004A02CD /* UIView+Extension.swift in Sources */,
+				D3292F5E2918439600FFA99C /* MontlySummaryCell.swift in Sources */,
 				D35A1962290C343E00BA7F90 /* CustomModalVC.swift in Sources */,
 				D30C199B27AB10C20002C07D /* Date+Extension.swift in Sources */,
 				D3A8117028AAE07E00004866 /* UIViewContoller+Extension.swift in Sources */,
+				D3292F5929183A2B00FFA99C /* MontlySummaryContracts.swift in Sources */,
+				D3292F5529183A0900FFA99C /* MontlySummaryBuilder.swift in Sources */,
 				D3F04D9D272C2AC10047E9F4 /* IncomeExpenseViewController.swift in Sources */,
 				D341932C2908775300B69B1E /* UIFont+Extension.swift in Sources */,
 				D3271F8D28A84A0A0010B75C /* UITextField+Extension.swift in Sources */,
@@ -513,6 +548,7 @@
 				D35A1968290C548E00BA7F90 /* UIColor+Extension.swift in Sources */,
 				D3A0A99A27A7146700625BB6 /* AppRouter.swift in Sources */,
 				D30C199327AB03A40002C07D /* Constants.swift in Sources */,
+				D3292F5729183A1D00FFA99C /* MontlySummaryVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

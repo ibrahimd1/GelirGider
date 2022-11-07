@@ -13,6 +13,7 @@ protocol IncomeExpenseViewModelProtocol {
     func addIncomeExpense(type: IncomeExpenseType, description: String, amount: Double)
     func updateIncomeExpense(with id: String, description: String?, amount: Double?, index: Int)
     func deleteIncomeExpense(with id: String, type: IncomeExpenseType, index: Int)
+    func selectItem(at type: MenuType)
 }
 
 enum IncomeExpenseViewModelOutput {
@@ -25,10 +26,9 @@ enum IncomeExpenseViewModelOutput {
 
 protocol IncomeExpenseViewModelDelegate: AnyObject {
     func handleViewModelOutput(_ output: IncomeExpenseViewModelOutput)
+    func navigate(to route: IncomeExpenseRoute)
 }
 
-enum SummaryViewType {
-    case income
-    case expense
-    case substract
+enum IncomeExpenseRoute {
+    case montlySummary(MontlySummaryViewModelProtocol)
 }

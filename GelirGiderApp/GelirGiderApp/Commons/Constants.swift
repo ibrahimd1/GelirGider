@@ -35,8 +35,13 @@ struct CustomColor {
     static let customModalBorderColor = UIColor(named: "CustomModalBorderColor")
 }
 
-let menuList: [MenuType] = [
-    MenuType(image: UIImage(named: "SummaryIcon")!, title: "Aylık Özeti Görüntüle"),
-    MenuType(image: UIImage(named: "InfoIcon")!, title: "Hakkında"),
-    MenuType(image: UIImage(named: "StarIcon")!, title: "Bizi AppStore'da Puanla")
+let menuList: [MenuObject] = [
+    MenuObject(image: UIImage(named: "SummaryIcon")!, title: "Aylık Özeti Görüntüle"),
+    MenuObject(image: UIImage(named: "InfoIcon")!, title: "Hakkında"),
+    MenuObject(image: UIImage(named: "StarIcon")!, title: "Bizi AppStore'da Puanla")
 ]
+enum SummaryViewType {
+    case income
+    case expense
+    case substract
+}

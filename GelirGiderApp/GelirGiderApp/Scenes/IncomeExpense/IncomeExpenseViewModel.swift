@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {
+final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {    
     weak var delegate: IncomeExpenseViewModelDelegate?
     private var incomeExpenseData: IncomeExpenseModel = IncomeExpenseModel()
     private var storeManager: StoreManager
@@ -46,6 +46,18 @@ final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {
         incomeExpenseData = data
         delegate?.handleViewModelOutput(.deleteItem(type: type, index: index, IncomeExpensePresentation.init(model: incomeExpenseData)))
         setSummary()
+    }
+    
+    func selectItem(at type: MenuType) {
+        switch type {
+        case .montlySummary:
+            let viewModel = MontlySummaryViewModel()
+            delegate?.navigate(to: .montlySummary(viewModel))
+        case .about:
+            break
+        case .appStore:
+            break
+        }
     }
     
     fileprivate func setSummary(){

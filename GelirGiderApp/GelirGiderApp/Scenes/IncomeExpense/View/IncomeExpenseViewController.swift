@@ -461,8 +461,8 @@ extension IncomeExpenseViewController: UITableViewDataSource {
 
 extension IncomeExpenseViewController: CustomModalVCDelegate {
     func didSelect(at item: MenuType) {
-        //self.dismiss(animated: false)
-        //viewModel.selectItem()
+        self.dismiss(animated: false)
+        viewModel.selectItem(at: item)
     }
 }
 
@@ -517,6 +517,14 @@ extension IncomeExpenseViewController: IncomeExpenseViewModelDelegate{
             tableIncomeExpense.deleteRows(at: [indexPath], with: .automatic)
             tableIncomeExpense.endUpdates()
             view.endEditing(true)
+        }
+    }
+    
+    func navigate(to route: IncomeExpenseRoute) {
+        switch route {
+        case .montlySummary(let viewModel):
+            let vc = MontlySummaryBuilder.make(with: viewModel)
+            show(vc, sender: nil)
         }
     }
 }

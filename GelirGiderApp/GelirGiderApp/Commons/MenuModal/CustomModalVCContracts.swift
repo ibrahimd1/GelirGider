@@ -8,9 +8,15 @@
 import Foundation
 import UIKit
 
-internal struct MenuType {
+internal struct MenuObject {
     let image: UIImage
     let title: String
+}
+
+internal enum MenuType {
+    case montlySummary
+    case about
+    case appStore
 }
 
 internal protocol CustomModalVCDelegate: AnyObject {

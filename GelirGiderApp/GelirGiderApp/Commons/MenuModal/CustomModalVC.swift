@@ -153,7 +153,16 @@ extension CustomModalVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate?.didSelect(at: menuList[indexPath.row])
+        let type: MenuType
+        if indexPath.row == 0 {
+            type = .montlySummary
+        } else if indexPath.row == 1 {
+            type = .about
+        } else {
+            type = .appStore
+        }
+        
+        self.delegate?.didSelect(at: type)
     }
 }
 
