@@ -206,7 +206,7 @@ final class IncomeExpenseViewController: UIViewController {
         scView.layer.cornerRadius = 20
         
         view.addSubview(scView)
-        scView.anchor(top: stackViewButton.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -30, paddingLeading: 30, width: 0, height: 38)
+        scView.anchor(top: stackViewButton.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 30, paddingBottom: 0, paddingTrailing: -30, paddingLeading: 30, width: 0, height: 38)
     }
     
     fileprivate func locateTable() {
@@ -246,24 +246,14 @@ final class IncomeExpenseViewController: UIViewController {
     }
     
     @objc func btnIncomeClicked() {
-        if(segmentedControl.selectedSegmentIndex == 1){
-            segmentedControl.selectedSegmentIndex = 0
-            selectedSegmentedControl = .income
-            tableIncomeExpense.reloadData()
-        }
         addIncomeExpenseItem(type: .income)
     }
     
     @objc func btnExpenseClicked() {
-        if(segmentedControl.selectedSegmentIndex == 0){
-            segmentedControl.selectedSegmentIndex = 1
-            selectedSegmentedControl = .expense
-            tableIncomeExpense.reloadData()
-        }
         addIncomeExpenseItem(type: .expense)
     }
     
-    fileprivate func addIncomeExpenseItem(type: IncomeExpenseType){
+    fileprivate func addIncomeExpenseItem(type: IncomeExpenseType) {
         if (txtDescription.text == "") {
             addAlert(title: "Uyarı", message: "Açıklama alanı boş geçilemez!")
             return
@@ -274,7 +264,21 @@ final class IncomeExpenseViewController: UIViewController {
         } else if(Double(txtAmount.text!.replacingOccurrences(of: ",", with: ".")) == nil) {
             addAlert(title: "Uyarı", message: "Tutar formatı yanlış, kontrol ediniz!")
             return
+        } else if(Double(txtAmount.text!.replacingOccurrences(of: ",", with: ".")) == 0) {
+            addAlert(title: "Uyarı", message: "Lütfen 0'dan farklı bir değer giriniz!")
+            return
         }
+        
+        if(type == .income && segmentedControl.selectedSegmentIndex == 1) {
+            segmentedControl.selectedSegmentIndex = 0
+            selectedSegmentedControl = .income
+            tableIncomeExpense.reloadData()
+        } else if (type == .expense && segmentedControl.selectedSegmentIndex == 0) {
+            segmentedControl.selectedSegmentIndex = 1
+            selectedSegmentedControl = .expense
+            tableIncomeExpense.reloadData()
+        }
+        
         let amount = (txtAmount.text ?? "0").replacingOccurrences(of: ",", with: ".")
         viewModel.addIncomeExpense(type: type, description: txtDescription.text!, amount: Double(amount)!)
         txtDescription.text = ""
