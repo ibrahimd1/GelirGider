@@ -14,3 +14,13 @@ internal struct MontlySummaryPresentation {
     let expense: Double
     let substract: Double
 }
+
+extension MontlySummaryPresentation {
+    init(model: MontlySummaryModel) {
+        self.year = model.year
+        self.month = model.month
+        self.income = model.incomeSum
+        self.expense = model.expenseSum
+        self.substract = model.substractSum
+    }
+}

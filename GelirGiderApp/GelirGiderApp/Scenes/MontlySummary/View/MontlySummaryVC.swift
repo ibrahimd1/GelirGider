@@ -11,7 +11,7 @@ import UIKit
 final class MontlySummaryViewController: UIViewController {
     var viewModel: MontlySummaryViewModelProtocol!
     
-    private var data: [MontlySummaryPresentation] = []
+    private var itemList: [MontlySummaryPresentation] = []
     
     private lazy var tableMontlySummary: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -31,7 +31,7 @@ final class MontlySummaryViewController: UIViewController {
         viewModel.load()
         
         locateTable()
-        testData()
+        //testData()
     }
     
     fileprivate func setupView() {
@@ -54,14 +54,14 @@ final class MontlySummaryViewController: UIViewController {
     }
     
     fileprivate func testData() {
-        data.append(MontlySummaryPresentation(year: 2022, month: 11, income: 32000, expense: 25000, substract: 7000))
-        data.append(MontlySummaryPresentation(year: 2022, month: 10, income: 32000, expense: 25000, substract: 7000))
-        data.append(MontlySummaryPresentation(year: 2022, month: 9, income: 32000, expense: 25000, substract: 7000))
-        data.append(MontlySummaryPresentation(year: 2022, month: 8, income: 32000, expense: 25000, substract: 7000))
-        data.append(MontlySummaryPresentation(year: 2022, month: 7, income: 32000, expense: 25000, substract: 7000))
-        data.append(MontlySummaryPresentation(year: 2022, month: 6, income: 32000, expense: 25000, substract: 7000))
-        data.append(MontlySummaryPresentation(year: 2022, month: 5, income: 32000, expense: 25000, substract: 7000))
-        data.append(MontlySummaryPresentation(year: 2022, month: 4, income: 32000, expense: 25000, substract: -150))
+        itemList.append(MontlySummaryPresentation(year: 2022, month: 11, income: 32000, expense: 25000, substract: 7000))
+        itemList.append(MontlySummaryPresentation(year: 2022, month: 10, income: 32000, expense: 25000, substract: 7000))
+        itemList.append(MontlySummaryPresentation(year: 2022, month: 9, income: 32000, expense: 25000, substract: 7000))
+        itemList.append(MontlySummaryPresentation(year: 2022, month: 8, income: 32000, expense: 25000, substract: 7000))
+        itemList.append(MontlySummaryPresentation(year: 2022, month: 7, income: 32000, expense: 25000, substract: 7000))
+        itemList.append(MontlySummaryPresentation(year: 2022, month: 6, income: 32000, expense: 25000, substract: 7000))
+        itemList.append(MontlySummaryPresentation(year: 2022, month: 5, income: 32000, expense: 25000, substract: 7000))
+        itemList.append(MontlySummaryPresentation(year: 2022, month: 4, income: 32000, expense: 25000, substract: -150))
     }
 }
 
@@ -70,6 +70,9 @@ extension MontlySummaryViewController: MontlySummaryViewModelDelegate {
         switch output {
         case .updateHeader(let title):
             self.title = title
+        case .showData(let data):
+            self.itemList = data
+            tableMontlySummary.reloadData()
         }
     }
 }
@@ -82,12 +85,12 @@ extension MontlySummaryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return itemList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "montlySummaryCell", for: indexPath) as? MontlySummaryCell {
-            cell.montlySummaryItem = data[indexPath.row]
+            cell.montlySummaryItem = itemList[indexPath.row]
             return cell
         }
         return UICollectionViewCell()

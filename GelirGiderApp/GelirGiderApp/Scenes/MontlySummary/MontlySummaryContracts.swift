@@ -18,4 +18,5 @@ protocol MontlySummaryViewModelProtocol {
 
 enum MontlySummaryViewModelOutput {
     case updateHeader(String)
+    case showData([MontlySummaryPresentation])
 }
