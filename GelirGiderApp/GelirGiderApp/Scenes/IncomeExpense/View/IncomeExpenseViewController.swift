@@ -528,7 +528,7 @@ extension IncomeExpenseViewController: IncomeExpenseViewModelDelegate{
         switch route {
         case .montlySummary(let viewModel):
             let vc = MontlySummaryBuilder.make(with: viewModel)
-            show(vc, sender: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

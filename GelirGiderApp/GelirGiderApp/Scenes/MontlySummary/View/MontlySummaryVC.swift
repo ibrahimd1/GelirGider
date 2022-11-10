@@ -26,12 +26,21 @@ final class MontlySummaryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = CustomColor.backgroundColor
+        setupView()
         viewModel.delegate = self
         viewModel.load()
         
         locateTable()
         testData()
+    }
+    
+    fileprivate func setupView() {
+        view.backgroundColor = CustomColor.backgroundColor
+        
+        let btn = UIBarButtonItem()
+        btn.title = "Geri"
+        btn.tintColor = CustomColor.textColor
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = btn
     }
     
     fileprivate func locateTable() {
