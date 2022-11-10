@@ -13,6 +13,7 @@
 		D30C199627AB06C50002C07D /* IncomeExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30C199527AB06C50002C07D /* IncomeExpenseModel.swift */; };
 		D30C199827AB09DB0002C07D /* IncomeExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30C199727AB09DB0002C07D /* IncomeExpenseViewModel.swift */; };
 		D30C199B27AB10C20002C07D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30C199A27AB10C20002C07D /* Date+Extension.swift */; };
+		D31843CC2919A1C6000396CB /* MontlySummaryPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31843CB2919A1C6000396CB /* MontlySummaryPresentation.swift */; };
 		D31A4A932806136500070A25 /* IncomeExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31A4A922806136500070A25 /* IncomeExpenseCell.swift */; };
 		D3271F8B28A8142F0010B75C /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3271F8A28A8142F0010B75C /* Double+Extension.swift */; };
 		D3271F8D28A84A0A0010B75C /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3271F8C28A84A0A0010B75C /* UITextField+Extension.swift */; };
@@ -78,6 +79,7 @@
 		D30C199527AB06C50002C07D /* IncomeExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseModel.swift; sourceTree = "<group>"; };
 		D30C199727AB09DB0002C07D /* IncomeExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseViewModel.swift; sourceTree = "<group>"; };
 		D30C199A27AB10C20002C07D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		D31843CB2919A1C6000396CB /* MontlySummaryPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MontlySummaryPresentation.swift; sourceTree = "<group>"; };
 		D31A4A922806136500070A25 /* IncomeExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseCell.swift; sourceTree = "<group>"; };
 		D3271F8A28A8142F0010B75C /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		D3271F8C28A84A0A0010B75C /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				D30C199027AB027E0002C07D /* IncomeExpensePresentation.swift */,
+				D31843CB2919A1C6000396CB /* MontlySummaryPresentation.swift */,
 			);
 			path = Presentations;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				D3292F5E2918439600FFA99C /* MontlySummaryCell.swift in Sources */,
 				D35A1962290C343E00BA7F90 /* CustomModalVC.swift in Sources */,
 				D30C199B27AB10C20002C07D /* Date+Extension.swift in Sources */,
+				D31843CC2919A1C6000396CB /* MontlySummaryPresentation.swift in Sources */,
 				D3A8117028AAE07E00004866 /* UIViewContoller+Extension.swift in Sources */,
 				D3292F5929183A2B00FFA99C /* MontlySummaryContracts.swift in Sources */,
 				D3292F5529183A0900FFA99C /* MontlySummaryBuilder.swift in Sources */,

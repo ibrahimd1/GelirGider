@@ -14,7 +14,6 @@ enum IncomeExpenseType: String,PersistableEnum {
     case expense
 }
 
-
 struct CustomColor {
     static let backgroundColor = UIColor(named: "BackgroundColor")
     static let backgroundColorBlue = UIColor(named: "BackgroundColorBlue")
@@ -33,6 +32,8 @@ struct CustomColor {
     static let btnCancelColor = UIColor(named: "BtnCancelColor")
     static let customModalBgColor = UIColor(named: "CustomModalBgColor")
     static let customModalBorderColor = UIColor(named: "CustomModalBorderColor")
+    static let cellBorderColor = UIColor(named: "CellBorderColor")
+    static let cellHeaderColor = UIColor(named: "CellHeaderColor")
 }
 
 let menuList: [MenuObject] = [
@@ -40,8 +41,11 @@ let menuList: [MenuObject] = [
     MenuObject(image: UIImage(named: "InfoIcon")!, title: "Hakkında"),
     MenuObject(image: UIImage(named: "StarIcon")!, title: "Bizi AppStore'da Puanla")
 ]
+
 enum SummaryViewType {
     case income
     case expense
     case substract
 }
+
+let monthNames: [String] = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]

@@ -31,5 +31,9 @@ extension Date {
         formatter.dateFormat = "dd.MM.yyyy' 'HH:mm"
         return formatter.string(from: self)
     }
+    
+    static func getMonthName(month: Int) -> String {
+        return monthNames[month - 1]
+    }
 }
 

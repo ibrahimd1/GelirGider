@@ -47,4 +47,15 @@ extension UIView {
         self.layer.shadowOffset = offSet
         self.layer.shadowRadius = radius
     }
+    
+    func anchorCenter(centerX: NSLayoutXAxisAnchor?, centerY: NSLayoutYAxisAnchor?) {
+        translatesAutoresizingMaskIntoConstraints = false
+        if let centerX = centerX {
+            self.centerXAnchor.constraint(equalTo: centerX).isActive = true
+        }
+        
+        if let centerY = centerY {
+            self.centerYAnchor.constraint(equalTo: centerY).isActive = true
+        }
+    }
 }
