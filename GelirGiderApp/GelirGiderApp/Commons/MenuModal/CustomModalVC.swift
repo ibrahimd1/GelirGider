@@ -29,7 +29,7 @@ internal final class CustomModalVC: UIViewController {
     lazy var dimmedView: UIView = {
         let tempView = UIView()
         tempView.backgroundColor = .black
-        tempView.alpha = maxDimmedAlpha
+        tempView.alpha = 0
         return tempView
     }()
     
@@ -127,8 +127,7 @@ internal final class CustomModalVC: UIViewController {
     }
     
     func animateShowDimmedView() {
-        dimmedView.alpha = 0
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.2) {
             self.dimmedView.alpha = self.maxDimmedAlpha
         }
     }
