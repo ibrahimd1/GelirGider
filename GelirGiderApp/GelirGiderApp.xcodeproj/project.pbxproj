@@ -30,12 +30,14 @@
 		D341932A290871E800B69B1E /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3419329290871E800B69B1E /* Poppins-Medium.ttf */; };
 		D341932C2908775300B69B1E /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D341932B2908775300B69B1E /* UIFont+Extension.swift */; };
 		D341932E290878CD00B69B1E /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D341932D290878CD00B69B1E /* Poppins-Regular.ttf */; };
+		D3537F8A291FA52500A3AEF1 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3537F89291FA52500A3AEF1 /* Action.swift */; };
+		D3537F8C291FA55600A3AEF1 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3537F8B291FA55600A3AEF1 /* ActionButton.swift */; };
+		D3537F8E291FA58800A3AEF1 /* CsutomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3537F8D291FA58800A3AEF1 /* CsutomAlertViewController.swift */; };
 		D35A1962290C343E00BA7F90 /* CustomModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35A1961290C343E00BA7F90 /* CustomModalVC.swift */; };
 		D35A1964290C346B00BA7F90 /* CustomModalVCContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35A1963290C346B00BA7F90 /* CustomModalVCContracts.swift */; };
 		D35A1966290C403400BA7F90 /* CustomModalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35A1965290C403400BA7F90 /* CustomModalTableViewCell.swift */; };
 		D35A1968290C548E00BA7F90 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35A1967290C548E00BA7F90 /* UIColor+Extension.swift */; };
 		D36FEB18291D9A7A00E2A1D6 /* MontlySummaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36FEB17291D9A7A00E2A1D6 /* MontlySummaryModel.swift */; };
-		D36FEB1A291D9EB800E2A1D6 /* Realm+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36FEB19291D9EB800E2A1D6 /* Realm+Extension.swift */; };
 		D3729B14280B096E00B8B73C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3729B13280B096E00B8B73C /* String+Extension.swift */; };
 		D37838FE283AD80A004307D1 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37838FD283AD80A004307D1 /* CustomTextField.swift */; };
 		D37C6AC627F8A395009A37DF /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37C6AC527F8A395009A37DF /* RoundedButton.swift */; };
@@ -98,12 +100,14 @@
 		D3419329290871E800B69B1E /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		D341932B2908775300B69B1E /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		D341932D290878CD00B69B1E /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		D3537F89291FA52500A3AEF1 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		D3537F8B291FA55600A3AEF1 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		D3537F8D291FA58800A3AEF1 /* CsutomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsutomAlertViewController.swift; sourceTree = "<group>"; };
 		D35A1961290C343E00BA7F90 /* CustomModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalVC.swift; sourceTree = "<group>"; };
 		D35A1963290C346B00BA7F90 /* CustomModalVCContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalVCContracts.swift; sourceTree = "<group>"; };
 		D35A1965290C403400BA7F90 /* CustomModalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalTableViewCell.swift; sourceTree = "<group>"; };
 		D35A1967290C548E00BA7F90 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		D36FEB17291D9A7A00E2A1D6 /* MontlySummaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MontlySummaryModel.swift; sourceTree = "<group>"; };
-		D36FEB19291D9EB800E2A1D6 /* Realm+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Extension.swift"; sourceTree = "<group>"; };
 		D3729B13280B096E00B8B73C /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		D37838FD283AD80A004307D1 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		D37C6AC527F8A395009A37DF /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 		D30C198E27AB02490002C07D /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				D3537F88291FA50C00A3AEF1 /* Alert */,
 				D35A1960290C342700BA7F90 /* MenuModal */,
 				D380699C27DE1C6E001EA6E2 /* StoreManager */,
 				D30C199927AB10770002C07D /* Extensions */,
@@ -210,7 +215,6 @@
 				D341932B2908775300B69B1E /* UIFont+Extension.swift */,
 				D35A1967290C548E00BA7F90 /* UIColor+Extension.swift */,
 				D3292F512917FDF800FFA99C /* UISwipeActionsConfiguration+Extension.swift */,
-				D36FEB19291D9EB800E2A1D6 /* Realm+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -254,6 +258,16 @@
 				D341931F29086BD300B69B1E /* Poppins-Bold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		D3537F88291FA50C00A3AEF1 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				D3537F89291FA52500A3AEF1 /* Action.swift */,
+				D3537F8B291FA55600A3AEF1 /* ActionButton.swift */,
+				D3537F8D291FA58800A3AEF1 /* CsutomAlertViewController.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		D35A1960290C342700BA7F90 /* MenuModal */ = {
@@ -526,6 +540,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3537F8E291FA58800A3AEF1 /* CsutomAlertViewController.swift in Sources */,
 				D30C199827AB09DB0002C07D /* IncomeExpenseViewModel.swift in Sources */,
 				D3292F5B29183A3E00FFA99C /* MontlySummaryViewModel.swift in Sources */,
 				D3DBEFB527F0ABBB004A02CD /* UIView+Extension.swift in Sources */,
@@ -544,10 +559,12 @@
 				D3A0A99827A7145F00625BB6 /* AppContainer.swift in Sources */,
 				D31A4A932806136500070A25 /* IncomeExpenseCell.swift in Sources */,
 				D30C199627AB06C50002C07D /* IncomeExpenseModel.swift in Sources */,
+				D3537F8A291FA52500A3AEF1 /* Action.swift in Sources */,
 				D3F04D99272C2AC10047E9F4 /* AppDelegate.swift in Sources */,
 				D3729B14280B096E00B8B73C /* String+Extension.swift in Sources */,
 				D35A1966290C403400BA7F90 /* CustomModalTableViewCell.swift in Sources */,
 				D36FEB18291D9A7A00E2A1D6 /* MontlySummaryModel.swift in Sources */,
+				D3537F8C291FA55600A3AEF1 /* ActionButton.swift in Sources */,
 				D3271F8B28A8142F0010B75C /* Double+Extension.swift in Sources */,
 				D30C198D27AAFF870002C07D /* IncomeExpenseContracts.swift in Sources */,
 				D35A1964290C346B00BA7F90 /* CustomModalVCContracts.swift in Sources */,
@@ -559,7 +576,6 @@
 				D35A1968290C548E00BA7F90 /* UIColor+Extension.swift in Sources */,
 				D3A0A99A27A7146700625BB6 /* AppRouter.swift in Sources */,
 				D30C199327AB03A40002C07D /* Constants.swift in Sources */,
-				D36FEB1A291D9EB800E2A1D6 /* Realm+Extension.swift in Sources */,
 				D3292F5729183A1D00FFA99C /* MontlySummaryVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

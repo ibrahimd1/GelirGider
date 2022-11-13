@@ -10,6 +10,7 @@ import UIKit
 
 internal final class RoundedButton: UIButton {
     
+    fileprivate var titleColor: UIColor?
     private lazy var title: UILabel = {
         let lbl = UILabel()
         lbl.numberOfLines = 1
@@ -40,7 +41,8 @@ internal final class RoundedButton: UIButton {
         title.text = viewmodel.text
         icon.image = viewmodel.icon
         self.backgroundColor = viewmodel.backgroundColor
-        self.title.textColor = viewmodel.titleColor
+        self.titleColor = viewmodel.titleColor
+        self.title.textColor = self.titleColor
     }
     
     required init?(coder: NSCoder) {
@@ -51,6 +53,17 @@ internal final class RoundedButton: UIButton {
         super.layoutSubviews()
         self.title.sizeToFit()
         setupViews()
+    }
+    
+    override var isHighlighted: Bool {
+        didSet {
+            guard let color = self.titleColor else { return }
+            if isHighlighted {
+                self.title.textColor = color.withAlphaComponent(0.6)
+            } else {
+                self.title.textColor = color
+            }
+        }
     }
     
     private func setupViews() {

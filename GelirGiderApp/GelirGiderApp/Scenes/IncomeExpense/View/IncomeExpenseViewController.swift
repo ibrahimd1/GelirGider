@@ -255,17 +255,17 @@ final class IncomeExpenseViewController: UIViewController {
     
     fileprivate func addIncomeExpenseItem(type: IncomeExpenseType) {
         if (txtDescription.text == "") {
-            addAlert(title: "Uyarı", message: "Açıklama alanı boş geçilemez!")
+            showAlert(title: "Uyarı", message: "Açıklama alanı boş geçilemez!")
             return
         }
         if(txtAmount.text == ""){
-            addAlert(title: "Uyarı", message: "Tutar alanı boş geçilemez!")
+            showAlert(title: "Uyarı", message: "Tutar alanı boş geçilemez!")
             return
         } else if(Double(txtAmount.text!.replacingOccurrences(of: ",", with: ".")) == nil) {
-            addAlert(title: "Uyarı", message: "Tutar formatı yanlış, kontrol ediniz!")
+            showAlert(title: "Uyarı", message: "Tutar formatı yanlış, kontrol ediniz!")
             return
         } else if(Double(txtAmount.text!.replacingOccurrences(of: ",", with: ".")) == 0) {
-            addAlert(title: "Uyarı", message: "Lütfen 0'dan farklı bir değer giriniz!")
+            showAlert(title: "Uyarı", message: "Lütfen 0'dan farklı bir tutar giriniz!")
             return
         }
         
@@ -285,11 +285,14 @@ final class IncomeExpenseViewController: UIViewController {
         txtAmount.text = ""
     }
     
-    fileprivate func addAlert(title: String, message: String) {
-        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Tamam", style: .default)
-        ac.addAction(alertAction)
-        self.present(ac, animated: true)
+    fileprivate func showAlert(title: String, message: String) {        
+        let okAction = Action(with: "Tamam", style: .normal) {[weak self] in
+            self?.dismiss(animated: true, completion: nil)
+        }
+        let alertVC = CustomAlertViewController(withTitle: title, message: message, actions: [okAction], axis: .horizontal, style: .normal)
+        alertVC.modalPresentationStyle = .overCurrentContext
+        alertVC.modalTransitionStyle = .crossDissolve
+        self.present(alertVC, animated: true, completion: nil)
     }
     
     func getAttrText(_ year: String, _ month: String) -> NSMutableAttributedString {
