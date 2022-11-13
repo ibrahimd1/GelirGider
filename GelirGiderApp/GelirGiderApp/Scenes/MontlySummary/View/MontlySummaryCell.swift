@@ -92,6 +92,11 @@ final class MontlySummaryCell: UICollectionViewCell {
         return view
     }()
     
+    private lazy var pieView: PieView = {
+       let view = PieView()
+        return view
+    }()
+    
     internal var customColor: UIColor = CustomColor.textColorGreen! {
         didSet {
             lblSubstractValue.textColor = customColor
@@ -107,6 +112,7 @@ final class MontlySummaryCell: UICollectionViewCell {
             lblExpenseValue.text = item.expense.stringValue
             lblSubstractValue.text = item.substract.stringValue
             customColor = item.substract >= 0 ? CustomColor.textColorGreen! : CustomColor.textColorRed!
+            pieView.percentage = (item.substract / item.income) * 100
         }
     }
     
@@ -185,12 +191,10 @@ final class MontlySummaryCell: UICollectionViewCell {
     }
     
     fileprivate func locatePieView(imageView: UIImageView) {
-        let pieView = UIView()
         addSubview(pieView)
         pieView.anchorCenter(centerX: nil, centerY: centerYAnchor)
-        pieView.anchor(top: nil, bottom: nil, leading: nil, trailing: imageView.leadingAnchor, paddingTop: 0, paddingBottom: 0, paddingTrailing: -20, paddingLeading: 0, width: 50, height: 50)
-        pieView.backgroundColor = .red
-        pieView.layer.cornerRadius = 25
+        pieView.anchor(top: nil, bottom: nil, leading: nil, trailing: imageView.leadingAnchor, paddingTop: 0, paddingBottom: 0, paddingTrailing: -20, paddingLeading: 0, width: 60, height: 60)
+        pieView.layer.cornerRadius = 30
     }
     
     required init?(coder: NSCoder) {

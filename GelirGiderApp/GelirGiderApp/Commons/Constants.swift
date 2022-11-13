@@ -34,6 +34,7 @@ struct CustomColor {
     static let customModalBorderColor = UIColor(named: "CustomModalBorderColor")
     static let cellBorderColor = UIColor(named: "CellBorderColor")
     static let cellHeaderColor = UIColor(named: "CellHeaderColor")
+    static let pieTraceColor = UIColor(named: "PieTraceColor")
 }
 
 let menuList: [MenuObject] = [
