@@ -255,7 +255,7 @@ final class IncomeExpenseViewController: UIViewController {
     
     fileprivate func addIncomeExpenseItem(type: IncomeExpenseType) {
         if (txtDescription.text == "") {
-            showAlert(title: "Uyarı", message: "Açıklama alanı boş geçilemez!")
+            showAlert(title: "Uyarı", message: "Gelir/Gider Adı boş geçilemez!")
             return
         }
         if(txtAmount.text == ""){
