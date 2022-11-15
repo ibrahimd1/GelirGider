@@ -400,26 +400,6 @@ extension IncomeExpenseViewController: UITableViewDelegate {
         deleteAction.backgroundColor = UIColor.systemRed
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
-    
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(
-            style: .normal,
-            title:  nil)
-        { [weak self] (action, view, completionHandler) in
-            guard let self = self else { return }
-            let table = self.selectedSegmentedControl == .income ? self.itemListIncome : self.itemListExpense
-            let id = table?[indexPath.row].itemId
-            self.handleMoveToDelete(with: id!, at: indexPath)
-            completionHandler(true)
-        }
-        
-        deleteAction.image = UISwipeActionsConfiguration.makeTitledImage(
-            image: UIImage(systemName: "trash")?.withTintColor(.white, renderingMode: .alwaysOriginal),
-            title: "Sil"
-        )
-        deleteAction.backgroundColor = UIColor.systemRed
-        return UISwipeActionsConfiguration(actions: [deleteAction])
-    }
 }
 
 extension IncomeExpenseViewController: UITableViewDataSource {
