@@ -19,7 +19,7 @@ class PieView: UIView {
         let lbl = UILabel()
         lbl.text = "%0"
         lbl.textAlignment = .center
-        lbl.font = .Poppins.bold(size: 10).font
+        lbl.font = .Poppins.bold(size: 14).font
         lbl.frame = CGRect(x: 0, y: 0, width: 110, height: 110)
         lbl.textColor = CustomColor.textColor
         return lbl

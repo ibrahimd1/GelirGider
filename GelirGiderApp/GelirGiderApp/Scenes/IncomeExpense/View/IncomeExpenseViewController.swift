@@ -30,14 +30,14 @@ final class IncomeExpenseViewController: UIViewController {
     private lazy var txtDescription: UITextField = {
         let txt = CustomTextField()
         txt.maxLength = 20
-        txt.configure(with: CustomTextFieldViewModel(placeHolderText: "Gelir/Gider Adı", icon: "DescriptionIcon", keyboardType: .default))
+        txt.configure(with: CustomTextFieldViewModel(placeHolderText: "Gelir/Gider Adı", icon: "DescriptionIcon", keyboardType: .default, iconType: .normal))
         return txt
     }()
     
     private lazy var txtAmount: UITextField = {
         let txt = CustomTextField()
         txt.maxLength = 10
-        txt.configure(with: CustomTextFieldViewModel(placeHolderText: "Tutar", icon: "CurrencyIcon", keyboardType: .decimalPad))
+        txt.configure(with: CustomTextFieldViewModel(placeHolderText: "Tutar", icon: "CurrencyIcon", keyboardType: .decimalPad, iconType: .normal))
         return txt
     }()
     

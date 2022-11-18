@@ -35,7 +35,12 @@ internal final class CustomTextField: UITextField {
         let frame = CGRect(x: 0, y: 0, width: 18 + 15, height: 18)
         let outerView = UIView(frame: frame)
         let iconView  = UIImageView(frame: frame)
-        iconView.image = UIImage(named: viewModel.icon)
+        
+        if(viewModel.iconType == .normal) {
+            iconView.image = UIImage(named: viewModel.icon)
+        } else {
+            iconView.image = UIImage(systemName: viewModel.icon)?.withTintColor(CustomColor.textColor!, renderingMode: .alwaysOriginal)
+        }
         iconView.contentMode = .center
         outerView.addSubview(iconView)
         self.rightViewMode = .always
@@ -48,6 +53,12 @@ internal struct CustomTextFieldViewModel {
     let placeHolderText: String
     let icon: String
     let keyboardType: UIKeyboardType
+    let iconType: IconType?
+}
+
+internal enum IconType {
+    case normal
+    case system
 }
 
 extension CustomTextField: UITextFieldDelegate {

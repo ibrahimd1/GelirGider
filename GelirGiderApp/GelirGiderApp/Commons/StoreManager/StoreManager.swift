@@ -74,9 +74,14 @@ internal final class StoreManager {
         return list!
     }
     
-    internal func getAllData() -> [IncomeExpenseModel]? {
-        let list = realm.objects(IncomeExpenseModel.self)
-        return Array(list)
+    internal func getAllData(in year: Int = -1) -> [IncomeExpenseModel]? {
+        var list = realm.objects(IncomeExpenseModel.self)
+        if year == -1 {
+            return Array(list)
+        } else {
+            list = list.where { $0.year == year }
+            return Array(list)
+        }
     }
     
     fileprivate func getPrimaryKey(_ year: Int, _ month: Int) -> String {

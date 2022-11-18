@@ -12,6 +12,22 @@ final class MontlySummaryViewController: UIViewController {
     var viewModel: MontlySummaryViewModelProtocol!
     
     private var itemList: [MontlySummaryPresentation] = []
+    private var yearList: [String] = []
+    private var currentIndex = 0
+    
+    private lazy var pickerView: UIPickerView = {
+        let pv = UIPickerView()
+        return pv
+    }()
+    
+    private lazy var txtYear: UITextField = {
+        let txt = CustomTextField()
+        txt.maxLength = 20
+        txt.configure(with: CustomTextFieldViewModel(placeHolderText: "Yıl", icon: "chevron.down", keyboardType: .default, iconType: .system))
+        txt.textAlignment = .center
+        txt.tintColor = .clear
+        return txt
+    }()
     
     private lazy var tableMontlySummary: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -30,7 +46,9 @@ final class MontlySummaryViewController: UIViewController {
         viewModel.delegate = self
         viewModel.load()
         
+        locateTextYear()
         locateTable()
+        locatePickerView()
         //testData()
     }
     
@@ -43,14 +61,36 @@ final class MontlySummaryViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = btn
     }
     
+    fileprivate func locateTextYear() {
+        view.addSubview(txtYear)
+        txtYear.anchorCenter(centerX: view.centerXAnchor, centerY: nil)
+        txtYear.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: nil, trailing: nil, paddingTop: 0, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: 150, height: 40)
+    }
+    
     fileprivate func locateTable() {
-        
         tableMontlySummary.register(MontlySummaryCell.self, forCellWithReuseIdentifier: "montlySummaryCell")
         tableMontlySummary.delegate = self
         tableMontlySummary.dataSource = self
         
         view.addSubview(tableMontlySummary)
-        tableMontlySummary.anchor(top: view.topAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 20, paddingBottom: -20, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 0)
+        tableMontlySummary.anchor(top: txtYear.bottomAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 0, paddingBottom: -20, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 0)
+    }
+    
+    fileprivate func locatePickerView() {
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        
+        txtYear.inputView = pickerView
+        let toolBar = UIToolbar(frame:CGRect(x:0, y:0, width:100, height:100))
+        toolBar.sizeToFit()
+        toolBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        let doneButton = UIBarButtonItem(title: "Seç", style: .plain, target: self, action: #selector(btnSelectClicked))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Vazgeç", style: .plain, target: self, action: #selector(btnCancelClicked))
+        
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: true)
+        txtYear.inputAccessoryView = toolBar
     }
     
     fileprivate func testData() {
@@ -63,6 +103,17 @@ final class MontlySummaryViewController: UIViewController {
         itemList.append(MontlySummaryPresentation(year: 2022, month: 5, income: 32000, expense: 25000, substract: 7000))
         itemList.append(MontlySummaryPresentation(year: 2022, month: 4, income: 32000, expense: 25000, substract: -150))
     }
+    
+    @objc func btnSelectClicked() {
+        let yearStr = yearList[currentIndex]
+        txtYear.text = yearStr
+        view.endEditing(true)
+        viewModel.didSelect(year: Int(yearStr)!, data: nil)
+    }
+    
+    @objc func btnCancelClicked() {
+        view.endEditing(true)
+    }
 }
 
 extension MontlySummaryViewController: MontlySummaryViewModelDelegate {
@@ -73,6 +124,11 @@ extension MontlySummaryViewController: MontlySummaryViewModelDelegate {
         case .showData(let data):
             self.itemList = data
             tableMontlySummary.reloadData()
+        case .setPickerViewData(let list):
+            self.yearList = list
+            self.txtYear.text = list[0]
+        case .updateYearText(let year):
+            self.txtYear.text = year
         }
     }
 }
@@ -102,6 +158,24 @@ extension MontlySummaryViewController: UICollectionViewDelegateFlowLayout {
         let width = self.view.frame.width - 16.0 * 2
         let height = 120.0
         return CGSize(width: width, height: height)
+    }
+}
+
+extension MontlySummaryViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return yearList[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.currentIndex = row
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return yearList.count
     }
 }
 
