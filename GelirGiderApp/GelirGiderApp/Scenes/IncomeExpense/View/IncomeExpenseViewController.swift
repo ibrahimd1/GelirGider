@@ -281,11 +281,11 @@ final class IncomeExpenseViewController: UIViewController {
         
         if(type == .income && segmentedControl.selectedSegmentIndex == 1) {
             segmentedControl.selectedSegmentIndex = 0
-            selectedSegmentedControl = .income
+            setOptions(type: .income)
             tableIncomeExpense.reloadData()
         } else if (type == .expense && segmentedControl.selectedSegmentIndex == 0) {
             segmentedControl.selectedSegmentIndex = 1
-            selectedSegmentedControl = .expense
+            setOptions(type: .expense)
             tableIncomeExpense.reloadData()
         }
         
@@ -314,10 +314,10 @@ final class IncomeExpenseViewController: UIViewController {
     @objc func segmentedControlIndexChanged(_ segmentedControl: UISegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            self.selectedSegmentedControl = .income
+            setOptions(type: .income)
             break
         case 1:
-            self.selectedSegmentedControl = .expense
+            setOptions(type: .expense)
             break
         default:
             break
@@ -345,6 +345,11 @@ final class IncomeExpenseViewController: UIViewController {
         sumView.addSubview(tempViewSum)
         tempViewSum.anchor(top: tempView.bottomAnchor, bottom: sumView.bottomAnchor, leading: sumView.leadingAnchor, trailing: sumView.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
         return sumView
+    }
+    
+    fileprivate func setOptions(type: IncomeExpenseType) {
+        self.selectedSegmentedControl = type
+        self.viewModel.selectIncomeExpenseButton(type: type)
     }
     
     func tableTest() {
@@ -550,6 +555,14 @@ extension IncomeExpenseViewController: IncomeExpenseViewModelDelegate{
             tableIncomeExpense.deleteRows(at: [indexPath], with: .automatic)
             tableIncomeExpense.endUpdates()
             view.endEditing(true)
+        case .selectSegment(let type):
+            self.selectedSegmentedControl = type
+            switch type {
+            case .income:
+                segmentedControl.selectedSegmentIndex = 0
+            case .expense:
+                segmentedControl.selectedSegmentIndex = 1
+            }
         }
     }
     

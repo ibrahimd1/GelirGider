@@ -17,6 +17,7 @@ protocol IncomeExpenseViewModelProtocol {
     func updateIncomeExpense(with id: String, description: String?, amount: Double?, index: Int)
     func deleteIncomeExpense(with id: String, type: IncomeExpenseType, index: Int)
     func selectItem(at type: MenuType)
+    func selectIncomeExpenseButton(type: IncomeExpenseType)
 }
 
 enum IncomeExpenseViewModelOutput {
@@ -25,6 +26,7 @@ enum IncomeExpenseViewModelOutput {
     case showNewItem(type: IncomeExpenseType,IncomeExpensePresentation)
     case setSummary(incomeSum: Double, expenseSum: Double, substractSum: Double)
     case deleteItem(type: IncomeExpenseType,index: Int,IncomeExpensePresentation)
+    case selectSegment(type: IncomeExpenseType)
 }
 
 protocol IncomeExpenseViewModelDelegate: AnyObject {

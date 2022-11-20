@@ -33,6 +33,7 @@ final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {
         incomeExpenseData = data
         delegate?.handleViewModelOutput(.showData(IncomeExpensePresentation.init(model: incomeExpenseData)))
         setSummary()
+        setOptions()
     }
     
     func addIncomeExpense(type: IncomeExpenseType, description: String, amount: Double) {
@@ -65,11 +66,22 @@ final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {
         }
     }
     
+    func selectIncomeExpenseButton(type: IncomeExpenseType) {
+        storeManager.addOptions(type: type)
+    }
+    
     fileprivate func setSummary(){
         let incomeSum = incomeExpenseData.incomeExpenseList.filter({ $0.type == .income }).map({$0.amountOfIncomeExpense}).reduce(0, +)
         let expenseSum = incomeExpenseData.incomeExpenseList.filter({ $0.type == .expense }).map({$0.amountOfIncomeExpense}).reduce(0, +)
         let substractSum = incomeSum - expenseSum
         
         delegate?.handleViewModelOutput(.setSummary(incomeSum: incomeSum, expenseSum: expenseSum, substractSum: substractSum))
+    }
+    
+    fileprivate func setOptions() {
+        let options = storeManager.getOptions()
+        if options.count > 0 {
+            delegate?.handleViewModelOutput(.selectSegment(type: options[0].incomeExpenseOptions))
+        }
     }
 }

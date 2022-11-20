@@ -33,6 +33,7 @@
 		D3537F8A291FA52500A3AEF1 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3537F89291FA52500A3AEF1 /* Action.swift */; };
 		D3537F8C291FA55600A3AEF1 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3537F8B291FA55600A3AEF1 /* ActionButton.swift */; };
 		D3537F8E291FA58800A3AEF1 /* CsutomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3537F8D291FA58800A3AEF1 /* CsutomAlertViewController.swift */; };
+		D354D320292ABD01009B07DA /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D354D31F292ABD01009B07DA /* SettingsModel.swift */; };
 		D35A1962290C343E00BA7F90 /* CustomModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35A1961290C343E00BA7F90 /* CustomModalVC.swift */; };
 		D35A1964290C346B00BA7F90 /* CustomModalVCContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35A1963290C346B00BA7F90 /* CustomModalVCContracts.swift */; };
 		D35A1966290C403400BA7F90 /* CustomModalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35A1965290C403400BA7F90 /* CustomModalTableViewCell.swift */; };
@@ -106,6 +107,7 @@
 		D3537F89291FA52500A3AEF1 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		D3537F8B291FA55600A3AEF1 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		D3537F8D291FA58800A3AEF1 /* CsutomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsutomAlertViewController.swift; sourceTree = "<group>"; };
+		D354D31F292ABD01009B07DA /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		D35A1961290C343E00BA7F90 /* CustomModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalVC.swift; sourceTree = "<group>"; };
 		D35A1963290C346B00BA7F90 /* CustomModalVCContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalVCContracts.swift; sourceTree = "<group>"; };
 		D35A1965290C403400BA7F90 /* CustomModalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalTableViewCell.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			children = (
 				D30C199527AB06C50002C07D /* IncomeExpenseModel.swift */,
 				D36FEB17291D9A7A00E2A1D6 /* MontlySummaryModel.swift */,
+				D354D31F292ABD01009B07DA /* SettingsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				D3F04D99272C2AC10047E9F4 /* AppDelegate.swift in Sources */,
 				D3729B14280B096E00B8B73C /* String+Extension.swift in Sources */,
 				D35A1966290C403400BA7F90 /* CustomModalTableViewCell.swift in Sources */,
+				D354D320292ABD01009B07DA /* SettingsModel.swift in Sources */,
 				D36FEB18291D9A7A00E2A1D6 /* MontlySummaryModel.swift in Sources */,
 				D3537F8C291FA55600A3AEF1 /* ActionButton.swift in Sources */,
 				D3271F8B28A8142F0010B75C /* Double+Extension.swift in Sources */,

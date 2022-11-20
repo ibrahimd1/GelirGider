@@ -79,6 +79,26 @@ internal final class StoreManager {
         return Array(list)
     }
     
+    internal func addOptions(type: IncomeExpenseType)  {
+        let list = realm.objects(SettingsModel.self)
+        
+        if list.count > 0 {
+            try! realm.write {
+                list[0].incomeExpenseOptions = type
+            }
+        } else {
+            try! realm.write {
+                let value: SettingsModel = SettingsModel(incomeExpenseOptions: type)
+                realm.create(SettingsModel.self, value: value)
+            }
+        }
+    }
+    
+    internal func getOptions() -> [SettingsModel] {
+        let list = realm.objects(SettingsModel.self)
+        return Array(list)
+    }
+    
     fileprivate func getPrimaryKey(_ year: Int, _ month: Int) -> String {
         return "\(year)\(month)"
     }
