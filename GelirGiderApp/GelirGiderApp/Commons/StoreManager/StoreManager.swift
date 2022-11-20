@@ -74,17 +74,31 @@ internal final class StoreManager {
         return list!
     }
     
-    internal func getAllData(in year: Int = -1) -> [IncomeExpenseModel]? {
-        var list = realm.objects(IncomeExpenseModel.self)
-        if year == -1 {
-            return Array(list)
-        } else {
-            list = list.where { $0.year == year }
-            return Array(list)
-        }
+    internal func getAllData() -> [IncomeExpenseModel] {
+        let list = realm.objects(IncomeExpenseModel.self)
+        return Array(list)
     }
     
     fileprivate func getPrimaryKey(_ year: Int, _ month: Int) -> String {
         return "\(year)\(month)"
+    }
+    
+    //TESTTTTTTTTTTTTTTT
+    internal func addItemTest(type: IncomeExpenseType, description: String, amount: Double, date: Date, year:Int, month: Int) {
+        let list = realm.object(ofType: IncomeExpenseModel.self, forPrimaryKey: getPrimaryKey(year, month))
+        let listItem = IncomeExpenseItemModel(type: type, desc: description, dateTime: date, amount: amount)
+        
+        if let tempList = list {
+            try! realm.write {
+                tempList.incomeExpenseList.append(listItem)
+            }
+        } else {
+            let tempList = List<IncomeExpenseItemModel>()
+            tempList.append(listItem)
+            try! realm.write {
+                let value: IncomeExpenseModel = IncomeExpenseModel(year: year, month: month, incomeExpenseList: tempList)
+                realm.create(IncomeExpenseModel.self, value: value)
+            }
+        }
     }
 }

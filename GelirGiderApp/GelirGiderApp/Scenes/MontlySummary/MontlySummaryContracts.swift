@@ -9,17 +9,20 @@ import Foundation
 
 protocol MontlySummaryViewModelDelegate: AnyObject {
     func handleViewModelOutput(_ output: MontlySummaryViewModelOutput)
+    func navigate(to route: MontlySummaryRoute)
 }
 
 protocol MontlySummaryViewModelProtocol {
     var delegate: MontlySummaryViewModelDelegate? { get set }
     func load()
-    func didSelect(year: Int, data: [IncomeExpenseModel]?)
+    func selectItem(year: Int, month: Int)
 }
 
 enum MontlySummaryViewModelOutput {
     case updateHeader(String)
     case showData([MontlySummaryPresentation])
-    case setPickerViewData([String])
-    case updateYearText(String)
+}
+
+enum MontlySummaryRoute {
+    case detail(IncomeExpenseViewModelProtocol)
 }

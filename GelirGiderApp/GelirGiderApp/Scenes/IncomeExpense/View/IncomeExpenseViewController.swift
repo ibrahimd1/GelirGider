@@ -169,44 +169,55 @@ final class IncomeExpenseViewController: UIViewController {
         locateFooer()
         
         //tableTest()
-        
         viewModel.load()
     }
     
     fileprivate func locateMainComponents() {
         view.backgroundColor = CustomColor.backgroundColor
         
-        let menuImage = UIImage(named: "Menu")?.withRenderingMode(.alwaysOriginal)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: menuImage, style: .plain, target: self, action: #selector(menuClick))
+        if !viewModel.isOpenFromAnotherPage {
+            let menuImage = UIImage(named: "Menu")?.withRenderingMode(.alwaysOriginal)
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: menuImage, style: .plain, target: self, action: #selector(menuClick))
+        } else {
+            let btn = UIBarButtonItem()
+            btn.title = "Geri"
+            btn.tintColor = CustomColor.textColor
+            self.navigationController?.navigationBar.topItem?.backBarButtonItem = btn
+        }
     }
     
     fileprivate func locateTextComponents() {
-        let oranUzunluk = (view.bounds.width - 48) / 3
-        view.addSubview(txtDescription)
-        txtDescription.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: nil, paddingTop: 3, paddingBottom: 0, paddingTrailing: -5, paddingLeading: 16, width: oranUzunluk * 2, height: 38)
-        
-        view.addSubview(txtAmount)
-        txtAmount.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: txtDescription.trailingAnchor, trailing: view.trailingAnchor, paddingTop: 3, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 38)
+        if !viewModel.isOpenFromAnotherPage {
+            let oranUzunluk = (view.bounds.width - 48) / 3
+            view.addSubview(txtDescription)
+            txtDescription.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: nil, paddingTop: 3, paddingBottom: 0, paddingTrailing: -5, paddingLeading: 16, width: oranUzunluk * 2, height: 38)
+            
+            view.addSubview(txtAmount)
+            txtAmount.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: txtDescription.trailingAnchor, trailing: view.trailingAnchor, paddingTop: 3, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 38)
+        }
     }
     
     fileprivate func locateButtons() {
-        
-        // Income + Expense Buttons
-        let stackViewButton = UIStackView(arrangedSubviews: [btnIncome,btnExpense])
-        stackViewButton.distribution = .fillEqually
-        stackViewButton.axis = .horizontal
-        stackViewButton.spacing = 10
-        
-        view.addSubview(stackViewButton)
-        stackViewButton.anchor(top: txtDescription.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 38)
-        
         scView.addSubview(segmentedControl)
+        scView.layer.cornerRadius = 20
         segmentedControl.anchor(top: scView.topAnchor, bottom: scView.bottomAnchor, leading: scView.leadingAnchor, trailing: scView.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 0, width: 0, height: 0)
         
-        scView.layer.cornerRadius = 20
-        
-        view.addSubview(scView)
-        scView.anchor(top: stackViewButton.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 30, paddingBottom: 0, paddingTrailing: -30, paddingLeading: 30, width: 0, height: 38)
+        if !viewModel.isOpenFromAnotherPage {
+            // Income + Expense Buttons
+            let stackViewButton = UIStackView(arrangedSubviews: [btnIncome,btnExpense])
+            stackViewButton.distribution = .fillEqually
+            stackViewButton.axis = .horizontal
+            stackViewButton.spacing = 10
+            
+            view.addSubview(stackViewButton)
+            stackViewButton.anchor(top: txtDescription.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 38)
+            
+            view.addSubview(scView)
+            scView.anchor(top: stackViewButton.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 30, paddingBottom: 0, paddingTrailing: -30, paddingLeading: 30, width: 0, height: 38)
+        } else {
+            view.addSubview(scView)
+            scView.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -30, paddingLeading: 30, width: 0, height: 38)
+        }
     }
     
     fileprivate func locateTable() {
@@ -216,7 +227,6 @@ final class IncomeExpenseViewController: UIViewController {
         
         view.addSubview(tableIncomeExpense)
         tableIncomeExpense.anchor(top: scView.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 0)
-        
         tableIncomeExpense.separatorColor = .clear
     }
     
@@ -285,7 +295,7 @@ final class IncomeExpenseViewController: UIViewController {
         txtAmount.text = ""
     }
     
-    fileprivate func showAlert(title: String, message: String) {        
+    fileprivate func showAlert(title: String, message: String) {
         let okAction = Action(with: "Tamam", style: .normal) {[weak self] in
             self?.dismiss(animated: true, completion: nil)
         }
@@ -338,7 +348,7 @@ final class IncomeExpenseViewController: UIViewController {
     }
     
     func tableTest() {
-        let i1 = IncomeExpenseItemModel(type: .income, desc: "Market", dateTime: Date(), amount: 32.45)
+        /*let i1 = IncomeExpenseItemModel(type: .income, desc: "Market", dateTime: Date(), amount: 32.45)
         let i2 = IncomeExpenseItemModel(type: .income, desc: "Araba Kasko", dateTime: Date(), amount: 1532.45)
         let i3 = IncomeExpenseItemModel(type: .income, desc: "Dışarıda Yemek", dateTime: Date(), amount: 25165)
         let i4 = IncomeExpenseItemModel(type: .income, desc: "Kafe", dateTime: Date(), amount: 5332.77)
@@ -372,7 +382,42 @@ final class IncomeExpenseViewController: UIViewController {
         lblExpenseSum.text = expenseSum.stringValue
         lblSubstractSum.text = substractSum.stringValue
         
-        tableIncomeExpense.reloadData()
+        tableIncomeExpense.reloadData()*/
+        
+        let realm: Realm = try! Realm()
+        let sm = StoreManager(realm: realm)
+        
+        sm.addItemTest(type: .income, description: "Ekim Gelir 1", amount: 34380, date: Date(), year: 2022, month: 10)
+        sm.addItemTest(type: .income, description: "Ekim Gelir 2", amount: 2050, date: Date(), year: 2022, month: 10)
+        sm.addItemTest(type: .income, description: "Ekim Gelir 3", amount: 1034.25, date: Date(), year: 2022, month: 10)
+        sm.addItemTest(type: .expense, description: "Ekim Gider 1", amount: 100, date: Date(), year: 2022, month: 10)
+        sm.addItemTest(type: .expense, description: "Ekim Gider 2", amount: 2022, date: Date(), year: 2022, month: 10)
+        sm.addItemTest(type: .expense, description: "Ekim Gider 3", amount: 250, date: Date(), year: 2022, month: 10)
+        sm.addItemTest(type: .expense, description: "Ekim Gider 4", amount: 361.36, date: Date(), year: 2022, month: 10)
+        sm.addItemTest(type: .expense, description: "Ekim Gider 5", amount: 1200, date: Date(), year: 2022, month: 10)
+        sm.addItemTest(type: .expense, description: "Ekim Gider 6", amount: 950, date: Date(), year: 2022, month: 10)
+        
+        sm.addItemTest(type: .income, description: "Eylül Gelir 1", amount: 34380, date: Date(), year: 2022, month: 9)
+        sm.addItemTest(type: .income, description: "Eylül Gelir 2", amount: 2050, date: Date(), year: 2022, month: 9)
+        sm.addItemTest(type: .income, description: "Eylül Gelir 3", amount: 1034.25, date: Date(), year: 2022, month: 9)
+        sm.addItemTest(type: .expense, description: "Eylül Gider 1", amount: 100, date: Date(), year: 2022, month: 9)
+        sm.addItemTest(type: .expense, description: "Eylül Gider 2", amount: 2022, date: Date(), year: 2022, month: 9)
+        sm.addItemTest(type: .expense, description: "Eylül Gider 3", amount: 250, date: Date(), year: 2022, month: 9)
+        sm.addItemTest(type: .expense, description: "Eylül Gider 4", amount: 361.36, date: Date(), year: 2022, month: 9)
+        
+        sm.addItemTest(type: .income, description: "Ağustos Gelir 1", amount: 15000, date: Date(), year: 2022, month: 8)
+        sm.addItemTest(type: .income, description: "Ağustos Gelir 2", amount: 2050, date: Date(), year: 2022, month: 8)
+        sm.addItemTest(type: .expense, description: "Ağustos Gider 1", amount: 100, date: Date(), year: 2022, month: 8)
+        sm.addItemTest(type: .expense, description: "Ağustos Gider 2", amount: 2022, date: Date(), year: 2022, month: 8)
+        
+        sm.addItemTest(type: .income, description: "Temmuz Gelir 2", amount: 2050, date: Date(), year: 2021, month: 10)
+        sm.addItemTest(type: .income, description: "Temmuz Gelir 3", amount: 1034.25, date: Date(), year: 2021, month: 10)
+        sm.addItemTest(type: .expense, description: "Temmuz Gider 1", amount: 21000, date: Date(), year: 2021, month: 10)
+        sm.addItemTest(type: .expense, description: "Temmuz Gider 2", amount: 2022, date: Date(), year: 2021, month: 10)
+        sm.addItemTest(type: .expense, description: "Temmuz Gider 3", amount: 250, date: Date(), year: 2021, month: 10)
+        sm.addItemTest(type: .expense, description: "Temmuz Gider 4", amount: 361.36, date: Date(), year: 2021, month: 10)
+        sm.addItemTest(type: .expense, description: "Temmuz Gider 5", amount: 1200, date: Date(), year: 2021, month: 10)
+        sm.addItemTest(type: .expense, description: "Temmuz Gider 6", amount: 950, date: Date(), year: 2021, month: 10)
     }
     
     private func handleMoveToDelete(with id: String, at index: IndexPath) {
@@ -382,6 +427,7 @@ final class IncomeExpenseViewController: UIViewController {
 
 extension IncomeExpenseViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard !viewModel.isOpenFromAnotherPage else { return nil }
         let deleteAction = UIContextualAction(
             style: .normal,
             title:  nil)

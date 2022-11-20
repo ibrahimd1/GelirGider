@@ -8,22 +8,27 @@
 import Foundation
 import RealmSwift
 
-final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {    
+final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {
+    var year: Int
+    var month: Int
+    var isOpenFromAnotherPage: Bool    
     weak var delegate: IncomeExpenseViewModelDelegate?
     private var incomeExpenseData: IncomeExpenseModel = IncomeExpenseModel()
     private var storeManager: StoreManager
     private var realm: Realm!
     
-    init(){
+    init(isOpenFromAnotherPage: Bool = false, year: Int?, month: Int?){
+        let today = Date()
         self.realm = try! Realm()
         storeManager = StoreManager(realm: self.realm)
+        self.isOpenFromAnotherPage = isOpenFromAnotherPage
+        self.year = year ?? today.currentYear
+        self.month = month ?? today.currentMonth
     }
     
     func load() {
-        let today = Date()
-        delegate?.handleViewModelOutput(.updateHeader(year: today.currentYear, month: today.currentMonthName))
-        
-        let data: IncomeExpenseModel? = storeManager.getData(of: today.currentMonth, in: today.currentYear)
+        delegate?.handleViewModelOutput(.updateHeader(year: year, month: Date.getMonthName(month: month)))
+        let data: IncomeExpenseModel? = storeManager.getData(of: month, in: year)
         guard let data = data else { return }
         incomeExpenseData = data
         delegate?.handleViewModelOutput(.showData(IncomeExpensePresentation.init(model: incomeExpenseData)))

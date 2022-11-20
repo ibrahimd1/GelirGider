@@ -9,6 +9,9 @@ import Foundation
 
 protocol IncomeExpenseViewModelProtocol {
     var delegate: IncomeExpenseViewModelDelegate? {get set}
+    var isOpenFromAnotherPage: Bool {get set}
+    var year: Int {get set}
+    var month: Int {get set}
     func load()
     func addIncomeExpense(type: IncomeExpenseType, description: String, amount: Double)
     func updateIncomeExpense(with id: String, description: String?, amount: Double?, index: Int)

@@ -7,11 +7,14 @@
 
 import UIKit
 
-final class IncomeExpenseBuilder {
-    
-    static func make() -> IncomeExpenseViewController {
+final class IncomeExpenseBuilder {    
+    static func make(with viewModel: IncomeExpenseViewModelProtocol?) -> IncomeExpenseViewController {
         let viewController = IncomeExpenseViewController()
-        viewController.viewModel = IncomeExpenseViewModel()
+        if viewModel != nil {
+            viewController.viewModel = viewModel
+        } else {
+            viewController.viewModel = IncomeExpenseViewModel(year: nil, month: nil)
+        }
         return viewController
     }
 }
