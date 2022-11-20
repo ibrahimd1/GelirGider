@@ -79,6 +79,7 @@ final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {
     }
     
     fileprivate func setOptions() {
+        guard !isOpenFromAnotherPage else { return }
         let options = storeManager.getOptions()
         if options.count > 0 {
             delegate?.handleViewModelOutput(.selectSegment(type: options[0].incomeExpenseOptions))

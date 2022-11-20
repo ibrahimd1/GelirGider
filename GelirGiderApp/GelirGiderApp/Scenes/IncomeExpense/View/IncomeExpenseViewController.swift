@@ -349,7 +349,9 @@ final class IncomeExpenseViewController: UIViewController {
     
     fileprivate func setOptions(type: IncomeExpenseType) {
         self.selectedSegmentedControl = type
+        if !viewModel.isOpenFromAnotherPage {
         self.viewModel.selectIncomeExpenseButton(type: type)
+        }
     }
     
     func tableTest() {
