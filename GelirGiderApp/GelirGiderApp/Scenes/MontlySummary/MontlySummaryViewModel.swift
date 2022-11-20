@@ -23,6 +23,7 @@ final class MontlySummaryViewModel: MontlySummaryViewModelProtocol {
         delegate?.handleViewModelOutput(.updateHeader("Aylık Özet"))
         
         dataList = storeManager.getAllData()
+        dataList = dataList.sorted(by: { ($0.year, $0.month) > (($1.year, $1.month)) })
         if dataList.count > 0 {
             let montlySummaryList = dataList.map { MontlySummaryModel.init(model: $0) }
             let data = montlySummaryList.map { MontlySummaryPresentation.init(model: $0) }
