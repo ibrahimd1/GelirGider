@@ -8,9 +8,9 @@
 import Foundation
 
 final class MontlySummaryBuilder {
-    static func make(with viewMdel: MontlySummaryViewModelProtocol) -> MontlySummaryViewController {
+    static func make(with viewModel: MontlySummaryViewModelProtocol) -> MontlySummaryViewController {
         let vc = MontlySummaryViewController()
-        vc.viewModel = viewMdel
+        vc.viewModel = viewModel
         return vc
     }
 }

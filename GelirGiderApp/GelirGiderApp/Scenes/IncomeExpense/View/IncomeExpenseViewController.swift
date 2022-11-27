@@ -350,46 +350,46 @@ final class IncomeExpenseViewController: UIViewController {
     fileprivate func setOptions(type: IncomeExpenseType) {
         self.selectedSegmentedControl = type
         if !viewModel.isOpenFromAnotherPage {
-        self.viewModel.selectIncomeExpenseButton(type: type)
+            self.viewModel.selectIncomeExpenseButton(type: type)
         }
     }
     
     func tableTest() {
         /*let i1 = IncomeExpenseItemModel(type: .income, desc: "Market", dateTime: Date(), amount: 32.45)
-        let i2 = IncomeExpenseItemModel(type: .income, desc: "Araba Kasko", dateTime: Date(), amount: 1532.45)
-        let i3 = IncomeExpenseItemModel(type: .income, desc: "Dışarıda Yemek", dateTime: Date(), amount: 25165)
-        let i4 = IncomeExpenseItemModel(type: .income, desc: "Kafe", dateTime: Date(), amount: 5332.77)
-        let i5 = IncomeExpenseItemModel(type: .income, desc: "Ev Kirası", dateTime: Date(), amount: 2.5)
-        let i6 = IncomeExpenseItemModel(type: .income, desc: "Ev Harcama Test", dateTime: Date(), amount: 158.12)
-        let i7 = IncomeExpenseItemModel(type: .income, desc: "Araba Kasko", dateTime: Date(), amount: 1532.45)
-        let i8 = IncomeExpenseItemModel(type: .income, desc: "Dışarıda Yemek", dateTime: Date(), amount: 25165)
-        let i9 = IncomeExpenseItemModel(type: .income, desc: "Kafe", dateTime: Date(), amount: 5332.77)
-        let i10 = IncomeExpenseItemModel(type: .income, desc: "Ev Kirası", dateTime: Date(), amount: 2.5)
-        let i11 = IncomeExpenseItemModel(type: .income, desc: "Ev Harcama Test", dateTime: Date(), amount: 158.12)
-        let list = List<IncomeExpenseItemModel>()
-        list.append(i1)
-        list.append(i2)
-        list.append(i3)
-        list.append(i4)
-        list.append(i5)
-        list.append(i6)
-        list.append(i7)
-        list.append(i8)
-        list.append(i9)
-        list.append(i10)
-        list.append(i11)
-        
-        //self.itemListIncome = IncomeExpensePresentation(model: IncomeExpenseModel(year: 2022, month: 10, incomeExpenseList: list))
-        
-        let incomeSum = list.filter({ $0.type == .income }).map({$0.amountOfIncomeExpense}).reduce(0, +)
-        let expenseSum = list.filter({ $0.type == .expense }).map({$0.amountOfIncomeExpense}).reduce(0, +)
-        let substractSum = incomeSum - expenseSum
-        
-        lblIncomeSum.text = incomeSum.stringValue
-        lblExpenseSum.text = expenseSum.stringValue
-        lblSubstractSum.text = substractSum.stringValue
-        
-        tableIncomeExpense.reloadData()*/
+         let i2 = IncomeExpenseItemModel(type: .income, desc: "Araba Kasko", dateTime: Date(), amount: 1532.45)
+         let i3 = IncomeExpenseItemModel(type: .income, desc: "Dışarıda Yemek", dateTime: Date(), amount: 25165)
+         let i4 = IncomeExpenseItemModel(type: .income, desc: "Kafe", dateTime: Date(), amount: 5332.77)
+         let i5 = IncomeExpenseItemModel(type: .income, desc: "Ev Kirası", dateTime: Date(), amount: 2.5)
+         let i6 = IncomeExpenseItemModel(type: .income, desc: "Ev Harcama Test", dateTime: Date(), amount: 158.12)
+         let i7 = IncomeExpenseItemModel(type: .income, desc: "Araba Kasko", dateTime: Date(), amount: 1532.45)
+         let i8 = IncomeExpenseItemModel(type: .income, desc: "Dışarıda Yemek", dateTime: Date(), amount: 25165)
+         let i9 = IncomeExpenseItemModel(type: .income, desc: "Kafe", dateTime: Date(), amount: 5332.77)
+         let i10 = IncomeExpenseItemModel(type: .income, desc: "Ev Kirası", dateTime: Date(), amount: 2.5)
+         let i11 = IncomeExpenseItemModel(type: .income, desc: "Ev Harcama Test", dateTime: Date(), amount: 158.12)
+         let list = List<IncomeExpenseItemModel>()
+         list.append(i1)
+         list.append(i2)
+         list.append(i3)
+         list.append(i4)
+         list.append(i5)
+         list.append(i6)
+         list.append(i7)
+         list.append(i8)
+         list.append(i9)
+         list.append(i10)
+         list.append(i11)
+         
+         //self.itemListIncome = IncomeExpensePresentation(model: IncomeExpenseModel(year: 2022, month: 10, incomeExpenseList: list))
+         
+         let incomeSum = list.filter({ $0.type == .income }).map({$0.amountOfIncomeExpense}).reduce(0, +)
+         let expenseSum = list.filter({ $0.type == .expense }).map({$0.amountOfIncomeExpense}).reduce(0, +)
+         let substractSum = incomeSum - expenseSum
+         
+         lblIncomeSum.text = incomeSum.stringValue
+         lblExpenseSum.text = expenseSum.stringValue
+         lblSubstractSum.text = substractSum.stringValue
+         
+         tableIncomeExpense.reloadData()*/
         
         let realm: Realm = try! Realm()
         let sm = StoreManager(realm: realm)
@@ -572,6 +572,9 @@ extension IncomeExpenseViewController: IncomeExpenseViewModelDelegate{
         switch route {
         case .montlySummary(let viewModel):
             let vc = MontlySummaryBuilder.make(with: viewModel)
+            self.navigationController?.pushViewController(vc, animated: true)
+        case .yearlySummary(let viewModel):
+            let vc = YearlySummaryBuilder.make(with: viewModel)
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

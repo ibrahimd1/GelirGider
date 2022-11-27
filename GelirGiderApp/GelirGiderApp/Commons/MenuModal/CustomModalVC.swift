@@ -156,6 +156,8 @@ extension CustomModalVC: UITableViewDelegate {
         if indexPath.row == 0 {
             type = .montlySummary
         } else if indexPath.row == 1 {
+            type = .yearlySummary
+        } else if indexPath.row == 2 {
             type = .about
         } else {
             type = .appStore

@@ -14,6 +14,7 @@ internal struct MenuObject {
 }
 
 internal enum MenuType {
+    case yearlySummary
     case montlySummary
     case about
     case appStore

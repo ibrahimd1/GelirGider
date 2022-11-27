@@ -17,6 +17,10 @@
 		D31A4A932806136500070A25 /* IncomeExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31A4A922806136500070A25 /* IncomeExpenseCell.swift */; };
 		D3271F8B28A8142F0010B75C /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3271F8A28A8142F0010B75C /* Double+Extension.swift */; };
 		D3271F8D28A84A0A0010B75C /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3271F8C28A84A0A0010B75C /* UITextField+Extension.swift */; };
+		D3272D6C292D699900620DC6 /* YearlySummaryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3272D6B292D699900620DC6 /* YearlySummaryBuilder.swift */; };
+		D3272D6E292D69A500620DC6 /* YearlySummaryContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3272D6D292D69A500620DC6 /* YearlySummaryContracts.swift */; };
+		D3272D70292D69B300620DC6 /* YearlySummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3272D6F292D69B300620DC6 /* YearlySummaryViewModel.swift */; };
+		D3272D72292D6A4400620DC6 /* YearlySummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3272D71292D6A4400620DC6 /* YearlySummaryVC.swift */; };
 		D3292F522917FDF800FFA99C /* UISwipeActionsConfiguration+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3292F512917FDF800FFA99C /* UISwipeActionsConfiguration+Extension.swift */; };
 		D3292F5529183A0900FFA99C /* MontlySummaryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3292F5429183A0900FFA99C /* MontlySummaryBuilder.swift */; };
 		D3292F5729183A1D00FFA99C /* MontlySummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3292F5629183A1D00FFA99C /* MontlySummaryVC.swift */; };
@@ -30,6 +34,8 @@
 		D341932A290871E800B69B1E /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3419329290871E800B69B1E /* Poppins-Medium.ttf */; };
 		D341932C2908775300B69B1E /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D341932B2908775300B69B1E /* UIFont+Extension.swift */; };
 		D341932E290878CD00B69B1E /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D341932D290878CD00B69B1E /* Poppins-Regular.ttf */; };
+		D34817122933E705009DBD04 /* YearlySummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34817112933E705009DBD04 /* YearlySummaryCell.swift */; };
+		D34817142933E97C009DBD04 /* YearlySummaryPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34817132933E97C009DBD04 /* YearlySummaryPresentation.swift */; };
 		D3537F8A291FA52500A3AEF1 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3537F89291FA52500A3AEF1 /* Action.swift */; };
 		D3537F8C291FA55600A3AEF1 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3537F8B291FA55600A3AEF1 /* ActionButton.swift */; };
 		D3537F8E291FA58800A3AEF1 /* CsutomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3537F8D291FA58800A3AEF1 /* CsutomAlertViewController.swift */; };
@@ -91,6 +97,10 @@
 		D31A4A922806136500070A25 /* IncomeExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseCell.swift; sourceTree = "<group>"; };
 		D3271F8A28A8142F0010B75C /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		D3271F8C28A84A0A0010B75C /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		D3272D6B292D699900620DC6 /* YearlySummaryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlySummaryBuilder.swift; sourceTree = "<group>"; };
+		D3272D6D292D69A500620DC6 /* YearlySummaryContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlySummaryContracts.swift; sourceTree = "<group>"; };
+		D3272D6F292D69B300620DC6 /* YearlySummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlySummaryViewModel.swift; sourceTree = "<group>"; };
+		D3272D71292D6A4400620DC6 /* YearlySummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlySummaryVC.swift; sourceTree = "<group>"; };
 		D3292F512917FDF800FFA99C /* UISwipeActionsConfiguration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISwipeActionsConfiguration+Extension.swift"; sourceTree = "<group>"; };
 		D3292F5429183A0900FFA99C /* MontlySummaryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MontlySummaryBuilder.swift; sourceTree = "<group>"; };
 		D3292F5629183A1D00FFA99C /* MontlySummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MontlySummaryVC.swift; sourceTree = "<group>"; };
@@ -104,6 +114,8 @@
 		D3419329290871E800B69B1E /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		D341932B2908775300B69B1E /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		D341932D290878CD00B69B1E /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		D34817112933E705009DBD04 /* YearlySummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlySummaryCell.swift; sourceTree = "<group>"; };
+		D34817132933E97C009DBD04 /* YearlySummaryPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlySummaryPresentation.swift; sourceTree = "<group>"; };
 		D3537F89291FA52500A3AEF1 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		D3537F8B291FA55600A3AEF1 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		D3537F8D291FA58800A3AEF1 /* CsutomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsutomAlertViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +210,7 @@
 			children = (
 				D30C199027AB027E0002C07D /* IncomeExpensePresentation.swift */,
 				D31843CB2919A1C6000396CB /* MontlySummaryPresentation.swift */,
+				D34817132933E97C009DBD04 /* YearlySummaryPresentation.swift */,
 			);
 			path = Presentations;
 			sourceTree = "<group>";
@@ -227,6 +240,26 @@
 				D36B6FBE29218C2F00C5A413 /* CGFloat+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D3272D69292D694700620DC6 /* YearlySummary */ = {
+			isa = PBXGroup;
+			children = (
+				D3272D6A292D698900620DC6 /* View */,
+				D3272D6B292D699900620DC6 /* YearlySummaryBuilder.swift */,
+				D3272D6D292D69A500620DC6 /* YearlySummaryContracts.swift */,
+				D3272D6F292D69B300620DC6 /* YearlySummaryViewModel.swift */,
+			);
+			path = YearlySummary;
+			sourceTree = "<group>";
+		};
+		D3272D6A292D698900620DC6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D3272D71292D6A4400620DC6 /* YearlySummaryVC.swift */,
+				D34817112933E705009DBD04 /* YearlySummaryCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D3292F532918395F00FFA99C /* MontlySummary */ = {
@@ -336,6 +369,7 @@
 			children = (
 				D30C198B27AAFDE00002C07D /* IncomeExpense */,
 				D3292F532918395F00FFA99C /* MontlySummary */,
+				D3272D69292D694700620DC6 /* YearlySummary */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -552,6 +586,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3272D6E292D69A500620DC6 /* YearlySummaryContracts.swift in Sources */,
 				D3537F8E291FA58800A3AEF1 /* CsutomAlertViewController.swift in Sources */,
 				D30C199827AB09DB0002C07D /* IncomeExpenseViewModel.swift in Sources */,
 				D3292F5B29183A3E00FFA99C /* MontlySummaryViewModel.swift in Sources */,
@@ -563,6 +598,7 @@
 				D3A8117028AAE07E00004866 /* UIViewContoller+Extension.swift in Sources */,
 				D3FF59D9292AA018007BA108 /* SectionHeader.swift in Sources */,
 				D3292F5929183A2B00FFA99C /* MontlySummaryContracts.swift in Sources */,
+				D34817122933E705009DBD04 /* YearlySummaryCell.swift in Sources */,
 				D3292F5529183A0900FFA99C /* MontlySummaryBuilder.swift in Sources */,
 				D3F04D9D272C2AC10047E9F4 /* IncomeExpenseViewController.swift in Sources */,
 				D341932C2908775300B69B1E /* UIFont+Extension.swift in Sources */,
@@ -581,16 +617,20 @@
 				D3537F8C291FA55600A3AEF1 /* ActionButton.swift in Sources */,
 				D3271F8B28A8142F0010B75C /* Double+Extension.swift in Sources */,
 				D30C198D27AAFF870002C07D /* IncomeExpenseContracts.swift in Sources */,
+				D3272D72292D6A4400620DC6 /* YearlySummaryVC.swift in Sources */,
 				D35A1964290C346B00BA7F90 /* CustomModalVCContracts.swift in Sources */,
 				D30C199127AB027E0002C07D /* IncomeExpensePresentation.swift in Sources */,
 				D3A0A99E27A71F8300625BB6 /* IncomeExpenseBuilder.swift in Sources */,
+				D3272D6C292D699900620DC6 /* YearlySummaryBuilder.swift in Sources */,
 				D380699E27DE1C91001EA6E2 /* StoreManager.swift in Sources */,
 				D3292F522917FDF800FFA99C /* UISwipeActionsConfiguration+Extension.swift in Sources */,
 				D37C6AC627F8A395009A37DF /* RoundedButton.swift in Sources */,
 				D36B6FBF29218C2F00C5A413 /* CGFloat+Extension.swift in Sources */,
 				D35A1968290C548E00BA7F90 /* UIColor+Extension.swift in Sources */,
+				D3272D70292D69B300620DC6 /* YearlySummaryViewModel.swift in Sources */,
 				D3A0A99A27A7146700625BB6 /* AppRouter.swift in Sources */,
 				D36B6FBD29217DAF00C5A413 /* PieView.swift in Sources */,
+				D34817142933E97C009DBD04 /* YearlySummaryPresentation.swift in Sources */,
 				D30C199327AB03A40002C07D /* Constants.swift in Sources */,
 				D3292F5729183A1D00FFA99C /* MontlySummaryVC.swift in Sources */,
 			);

@@ -56,6 +56,9 @@ final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {
     
     func selectItem(at type: MenuType) {
         switch type {
+        case .yearlySummary:
+            let viewModel = YearlySummaryViewModel()
+            delegate?.navigate(to: .yearlySummary(viewModel))
         case .montlySummary:
             let viewModel = MontlySummaryViewModel()
             delegate?.navigate(to: .montlySummary(viewModel))
