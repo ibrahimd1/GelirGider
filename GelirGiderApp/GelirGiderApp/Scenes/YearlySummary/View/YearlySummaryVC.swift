@@ -24,13 +24,38 @@ final class YearlySummaryViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var lblInfoHeader: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Listelenecek veri bulunamadı"
+        lbl.font = .Poppins.bold(size: 18).font
+        lbl.textAlignment = .center
+        lbl.textColor = CustomColor.textColor
+        lbl.numberOfLines = 0
+        return lbl
+    }()
+    
+    private lazy var lblInfo: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Gelir/Gider girişi yaptığınızda verileriniz yıl bazında listelenecektir"
+        lbl.font = .Poppins.medium(size: 14).font
+        lbl.textAlignment = .center
+        lbl.textColor = CustomColor.textColorSecondary
+        lbl.numberOfLines = 0
+        return lbl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         viewModel.delegate = self
         viewModel.load()
         setupView()
-        locateTable()
+        
+        if yearPresentationList.count > 0 {
+            locateTable()
+        } else {
+            locateInfo()
+        }
     }
     
     fileprivate func setupView() {
@@ -49,6 +74,15 @@ final class YearlySummaryViewController: UIViewController {
         
         view.addSubview(tableYearlySummary)
         tableYearlySummary.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 20, paddingBottom: -20, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 0)
+    }
+    
+    fileprivate func locateInfo() {
+        view.addSubview(lblInfoHeader)
+        lblInfoHeader.anchorCenter(centerX: view.centerXAnchor, centerY: view.centerYAnchor, constantY: -20)
+        
+        view.addSubview(lblInfo)
+        lblInfo.anchorCenter(centerX: view.centerXAnchor, centerY: nil)
+        lblInfo.anchor(top: lblInfoHeader.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 20, paddingBottom: 0, paddingTrailing: -30, paddingLeading: 30, width: 0, height: 0)
     }
 }
 

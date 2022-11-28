@@ -48,14 +48,14 @@ extension UIView {
         self.layer.shadowRadius = radius
     }
     
-    func anchorCenter(centerX: NSLayoutXAxisAnchor?, centerY: NSLayoutYAxisAnchor?) {
+    func anchorCenter(centerX: NSLayoutXAxisAnchor?, centerY: NSLayoutYAxisAnchor?, constantX: CGFloat = 0, constantY: CGFloat = 0) {
         translatesAutoresizingMaskIntoConstraints = false
         if let centerX = centerX {
-            self.centerXAnchor.constraint(equalTo: centerX).isActive = true
+            self.centerXAnchor.constraint(equalTo: centerX, constant: constantX).isActive = true
         }
         
         if let centerY = centerY {
-            self.centerYAnchor.constraint(equalTo: centerY).isActive = true
+            self.centerYAnchor.constraint(equalTo: centerY, constant: constantY).isActive = true
         }
     }
 }

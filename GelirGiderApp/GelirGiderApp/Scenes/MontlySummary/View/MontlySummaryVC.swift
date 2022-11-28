@@ -12,7 +12,6 @@ final class MontlySummaryViewController: UIViewController {
     var viewModel: MontlySummaryViewModelProtocol!
     
     private var itemList: [MontlySummaryPresentation] = []
-    private var yearList: [String] = []
     private var currentIndex = 0
     
     private lazy var tableMontlySummary: UICollectionView = {
@@ -26,14 +25,37 @@ final class MontlySummaryViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var lblInfoHeader: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Listelenecek veri bulunamadı"
+        lbl.font = .Poppins.bold(size: 18).font
+        lbl.textAlignment = .center
+        lbl.textColor = CustomColor.textColor
+        lbl.numberOfLines = 0
+        return lbl
+    }()
+    
+    private lazy var lblInfo: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Gelir/Gider girişi yaptığınızda verileriniz ay bazında listelenecektir"
+        lbl.font = .Poppins.medium(size: 14).font
+        lbl.textAlignment = .center
+        lbl.textColor = CustomColor.textColorSecondary
+        lbl.numberOfLines = 0
+        return lbl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         viewModel.delegate = self
         viewModel.load()
         
-        locateTable()
-        //testData()
+        if self.itemList.count > 0 {
+            locateTable()
+        } else {
+            locateInfo()
+        }
     }
     
     fileprivate func setupView() {
@@ -55,15 +77,13 @@ final class MontlySummaryViewController: UIViewController {
         tableMontlySummary.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 0, paddingBottom: -20, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 0)
     }
     
-    fileprivate func testData() {
-        itemList.append(MontlySummaryPresentation(year: 2022, month: 11, income: 32000, expense: 25000, substract: 7000))
-        itemList.append(MontlySummaryPresentation(year: 2022, month: 10, income: 32000, expense: 25000, substract: 7000))
-        itemList.append(MontlySummaryPresentation(year: 2022, month: 9, income: 32000, expense: 25000, substract: 7000))
-        itemList.append(MontlySummaryPresentation(year: 2022, month: 8, income: 32000, expense: 25000, substract: 7000))
-        itemList.append(MontlySummaryPresentation(year: 2022, month: 7, income: 32000, expense: 25000, substract: 7000))
-        itemList.append(MontlySummaryPresentation(year: 2022, month: 6, income: 32000, expense: 25000, substract: 7000))
-        itemList.append(MontlySummaryPresentation(year: 2022, month: 5, income: 32000, expense: 25000, substract: 7000))
-        itemList.append(MontlySummaryPresentation(year: 2022, month: 4, income: 32000, expense: 25000, substract: -150))
+    fileprivate func locateInfo() {
+        view.addSubview(lblInfoHeader)
+        lblInfoHeader.anchorCenter(centerX: view.centerXAnchor, centerY: view.centerYAnchor, constantY: -20)
+        
+        view.addSubview(lblInfo)
+        lblInfo.anchorCenter(centerX: view.centerXAnchor, centerY: nil)
+        lblInfo.anchor(top: lblInfoHeader.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 20, paddingBottom: 0, paddingTrailing: -30, paddingLeading: 30, width: 0, height: 0)
     }
     
     func getUniqueYears() -> [Int] {

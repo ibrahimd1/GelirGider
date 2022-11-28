@@ -67,9 +67,20 @@ internal final class StoreManager {
         let item = list!.incomeExpenseList.where {
             $0.itemId == id
         }
-        let indexOfItem = list!.incomeExpenseList.index(of: item[0])
+        
+        let indexOfItem = list!.incomeExpenseList.index(of: item[0]) ?? -1
+        let isDeleteItem = list!.incomeExpenseList.count == 1 && indexOfItem > -1
+        
         try! realm.write {
-            list!.incomeExpenseList.remove(at: indexOfItem!)
+            if isDeleteItem {
+                realm.delete(list!)
+            } else {
+                list!.incomeExpenseList.remove(at: indexOfItem)
+            }
+        }
+        
+        if isDeleteItem {
+            return IncomeExpenseModel()
         }
         return list!
     }
