@@ -188,12 +188,12 @@ final class IncomeExpenseViewController: UIViewController {
     
     fileprivate func locateTextComponents() {
         if !viewModel.isOpenFromAnotherPage {
-            let oranUzunluk = (view.bounds.width - 48) / 3
+            let oranUzunluk = (view.bounds.width - 42) / 3
             view.addSubview(txtDescription)
-            txtDescription.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: nil, paddingTop: 3, paddingBottom: 0, paddingTrailing: -5, paddingLeading: 16, width: oranUzunluk * 2, height: 38)
+            txtDescription.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: nil, paddingTop: 3, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 16, width: oranUzunluk * 2, height: 38)
             
             view.addSubview(txtAmount)
-            txtAmount.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: txtDescription.trailingAnchor, trailing: view.trailingAnchor, paddingTop: 3, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 38)
+            txtAmount.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: nil, trailing: view.trailingAnchor, paddingTop: 3, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 0, width: oranUzunluk, height: 38)
         }
     }
     
