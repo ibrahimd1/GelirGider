@@ -63,6 +63,8 @@ final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {
             let viewModel = MontlySummaryViewModel()
             delegate?.navigate(to: .montlySummary(viewModel))
         case .about:
+            let viewModel = AboutViewModel()
+            delegate?.navigate(to: .about(viewModel))
             break
         case .appStore:
             break

@@ -569,14 +569,17 @@ extension IncomeExpenseViewController: IncomeExpenseViewModelDelegate{
     }
     
     func navigate(to route: IncomeExpenseRoute) {
+        var vc: UIViewController
+        
         switch route {
         case .montlySummary(let viewModel):
-            let vc = MontlySummaryBuilder.make(with: viewModel)
-            self.navigationController?.pushViewController(vc, animated: true)
+            vc = MontlySummaryBuilder.make(with: viewModel)
         case .yearlySummary(let viewModel):
-            let vc = YearlySummaryBuilder.make(with: viewModel)
-            self.navigationController?.pushViewController(vc, animated: true)
+            vc = YearlySummaryBuilder.make(with: viewModel)
+        case .about(let viewModel):
+            vc = AboutBuilder.make(with: viewModel)
         }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

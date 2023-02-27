@@ -58,6 +58,10 @@
 		D3A0A99E27A71F8300625BB6 /* IncomeExpenseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0A99D27A71F8300625BB6 /* IncomeExpenseBuilder.swift */; };
 		D3A8117028AAE07E00004866 /* UIViewContoller+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8116F28AAE07E00004866 /* UIViewContoller+Extension.swift */; };
 		D3C2355D28FC730C00036598 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C2355C28FC730C00036598 /* CustomSegmentedControl.swift */; };
+		D3D030972986C2E900396BFF /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D030962986C2E900396BFF /* AboutViewController.swift */; };
+		D3D030992986C30400396BFF /* AboutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D030982986C30400396BFF /* AboutBuilder.swift */; };
+		D3D0309B2986C31200396BFF /* AboutContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0309A2986C31200396BFF /* AboutContracts.swift */; };
+		D3D0309D2986C32000396BFF /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0309C2986C32000396BFF /* AboutViewModel.swift */; };
 		D3DBEFB527F0ABBB004A02CD /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DBEFB427F0ABBB004A02CD /* UIView+Extension.swift */; };
 		D3F04D99272C2AC10047E9F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F04D98272C2AC10047E9F4 /* AppDelegate.swift */; };
 		D3F04D9D272C2AC10047E9F4 /* IncomeExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F04D9C272C2AC10047E9F4 /* IncomeExpenseViewController.swift */; };
@@ -138,6 +142,10 @@
 		D3A0A99D27A71F8300625BB6 /* IncomeExpenseBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseBuilder.swift; sourceTree = "<group>"; };
 		D3A8116F28AAE07E00004866 /* UIViewContoller+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewContoller+Extension.swift"; sourceTree = "<group>"; };
 		D3C2355C28FC730C00036598 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		D3D030962986C2E900396BFF /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		D3D030982986C30400396BFF /* AboutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutBuilder.swift; sourceTree = "<group>"; };
+		D3D0309A2986C31200396BFF /* AboutContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutContracts.swift; sourceTree = "<group>"; };
+		D3D0309C2986C32000396BFF /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
 		D3DBEFB427F0ABBB004A02CD /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		D3F04D95272C2AC10047E9F4 /* GelirGiderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GelirGiderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F04D98272C2AC10047E9F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -240,6 +248,17 @@
 				D36B6FBE29218C2F00C5A413 /* CGFloat+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D30E20A3294F5D9400939A54 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				D3D030962986C2E900396BFF /* AboutViewController.swift */,
+				D3D030982986C30400396BFF /* AboutBuilder.swift */,
+				D3D0309A2986C31200396BFF /* AboutContracts.swift */,
+				D3D0309C2986C32000396BFF /* AboutViewModel.swift */,
+			);
+			path = About;
 			sourceTree = "<group>";
 		};
 		D3272D69292D694700620DC6 /* YearlySummary */ = {
@@ -370,6 +389,7 @@
 				D30C198B27AAFDE00002C07D /* IncomeExpense */,
 				D3292F532918395F00FFA99C /* MontlySummary */,
 				D3272D69292D694700620DC6 /* YearlySummary */,
+				D30E20A3294F5D9400939A54 /* About */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -588,6 +608,7 @@
 			files = (
 				D3272D6E292D69A500620DC6 /* YearlySummaryContracts.swift in Sources */,
 				D3537F8E291FA58800A3AEF1 /* CsutomAlertViewController.swift in Sources */,
+				D3D0309D2986C32000396BFF /* AboutViewModel.swift in Sources */,
 				D30C199827AB09DB0002C07D /* IncomeExpenseViewModel.swift in Sources */,
 				D3292F5B29183A3E00FFA99C /* MontlySummaryViewModel.swift in Sources */,
 				D3DBEFB527F0ABBB004A02CD /* UIView+Extension.swift in Sources */,
@@ -595,6 +616,7 @@
 				D35A1962290C343E00BA7F90 /* CustomModalVC.swift in Sources */,
 				D30C199B27AB10C20002C07D /* Date+Extension.swift in Sources */,
 				D31843CC2919A1C6000396CB /* MontlySummaryPresentation.swift in Sources */,
+				D3D0309B2986C31200396BFF /* AboutContracts.swift in Sources */,
 				D3A8117028AAE07E00004866 /* UIViewContoller+Extension.swift in Sources */,
 				D3FF59D9292AA018007BA108 /* SectionHeader.swift in Sources */,
 				D3292F5929183A2B00FFA99C /* MontlySummaryContracts.swift in Sources */,
@@ -616,6 +638,7 @@
 				D36FEB18291D9A7A00E2A1D6 /* MontlySummaryModel.swift in Sources */,
 				D3537F8C291FA55600A3AEF1 /* ActionButton.swift in Sources */,
 				D3271F8B28A8142F0010B75C /* Double+Extension.swift in Sources */,
+				D3D030972986C2E900396BFF /* AboutViewController.swift in Sources */,
 				D30C198D27AAFF870002C07D /* IncomeExpenseContracts.swift in Sources */,
 				D3272D72292D6A4400620DC6 /* YearlySummaryVC.swift in Sources */,
 				D35A1964290C346B00BA7F90 /* CustomModalVCContracts.swift in Sources */,
@@ -624,6 +647,7 @@
 				D3272D6C292D699900620DC6 /* YearlySummaryBuilder.swift in Sources */,
 				D380699E27DE1C91001EA6E2 /* StoreManager.swift in Sources */,
 				D3292F522917FDF800FFA99C /* UISwipeActionsConfiguration+Extension.swift in Sources */,
+				D3D030992986C30400396BFF /* AboutBuilder.swift in Sources */,
 				D37C6AC627F8A395009A37DF /* RoundedButton.swift in Sources */,
 				D36B6FBF29218C2F00C5A413 /* CGFloat+Extension.swift in Sources */,
 				D35A1968290C548E00BA7F90 /* UIColor+Extension.swift in Sources */,

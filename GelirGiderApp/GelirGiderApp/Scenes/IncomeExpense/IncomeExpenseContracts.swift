@@ -37,4 +37,5 @@ protocol IncomeExpenseViewModelDelegate: AnyObject {
 enum IncomeExpenseRoute {
     case montlySummary(MontlySummaryViewModelProtocol)
     case yearlySummary(YearlySummaryViewModelProtocol)
+    case about(AboutViewModelProtocol)
 }
