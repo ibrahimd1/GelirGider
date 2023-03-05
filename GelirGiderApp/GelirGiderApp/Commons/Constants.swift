@@ -41,7 +41,7 @@ let menuList: [MenuObject] = [
     MenuObject(image: UIImage(named: "SummaryIcon")!, title: "Aylık Özeti Görüntüle"),
     MenuObject(image: UIImage(named: "YearListIcon")!, title: "Yıllık Özeti Görüntüle"),
     MenuObject(image: UIImage(named: "InfoIcon")!, title: "Hakkında"),
-    MenuObject(image: UIImage(named: "StarIcon")!, title: "Bizi AppStore'da Puanla")
+    MenuObject(image: UIImage(named: "StarIcon")!, title: "AppStore'da Puanla")
 ]
 
 enum SummaryViewType {

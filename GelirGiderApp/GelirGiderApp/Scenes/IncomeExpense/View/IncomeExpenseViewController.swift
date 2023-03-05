@@ -578,8 +578,19 @@ extension IncomeExpenseViewController: IncomeExpenseViewModelDelegate{
             vc = YearlySummaryBuilder.make(with: viewModel)
         case .about(let viewModel):
             vc = AboutBuilder.make(with: viewModel)
+        case .rateAndReviewOnAppstore:
+            rateAndReviewOnAppStore()
+            return
         }
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    fileprivate func rateAndReviewOnAppStore() {
+        let appleID = "1154366081"
+        let url = "https://itunes.apple.com/app/id\(appleID)?action=write-review"
+        if let path = URL(string: url) {
+                UIApplication.shared.open(path, options: [:], completionHandler: nil)
+        }
     }
 }
 

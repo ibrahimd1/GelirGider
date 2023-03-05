@@ -38,7 +38,7 @@
 		D34817142933E97C009DBD04 /* YearlySummaryPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34817132933E97C009DBD04 /* YearlySummaryPresentation.swift */; };
 		D3537F8A291FA52500A3AEF1 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3537F89291FA52500A3AEF1 /* Action.swift */; };
 		D3537F8C291FA55600A3AEF1 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3537F8B291FA55600A3AEF1 /* ActionButton.swift */; };
-		D3537F8E291FA58800A3AEF1 /* CsutomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3537F8D291FA58800A3AEF1 /* CsutomAlertViewController.swift */; };
+		D3537F8E291FA58800A3AEF1 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3537F8D291FA58800A3AEF1 /* CustomAlertViewController.swift */; };
 		D354D320292ABD01009B07DA /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D354D31F292ABD01009B07DA /* SettingsModel.swift */; };
 		D35A1962290C343E00BA7F90 /* CustomModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35A1961290C343E00BA7F90 /* CustomModalVC.swift */; };
 		D35A1964290C346B00BA7F90 /* CustomModalVCContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35A1963290C346B00BA7F90 /* CustomModalVCContracts.swift */; };
@@ -122,7 +122,7 @@
 		D34817132933E97C009DBD04 /* YearlySummaryPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlySummaryPresentation.swift; sourceTree = "<group>"; };
 		D3537F89291FA52500A3AEF1 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		D3537F8B291FA55600A3AEF1 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
-		D3537F8D291FA58800A3AEF1 /* CsutomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsutomAlertViewController.swift; sourceTree = "<group>"; };
+		D3537F8D291FA58800A3AEF1 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		D354D31F292ABD01009B07DA /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		D35A1961290C343E00BA7F90 /* CustomModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalVC.swift; sourceTree = "<group>"; };
 		D35A1963290C346B00BA7F90 /* CustomModalVCContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalVCContracts.swift; sourceTree = "<group>"; };
@@ -329,7 +329,7 @@
 			children = (
 				D3537F89291FA52500A3AEF1 /* Action.swift */,
 				D3537F8B291FA55600A3AEF1 /* ActionButton.swift */,
-				D3537F8D291FA58800A3AEF1 /* CsutomAlertViewController.swift */,
+				D3537F8D291FA58800A3AEF1 /* CustomAlertViewController.swift */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -607,7 +607,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3272D6E292D69A500620DC6 /* YearlySummaryContracts.swift in Sources */,
-				D3537F8E291FA58800A3AEF1 /* CsutomAlertViewController.swift in Sources */,
+				D3537F8E291FA58800A3AEF1 /* CustomAlertViewController.swift in Sources */,
 				D3D0309D2986C32000396BFF /* AboutViewModel.swift in Sources */,
 				D30C199827AB09DB0002C07D /* IncomeExpenseViewModel.swift in Sources */,
 				D3292F5B29183A3E00FFA99C /* MontlySummaryViewModel.swift in Sources */,

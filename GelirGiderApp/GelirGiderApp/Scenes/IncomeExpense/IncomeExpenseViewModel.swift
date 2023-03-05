@@ -67,6 +67,7 @@ final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {
             delegate?.navigate(to: .about(viewModel))
             break
         case .appStore:
+            delegate?.navigate(to: .rateAndReviewOnAppstore)
             break
         }
     }
