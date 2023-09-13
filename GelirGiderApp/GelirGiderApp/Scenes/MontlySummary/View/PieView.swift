@@ -70,8 +70,7 @@ class PieView: UIView {
         animation.fillMode = CAMediaTimingFillMode.forwards
         animation.isRemovedOnCompletion = false
         
-        shapeLayer.add(animation, forKey: "animation")
-        
+        shapeLayer.add(animation, forKey: "animation")        
     }
     
     required init?(coder: NSCoder) {
