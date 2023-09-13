@@ -129,7 +129,8 @@ extension MontlySummaryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let uniqueYears = getUniqueYears()
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "montlySummaryCell", for: indexPath) as? MontlySummaryCell {
-            cell.montlySummaryItem = self.itemList.filter({ $0.year == uniqueYears[indexPath.section] })[indexPath.row]
+            let item = self.itemList.filter({ $0.year == uniqueYears[indexPath.section] })[indexPath.row]
+            cell.montlySummaryItem = item
             return cell
         }
         return UICollectionViewCell()

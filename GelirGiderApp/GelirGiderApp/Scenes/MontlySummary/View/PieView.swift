@@ -13,7 +13,11 @@ class PieView: UIView {
     let shapeLayer = CAShapeLayer()
     let traceLayer = CAShapeLayer()
     
-    internal var percentage: CGFloat = 0
+    internal var percentage: CGFloat! {
+        didSet {
+            lblPercent.text = percentage > 0 ? "%\(abs(percentage).stringValue)" : "-%\(abs(percentage).stringValue)"
+        }
+    }
     
     private lazy var lblPercent: UILabel = {
         let lbl = UILabel()
@@ -67,7 +71,7 @@ class PieView: UIView {
         animation.isRemovedOnCompletion = false
         
         shapeLayer.add(animation, forKey: "animation")
-        lblPercent.text = "%\(abs(percentage).stringValue)"
+        
     }
     
     required init?(coder: NSCoder) {
