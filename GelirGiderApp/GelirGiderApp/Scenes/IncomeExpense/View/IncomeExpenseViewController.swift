@@ -30,13 +30,15 @@ final class IncomeExpenseViewController: UIViewController {
     private lazy var txtDescription: UITextField = {
         let txt = CustomTextField()
         txt.maxLength = 20
+        txt.textAlignment = .center
         txt.configure(with: CustomTextFieldViewModel(placeHolderText: "Gelir/Gider Adı", icon: "DescriptionIcon", keyboardType: .default, iconType: .normal))
         return txt
     }()
     
     private lazy var txtAmount: UITextField = {
-        let txt = CustomTextField()
+        let txt = CustomCurrencyTextField()
         txt.maxLength = 10
+        txt.textAlignment = .center
         txt.configure(with: CustomTextFieldViewModel(placeHolderText: "Tutar", icon: "CurrencyIcon", keyboardType: .decimalPad, iconType: .normal))
         return txt
     }()
@@ -188,12 +190,11 @@ final class IncomeExpenseViewController: UIViewController {
     
     fileprivate func locateTextComponents() {
         if !viewModel.isOpenFromAnotherPage {
-            let oranUzunluk = (view.bounds.width - 42) / 3
             view.addSubview(txtDescription)
-            txtDescription.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: nil, paddingTop: 3, paddingBottom: 0, paddingTrailing: 0, paddingLeading: 16, width: oranUzunluk * 2, height: 38)
+            txtDescription.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 3, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 38)
             
             view.addSubview(txtAmount)
-            txtAmount.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: nil, trailing: view.trailingAnchor, paddingTop: 3, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 0, width: oranUzunluk, height: 38)
+            txtAmount.anchor(top: txtDescription.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 38)
         }
     }
     
@@ -210,10 +211,10 @@ final class IncomeExpenseViewController: UIViewController {
             stackViewButton.spacing = 10
             
             view.addSubview(stackViewButton)
-            stackViewButton.anchor(top: txtDescription.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 38)
+            stackViewButton.anchor(top: txtAmount.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -16, paddingLeading: 16, width: 0, height: 38)
             
             view.addSubview(scView)
-            scView.anchor(top: stackViewButton.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 30, paddingBottom: 0, paddingTrailing: -30, paddingLeading: 30, width: 0, height: 38)
+            scView.anchor(top: stackViewButton.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 15, paddingBottom: 0, paddingTrailing: -30, paddingLeading: 30, width: 0, height: 38)
         } else {
             view.addSubview(scView)
             scView.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingTrailing: -30, paddingLeading: 30, width: 0, height: 38)
@@ -271,7 +272,7 @@ final class IncomeExpenseViewController: UIViewController {
         if(txtAmount.text == ""){
             showAlert(title: "Uyarı", message: "Tutar alanı boş geçilemez!")
             return
-        } else if(Double(txtAmount.text!.replacingOccurrences(of: ",", with: ".")) == nil) {
+        } else if(Double(txtAmount.text!.replacingOccurrences(of: ".", with: "").replacingOccurrences(of: ",", with: ".")) == nil) {
             showAlert(title: "Uyarı", message: "Tutar formatı yanlış, kontrol ediniz!")
             return
         } else if(Double(txtAmount.text!.replacingOccurrences(of: ",", with: ".")) == 0) {
@@ -289,7 +290,7 @@ final class IncomeExpenseViewController: UIViewController {
             tableIncomeExpense.reloadData()
         }
         
-        let amount = (txtAmount.text ?? "0").replacingOccurrences(of: ",", with: ".")
+        let amount = (txtAmount.text ?? "0").replacingOccurrences(of: ".", with: "").replacingOccurrences(of: ",", with: ".")
         viewModel.addIncomeExpense(type: type, description: txtDescription.text!, amount: Double(amount)!)
         txtDescription.text = ""
         txtAmount.text = ""

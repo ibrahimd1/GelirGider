@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-internal final class CustomTextField: UITextField {
+internal class CustomTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.delegate = self

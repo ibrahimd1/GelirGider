@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D307228D2AB600A9001A5770 /* CustomCurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D307228C2AB600A9001A5770 /* CustomCurrencyTextField.swift */; };
 		D30C198D27AAFF870002C07D /* IncomeExpenseContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30C198C27AAFF870002C07D /* IncomeExpenseContracts.swift */; };
 		D30C199127AB027E0002C07D /* IncomeExpensePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30C199027AB027E0002C07D /* IncomeExpensePresentation.swift */; };
 		D30C199327AB03A40002C07D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30C199227AB03A40002C07D /* Constants.swift */; };
@@ -91,6 +92,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D307228C2AB600A9001A5770 /* CustomCurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCurrencyTextField.swift; sourceTree = "<group>"; };
 		D30C198C27AAFF870002C07D /* IncomeExpenseContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseContracts.swift; sourceTree = "<group>"; };
 		D30C199027AB027E0002C07D /* IncomeExpensePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpensePresentation.swift; sourceTree = "<group>"; };
 		D30C199227AB03A40002C07D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; wrapsLines = 1; };
@@ -352,6 +354,7 @@
 				D31A4A922806136500070A25 /* IncomeExpenseCell.swift */,
 				D37838FD283AD80A004307D1 /* CustomTextField.swift */,
 				D3C2355C28FC730C00036598 /* CustomSegmentedControl.swift */,
+				D307228C2AB600A9001A5770 /* CustomCurrencyTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -649,6 +652,7 @@
 				D3292F522917FDF800FFA99C /* UISwipeActionsConfiguration+Extension.swift in Sources */,
 				D3D030992986C30400396BFF /* AboutBuilder.swift in Sources */,
 				D37C6AC627F8A395009A37DF /* RoundedButton.swift in Sources */,
+				D307228D2AB600A9001A5770 /* CustomCurrencyTextField.swift in Sources */,
 				D36B6FBF29218C2F00C5A413 /* CGFloat+Extension.swift in Sources */,
 				D35A1968290C548E00BA7F90 /* UIColor+Extension.swift in Sources */,
 				D3272D70292D69B300620DC6 /* YearlySummaryViewModel.swift in Sources */,
