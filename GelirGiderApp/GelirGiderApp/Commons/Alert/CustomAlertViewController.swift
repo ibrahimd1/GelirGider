@@ -95,9 +95,9 @@ class CustomAlertViewController: UIViewController {
     
     @objc private func animateAlert() {
         backdropView.alpha = 0.0
-        UIView.animate(withDuration: 0.1, animations: {
+        UIView.animate(withDuration: 0.06, animations: {
             self.backdropView.alpha = 1.0
-            self.backdropView.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+            self.backdropView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
             self.containerView.transform = .identity
         })
     }
