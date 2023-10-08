@@ -85,7 +85,7 @@ final class IncomeExpenseViewController: UIViewController {
     private lazy var lblIncome: UILabel = {
         let lbl = UILabel()
         lbl.text = "Gelir"
-        lbl.font = .Poppins.semiBold(size: 13).font
+        lbl.font = .Poppins.semiBold(size: 14).font
         lbl.textAlignment = .center
         lbl.textColor = CustomColor.textColorSecondary
         return lbl
@@ -105,7 +105,7 @@ final class IncomeExpenseViewController: UIViewController {
     private lazy var lblExpense: UILabel = {
         let lbl = UILabel()
         lbl.text = "Gider"
-        lbl.font = .Poppins.semiBold(size: 13).font
+        lbl.font = .Poppins.semiBold(size: 14).font
         lbl.textAlignment = .center
         lbl.textColor = CustomColor.textColorSecondary
         return lbl
@@ -125,7 +125,7 @@ final class IncomeExpenseViewController: UIViewController {
     private lazy var lblSubstract: UILabel = {
         let lbl = UILabel()
         lbl.text = "Fark"
-        lbl.font = .Poppins.semiBold(size: 13).font
+        lbl.font = .Poppins.semiBold(size: 14).font
         lbl.textAlignment = .center
         lbl.textColor = CustomColor.textColorSecondary
         return lbl
@@ -307,8 +307,8 @@ final class IncomeExpenseViewController: UIViewController {
     }
     
     func getAttrText(_ year: String, _ month: String) -> NSMutableAttributedString {
-        let attrText = NSMutableAttributedString(string: year, attributes: [.font : UIFont.Poppins.semiBold(size: 20).font!])
-        attrText.append(NSAttributedString(string: " \(month)", attributes: [.font : UIFont.Poppins.semiBold(size: 15).font! ]))
+        let attrText = NSMutableAttributedString(string: year, attributes: [.font : UIFont.Poppins.semiBold(size: 22).font!])
+        attrText.append(NSAttributedString(string: " \(month)", attributes: [.font : UIFont.Poppins.semiBold(size: 17).font! ]))
         return attrText
     }
     

@@ -15,8 +15,8 @@ internal final class CustomSegmentedControl: UISegmentedControl{
     override func layoutSubviews(){
         super.layoutSubviews()
         
-        let textAttributesSelected = [NSAttributedString.Key.foregroundColor : CustomColor.textColor!, NSAttributedString.Key.font : UIFont.Poppins.semiBold(size: 13).font!]
-        let textAttributesNormal = [NSAttributedString.Key.foregroundColor : CustomColor.textColorSecondary!, NSAttributedString.Key.font : UIFont.Poppins.semiBold(size: 13).font!]
+        let textAttributesSelected = [NSAttributedString.Key.foregroundColor : CustomColor.textColor!, NSAttributedString.Key.font : UIFont.Poppins.semiBold(size: 14).font!]
+        let textAttributesNormal = [NSAttributedString.Key.foregroundColor : CustomColor.textColorSecondary!, NSAttributedString.Key.font : UIFont.Poppins.semiBold(size: 14).font!]
         
         self.setTitleTextAttributes(textAttributesNormal, for: .normal)
         self.setTitleTextAttributes(textAttributesSelected, for: .selected)

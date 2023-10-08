@@ -15,7 +15,7 @@ internal final class RoundedButton: UIButton {
         let lbl = UILabel()
         lbl.numberOfLines = 1
         lbl.textAlignment = .center
-        lbl.font = .Poppins.medium(size: 13).font
+        lbl.font = .Poppins.medium(size: 15).font
         return lbl
     }()
     

@@ -23,13 +23,13 @@ internal class CustomTextField: UITextField {
     internal func configure(with viewModel: CustomTextFieldViewModel) {
         self.attributedPlaceholder = NSAttributedString(
             string: viewModel.placeHolderText,
-            attributes: [.foregroundColor: CustomColor.textColorSecondary!, .font: UIFont.Poppins.bold(size: 13).font!]
+            attributes: [.foregroundColor: CustomColor.textColorSecondary!, .font: UIFont.Poppins.bold(size: 15).font!]
         )
         self.layer.borderColor =  CustomColor.borderColor?.cgColor
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 15
         self.backgroundColor = CustomColor.backgroundColorComponent
-        self.font = .Poppins.regular(size: 13).font
+        self.font = .Poppins.regular(size: 15).font
         self.setLeftPaddingPoints(15)
         
         let frame = CGRect(x: 0, y: 0, width: 18 + 15, height: 18)
