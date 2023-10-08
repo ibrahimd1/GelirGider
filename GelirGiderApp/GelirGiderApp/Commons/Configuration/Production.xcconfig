@@ -1,0 +1,12 @@
+//
+//  Production.xcconfig
+//  GelirGiderApp
+//
+//  Created by İbrahim Darakçılar on 8.10.2023.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+
+APP_ID = xxxx

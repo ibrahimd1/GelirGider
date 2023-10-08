@@ -587,7 +587,7 @@ extension IncomeExpenseViewController: IncomeExpenseViewModelDelegate{
     }
     
     fileprivate func rateAndReviewOnAppStore() {
-        let appleID = "1154366081"
+        let appleID = Environment.appId
         let url = "https://itunes.apple.com/app/id\(appleID)?action=write-review"
         if let path = URL(string: url) {
                 UIApplication.shared.open(path, options: [:], completionHandler: nil)

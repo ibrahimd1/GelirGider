@@ -64,6 +64,7 @@
 		D3D0309B2986C31200396BFF /* AboutContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0309A2986C31200396BFF /* AboutContracts.swift */; };
 		D3D0309D2986C32000396BFF /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0309C2986C32000396BFF /* AboutViewModel.swift */; };
 		D3DBEFB527F0ABBB004A02CD /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DBEFB427F0ABBB004A02CD /* UIView+Extension.swift */; };
+		D3EE1F992AD3018C00535696 /* Envirenmont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EE1F982AD3018C00535696 /* Envirenmont.swift */; };
 		D3F04D99272C2AC10047E9F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F04D98272C2AC10047E9F4 /* AppDelegate.swift */; };
 		D3F04D9D272C2AC10047E9F4 /* IncomeExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F04D9C272C2AC10047E9F4 /* IncomeExpenseViewController.swift */; };
 		D3F04DA2272C2AC20047E9F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3F04DA1272C2AC20047E9F4 /* Assets.xcassets */; };
@@ -149,6 +150,9 @@
 		D3D0309A2986C31200396BFF /* AboutContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutContracts.swift; sourceTree = "<group>"; };
 		D3D0309C2986C32000396BFF /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
 		D3DBEFB427F0ABBB004A02CD /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		D3EE1F962AD2FE0600535696 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
+		D3EE1F972AD2FFC500535696 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		D3EE1F982AD3018C00535696 /* Envirenmont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Envirenmont.swift; sourceTree = "<group>"; };
 		D3F04D95272C2AC10047E9F4 /* GelirGiderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GelirGiderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F04D98272C2AC10047E9F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3F04D9C272C2AC10047E9F4 /* IncomeExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 		D30C198E27AB02490002C07D /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				D3EE1F952AD2FDCD00535696 /* Configuration */,
 				D3537F88291FA50C00A3AEF1 /* Alert */,
 				D35A1960290C342700BA7F90 /* MenuModal */,
 				D380699C27DE1C6E001EA6E2 /* StoreManager */,
@@ -395,6 +400,16 @@
 				D30E20A3294F5D9400939A54 /* About */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		D3EE1F952AD2FDCD00535696 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				D3EE1F962AD2FE0600535696 /* Production.xcconfig */,
+				D3EE1F972AD2FFC500535696 /* Debug.xcconfig */,
+				D3EE1F982AD3018C00535696 /* Envirenmont.swift */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 		D3F04D8C272C2AC10047E9F4 = {
@@ -651,6 +666,7 @@
 				D380699E27DE1C91001EA6E2 /* StoreManager.swift in Sources */,
 				D3292F522917FDF800FFA99C /* UISwipeActionsConfiguration+Extension.swift in Sources */,
 				D3D030992986C30400396BFF /* AboutBuilder.swift in Sources */,
+				D3EE1F992AD3018C00535696 /* Envirenmont.swift in Sources */,
 				D37C6AC627F8A395009A37DF /* RoundedButton.swift in Sources */,
 				D307228D2AB600A9001A5770 /* CustomCurrencyTextField.swift in Sources */,
 				D36B6FBF29218C2F00C5A413 /* CGFloat+Extension.swift in Sources */,
@@ -710,6 +726,7 @@
 /* Begin XCBuildConfiguration section */
 		D3F04DBD272C2AC20047E9F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3EE1F972AD2FFC500535696 /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -771,6 +788,7 @@
 		};
 		D3F04DBE272C2AC20047E9F4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3EE1F962AD2FE0600535696 /* Production.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
