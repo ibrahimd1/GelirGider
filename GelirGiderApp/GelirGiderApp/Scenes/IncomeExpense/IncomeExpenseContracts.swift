@@ -13,6 +13,7 @@ protocol IncomeExpenseViewModelProtocol {
     var year: Int {get set}
     var month: Int {get set}
     func load()
+    func getData()
     func addIncomeExpense(type: IncomeExpenseType, description: String, amount: Double)
     func updateIncomeExpense(with id: String, description: String?, amount: Double?, index: Int)
     func deleteIncomeExpense(with id: String, type: IncomeExpenseType, index: Int)
@@ -22,7 +23,8 @@ protocol IncomeExpenseViewModelProtocol {
 
 enum IncomeExpenseViewModelOutput {
     case updateHeader(year: Int, month: String)
-    case showData(IncomeExpensePresentation)
+    case setData(IncomeExpensePresentation)
+    case showData
     case showNewItem(type: IncomeExpenseType,IncomeExpensePresentation)
     case setSummary(incomeSum: Double, expenseSum: Double, substractSum: Double)
     case deleteItem(type: IncomeExpenseType,index: Int,IncomeExpensePresentation)

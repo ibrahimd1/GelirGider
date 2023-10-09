@@ -12,7 +12,6 @@ internal final class CustomCurrencyTextField: CustomTextField {
     var amt = 0
     override init(frame: CGRect) {
         super.init(frame: frame)
-        print("init")
     }
     
     required init?(coder: NSCoder) {

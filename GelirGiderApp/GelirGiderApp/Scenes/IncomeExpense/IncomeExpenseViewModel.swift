@@ -28,12 +28,16 @@ final class IncomeExpenseViewModel: IncomeExpenseViewModelProtocol {
     
     func load() {
         delegate?.handleViewModelOutput(.updateHeader(year: year, month: Date.getMonthName(month: month)))
+        delegate?.handleViewModelOutput(.showData)
+        setSummary()
+        setOptions()
+    }
+    
+    func getData() {
         let data: IncomeExpenseModel? = storeManager.getData(of: month, in: year)
         guard let data = data else { return }
         incomeExpenseData = data
-        delegate?.handleViewModelOutput(.showData(IncomeExpensePresentation.init(model: incomeExpenseData)))
-        setSummary()
-        setOptions()
+        delegate?.handleViewModelOutput(.setData(IncomeExpensePresentation.init(model: incomeExpenseData)))
     }
     
     func addIncomeExpense(type: IncomeExpenseType, description: String, amount: Double) {
